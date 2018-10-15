@@ -6921,7 +6921,7 @@ article.tab-pane {
 /* ------ Nav
 ------------------------------ */
 .navbar-inverse {
-  background-color: #333333;
+  background-color: #eeeeee;
   border: 0;
 }
 .navbar-inverse .navbar-nav > li > a {
@@ -6931,23 +6931,23 @@ article.tab-pane {
   padding-bottom: 25px;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
-  background-color: #2c689c;
+  background-color: #eeeeee;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #2c689c;
+  background-color: #eeeeee;
 }
 .navbar-nav .dropdown-menu {
-  background-color: #2c689c;
-  border-top: 1px solid #2c689c;
+  background-color: #eeeeee;
+  border-top: 1px solid #eeeeee;
 }
 .navbar-nav .dropdown-menu a {
   color: #333333;
 }
 .navbar-nav .dropdown-menu li a:hover {
-  background-color: #204d74;
-  color: white;
+  background-color: #eeeeee;
+  color: #333333;
 }
 .navbar-nav .dropdown-menu .divider {
   background-color: #204d74;
