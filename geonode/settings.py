@@ -80,7 +80,7 @@ try:
     ALLOWED_HOSTS = ast.literal_eval(os.getenv('ALLOWED_HOSTS'))
 except ValueError:
     # fallback to regular list of values separated with misc chars
-    ALLOWED_HOSTS = ['localhost', 'django', 'geonode'] if os.getenv('ALLOWED_HOSTS') is None \
+    ALLOWED_HOSTS = ['*'] if os.getenv('ALLOWED_HOSTS') is None \
         else re.split(r' *[,|:|;] *', os.getenv('ALLOWED_HOSTS'))
 
 # AUTH_IP_WHITELIST property limits access to users/groups REST endpoints
@@ -669,7 +669,7 @@ NOSE_ARGS = [
 #
 # GeoNode specific settings
 #
-SITEURL = os.getenv('SITEURL', "http://localhost:8000/")
+SITEURL = os.getenv('SITEURL', "http://150.165.85.24")
 
 # we need hostname for deployed
 _surl = urlparse(SITEURL)
@@ -697,7 +697,7 @@ MISSING_THUMBNAIL = os.getenv(
 CACHE_TIME = int(os.getenv('CACHE_TIME', '0'))
 
 GEOSERVER_LOCATION = os.getenv(
-    'GEOSERVER_LOCATION', 'http://localhost:8080/geoserver/'
+    'GEOSERVER_LOCATION', 'http://150.165.85.24/geoserver/'
 )
 
 GEOSERVER_PUBLIC_LOCATION = os.getenv(
