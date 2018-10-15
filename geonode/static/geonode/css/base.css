@@ -7644,11 +7644,7 @@ nav.filter li a {
 /* Footer
 ----------------------- */
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: white;
+  color: #eeeeee;
   padding: 1.5em;
 }
 footer a {
