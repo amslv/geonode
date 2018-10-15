@@ -6943,7 +6943,7 @@ article.tab-pane {
   border-top: 1px solid #2c689c;
 }
 .navbar-nav .dropdown-menu a {
-  color: white;
+  color: #333333;
 }
 .navbar-nav .dropdown-menu li a:hover {
   background-color: #204d74;
@@ -7885,7 +7885,7 @@ footer form {
     overflow: hidden!important;
   }
   .home .navbar-inverse {
-    background-color: #333333;
+    background-color: #eeeeee;
   }
   .navbar-inverse .navbar-nav > li > a {
     padding-bottom: 0.75em;
