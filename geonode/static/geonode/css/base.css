@@ -6931,12 +6931,12 @@ article.tab-pane {
   padding-bottom: 25px;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
-  background-color: #eeeeee;
+  background-color: #ccc;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #eeeeee;
+  background-color: #ccc;
 }
 .navbar-nav .dropdown-menu {
   background-color: #eeeeee;
