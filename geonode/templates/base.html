@@ -239,12 +239,13 @@
             {% endif %}
           </ul>
         </div>
-  
-        <div class="col-md-6 text-right float-right">
+
+        <div class="col-md-6 text-right">
           {% block contactus %}
           {% endblock contactus %}
           <ul class="list-unstyled">
-            <li>{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %}
+            <li>{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version"
+                %}
                 {{ VERSION }}</em></li>
             <li><a href="{% url " developer" %}">{% trans "Developers" %}</a> | <a href="{% url " about" %}">{% trans
                 "About" %}</a>
@@ -266,7 +267,6 @@
           {% endif %}
         </div>
       </div>
-    </div>
   </footer>
   {% endblock footer %}
 
