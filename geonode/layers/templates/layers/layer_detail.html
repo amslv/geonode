@@ -37,17 +37,14 @@
     </style>
 	<h2 class="page-title">{{ resource.title|default:resource.alternate }}</h2>
 	{% if online and storeType == 'remoteStore' %}<em><i class="fa fa-power-off {% if online %}text-success{% else %}text-danger{% endif %}"></i>
-		{% trans "Service is" %} {% if online %}{% trans "online" %}{% else %}{% trans "offline" %}{% endif %} </em>{% endif
-	%}
+		{% trans "Service is" %} {% if online %}{% trans "online" %}{% else %}{% trans "offline" %}{% endif %} </em>{% endif %}
 </div>
 
 <div class="row">
 	<div class="col-md-8">
-
 		<div id="embedded_map" class="mrg-btm">
 			<div id="preview_map"></div>
 		</div>
-
 		<div class="layer-actions">
 			{% include "_actions.html" %}
 		</div>
@@ -254,11 +251,8 @@
 				<div class="overall_rating" data-score="{{ layer_rating }}"></div> ({{num_votes}})
 			</article>
 			{% endif %}
-
 		</div>
-
 	</div>
-</div>
 {% endblock %}
 
 {% block extra_script %}
@@ -458,75 +452,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 			}
 		}
 	});
-
-	$("#button-toggle").css(enable_filter_style);
-	// change color of toggle button on click
-	$("#button-toggle").click(function () {
-		$(this).toggleClass("clicked");
-		if ($("#button-toggle").hasClass("clicked")) {
-			$("#button-toggle").css({ "background-color": "#3276b1", "border-color": "#3276b1" });
-			layer_name = {{ layer_name | safe }
-		};
-		filtered_attributes = {{ filtered_attributes | safe }
-	}
-          attribute_description = {{ attribute_description | safe }}
-		whole_url = "{% url 'load_layer_data' %}";
-	if (!ajax_loaded) {
-		$.ajax({
-			type: "POST",
-			url: whole_url,
-			data: { json_data: JSON.stringify({ layer_name: layer_name, filtered_attributes: filtered_attributes }) },
-			beforeSend: function (xhr) {
-				{% if request.user.is_authenticated and 'access_token' in request.session %}
-				xhr.setRequestHeader("Authorization", "Bearer {{ request.session.access_token }}");
-				{% endif %}
-				$(".loading_msg").show();
-			},
-			success: function (data) {
-				$('#tabContent, .query_builder_tab').show();
-				$(".loading_msg").hide();
-				// on dropdown change, change the value of dropdown
-				$(".dropdown-menu-attribute li a").click(function () {
-					$("#modal-button-attributes:first-child").text($(this).text()).val($(this).text());
-
-					// functionality added for the autocomplete
-					property_name = $("#modal-button-attributes:first-child").text();
-
-					attribute_values = data['feature_properties'];
-					selected_data = attribute_values[$.trim(property_name)];
-
-					selected_data_prepare = [];
-					for (i = 0; i < selected_data.length; i++) {
-						jsonString = {
-							id: i,
-							text: selected_data[i].toString()
-						};
-						selected_data_val = jsonString;
-						selected_data_prepare.push(selected_data_val);
-					}
-					$(".js-data-array").select2({
-						data: selected_data_prepare,
-						// allow new values by the user
-						createSearchChoice: function (term, data) {
-							if ($(data).filter(function () {
-								return this.text.localeCompare(term) === 0;
-							}).length === 0) {
-								return { id: term, text: term };
-							}
-						},
-					})
-				});
-				ajax_loaded = true;
-			}
-		});
-	} else {
-		$('#tabContent, .query_builder_tab').show();
-	}
-
-        } else {
-		$("#button-toggle").css(enable_filter_style);
-		$('#tabContent, .query_builder_tab').hide();
-	}
+	
 	// clear filters
 	$(document.body).on("click", "#clear_filter", function (e) {
 		$("#added_rules").empty();
