@@ -60,21 +60,6 @@
             </div>
           </div>
         </div>
-        <div class="row">
-            <div class="container text-center">
-                {% verbatim %}
-                <div ng-app="featured">
-                  <div ng-repeat="item in featured | limitTo:4">
-                    <div class="col-md-3">
-                      <a href="{{ item.detail_url }}"><img ng-src="{{ item.thumbnail_url }}" /></a>
-                      <h4>{{ item.title | limitTo: 20 }}{{item.title.length > 20 ? '...' : ''}}</h4>
-                    </div>
-                  </div>
-                </div>
-          		{% endverbatim %}
-                <p><a href="/search/">Explore all datasets</a></p>
-            </div>
-        </div>
       </section>
       {% endblock showcase %}
 
