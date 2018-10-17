@@ -16,6 +16,8 @@
       $scope.cart = cart;
       $scope.layers_params = '';
 
+      if $scope.authStatus
+
       $scope.newMap = function(){
         var items = cart.getCart().items;
         var params = '';
@@ -27,7 +29,7 @@
 
       $scope.bulk_perms_submit = function(){
         var items = cart.getCart().items;
-        var permissions = permissionsString($('#permission_form'), 'base');
+        var permissions = permissionsString($('#permiss ion_form'), 'base');
         var selected_ids = $.map(items, function(item){return item.id});
         var message = $('#bulk_perms_message');
         if(selected_ids.length == 0){
