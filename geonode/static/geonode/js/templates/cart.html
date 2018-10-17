@@ -1,3 +1,7 @@
+{% load i18n %}
+{% load staticfiles %}
+
+{% if request.user.is_authenticated %}
 <div id="composerCart" class="panel panel-default">
   <div
     class="panel-heading"
@@ -11,3 +15,4 @@
     <li class="list-group-item clearfix" ng-repeat="resource in cart.getCart().items">{{ resource.title | limitTo: 25}}{{ resource.title.length > 25 ? '...' : '' }}<button class="btn btn-default btn-xs pull-right" ng-click="cart.removeItem(resource)"><i class="fa fa-remove fa-lg"></i></button></li>
   </ul>
 </div>
+{% endif %}
