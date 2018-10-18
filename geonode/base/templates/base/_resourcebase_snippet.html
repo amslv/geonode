@@ -29,19 +29,6 @@
                   <a href="{{ item.detail_url }}">{{ item.title }}</a>
               </h4>
             </div>
-            {% if request.user.is_authenticated %}
-            <div class="col-xs-2">
-              <h4>
-                <button
-                  class="btn btn-default btn-xs pull-right"
-                  ng-if="cart"
-                  ng-click="cart.toggleItem(item)"
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Select"><i ng-class="cart.getFaClass(item.id)" class="fa fa-lg"></i></button>
-              </h4>
-            </div>
-            {% endif %}
           </div>
           <em ng-if="item.online && item.store_type == 'remoteStore'">
             {% endverbatim %}
