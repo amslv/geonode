@@ -12,7 +12,7 @@
             <img ng-src="{{ item.thumbnail_url }}" />
           </a>
         </div>
-        <div class="col-lg-8 item-details align-content-center">
+        <div class="col-lg-8 item-details">
           <div class="row">
             <div class="col-xs-10">
               <p class="item-meta">
@@ -27,6 +27,17 @@
                   <i ng-if="item.store_type == 'dataset'" title="File/Dataset" class="fa fa-newspaper-o fa-1" style="vertical-align:  middle;padding-right: 10px;"></i>
                   <i ng-if="item.store_type == 'map'" title="Map" class="fa fa-map-o fa-1" style="vertical-align:  middle;padding-right: 10px;"></i>
                   <a href="{{ item.detail_url }}">{{ item.title }}</a>
+              </h4>
+            </div>
+            <div class="col-xs-2">
+              <h4>
+                <button
+                  class="btn btn-default btn-xs pull-right"
+                  ng-if="cart"
+                  ng-click="cart.toggleItem(item)"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Select"><i ng-class="cart.getFaClass(item.id)" class="fa fa-lg"></i></button>
               </h4>
             </div>
           </div>

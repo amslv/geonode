@@ -30,7 +30,7 @@
         var permissions = permissionsString($('#permiss ion_form'), 'base');
         var selected_ids = $.map(items, function(item){return item.id});
         var message = $('#bulk_perms_message');
-        if(selected_ids.length == 0){
+        if(selected_ids.length === 0){
          message.find('.message').html('Please select at least one resource to set the permissions');
          message.addClass('alert-danger').removeClass('alert-success alert-warning hidden');
          return;
