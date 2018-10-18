@@ -16,8 +16,6 @@
       $scope.cart = cart;
       $scope.layers_params = '';
 
-      if $scope.authStatus
-
       $scope.newMap = function(){
         var items = cart.getCart().items;
         var params = '';
