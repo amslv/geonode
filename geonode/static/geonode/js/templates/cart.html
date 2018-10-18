@@ -1,10 +1,8 @@
-<div id="composerCart" class="panel panel-default">
+<div id="composerCart" class="panel panel-default" ng-hide="!cart.getCart().itens.length">
   <div
     class="panel-heading"
     ng-bind="'Selected ' + (facetType | default_if_blank : 'objects') | title "></div>
-  <div
-    ng-show="!cart.getCart().items.length"
-    class="panel-body">
+  <div class="panel-body">
     <p>Add {{ facetType | default_if_blank : 'objects' }} through the "checkboxes".</p>
   </div>
   <ul class="list-group">
