@@ -29,10 +29,10 @@
 </div>
 
 <div class="row">
-  <div class="container-fluid">
+  <div class="col-md-8">
     {% if "download_resourcebase" in perms_list %}
       {% if resource.extension|lower in imgtypes and resource.doc_file %}
-      <div id="embedded_map">
+      <div id="embedded_map" class="container-fluid">
         <a style="text-decoration:none;" href="{% url "document_download" resource.id %}" target="_blank">
           <img src="{% url "document_download" resource.id %}" width='500' class="img-responsive" />
         </a>
