@@ -77,10 +77,6 @@
               <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Maps" %}</a>
               {% endif %}
             </li>
-            <li>
-	            <a href="{% url "about_browse" %}">{% trans "About" %}<i class="fa fa-angle-down fa-lg"></i></a>
-            </li>
-
 	    {% block extra_tab %}
             {% endblock %}
             {% endblock %}
