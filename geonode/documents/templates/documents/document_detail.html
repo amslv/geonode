@@ -10,91 +10,89 @@
 
 {% block head %}
 
-  {% if TWITTER_CARD %}
-    {% include "base/_resourcebase_twittercard.html" %}
-  {% endif %}
-  {% if OPENGRAPH_ENABLED %}
-    {% include "base/_resourcebase_opengraph.html" %}
-  {% endif %}
+    {% if TWITTER_CARD %}
+        {% include "base/_resourcebase_twittercard.html" %}
+    {% endif %}
+    {% if OPENGRAPH_ENABLED %}
+        {% include "base/_resourcebase_opengraph.html" %}
+    {% endif %}
 
-{{ block.super }}
+    {{ block.super }}
 {% endblock %}
 
 {% block body_class %}documents{% endblock %}
 
 {% block body_outer %}
 
-<div class="page-header">
-  <h2>{{ resource.title }}</h2>
-</div>
-
-<div class="row">
-  <div class="container-fluid">
-    {% if "download_resourcebase" in perms_list %}
-      {% if resource.extension|lower in imgtypes and resource.doc_file %}
-      <div id="embedded_map">
-        <a style="text-decoration:none;" href="{% url "document_download" resource.id %}" target="_blank">
-          <img src="{% url "document_download" resource.id %}" width='500' class="img-responsive" />
-        </a>
-      </div>
-      {% elif resource.doc_file %}
-      <p><a href="{% url "document_download" resource.id %}" target="_blank">Download the {{ resource }} document</a></p>
-      {% elif  resource.doc_url %}
-      <p><a href="{{ resource.doc_url }}" target="_blank">Download the {{ resource }} document.</a> <small>({% trans 'External Resource' %})</small></p>
-      {%  endif %}
-    {%  endif %}
-
-    <div class="documents-actions">
-      {% include "_actions.html" %}
+    <div class="page-header">
+        <h2>{{ resource.title }}</h2>
     </div>
+    <div class="container">
+        {% if "download_resourcebase" in perms_list %}
+            {% if resource.extension|lower in imgtypes and resource.doc_file %}
+                <div id="embedded_map">
+                    <a style="text-decoration:none;" href="{% url "document_download" resource.id %}" target="_blank">
+                        <img src="{% url "document_download" resource.id %}" width='500' class="img-responsive" />
+                    </a>
+                </div>
+            {% elif resource.doc_file %}
+                <p><a href="{% url "document_download" resource.id %}" target="_blank">Download the {{ resource }} document</a></p>
+            {% elif  resource.doc_url %}
+                <p><a href="{{ resource.doc_url }}" target="_blank">Download the {{ resource }} document.</a> <small>({% trans 'External Resource' %})</small></p>
+            {%  endif %}
+        {%  endif %}
 
-    <div class="tab-content">
-      <article id="info" class="tab-pane{% if tab == 'info' or not tab %} active{% endif %}">
-      {% include "base/resourcebase_info_panel.html" %}
-      </article>
+        <div class="documents-actions">
+            {% include "_actions.html" %}
+        </div>
 
-      {% block social_links %}
-        {% if DISPLAY_SOCIAL %}
-        {% include "social_links.html" %}
-        {% endif %}
-      {% endblock %}
+        <div class="tab-content">
+            <article id="info" class="tab-pane{% if tab == 'info' or not tab %} active{% endif %}">
+                {% include "base/resourcebase_info_panel.html" %}
+            </article>
 
-      {% if DISPLAY_COMMENTS %}
-      <article id="comments" class="tab-pane">
-      {% include "_comments.html" %}
-      </article>
-      {% endif %}
+            {% block social_links %}
+                {% if DISPLAY_SOCIAL %}
+                    {% include "social_links.html" %}
+                {% endif %}
+            {% endblock %}
 
-      {% if DISPLAY_RATINGS %}
-      <article id="rate" class="tab-pane">
-        <!-- TODO: Move this to a reusable template snippet -->
-        {% if request.user.is_authenticated %}
-        <h4>{% trans "Rate this document" %}</h4>
-        {% user_rating request.user resource "document" as user_document_rating %}
-        <div id="user_rating" class="category-layer" data-score="{{user_document_rating}}"></div>
-        {% endif %}
-        <h4>{% trans 'Average Rating' %}</h4>
-        {% overall_rating resource "document" as document_rating %}
-        {% num_ratings resource as num_votes %}
-        <div class="overall_rating" style="float:left" data-score="{{ document_rating }}"></div> ({{num_votes}})
-        <!-- TODO: Add display of who gave what rating based -->
-      </article>
-      {% endif %}
+            {% if DISPLAY_COMMENTS %}
+                <article id="comments" class="tab-pane">
+                    {% include "_comments.html" %}
+                </article>
+            {% endif %}
 
-      {% if EXIF_ENABLED and exif_data %}
-        {% with "exif/_exif_document_detail.html" as exif_template %}
-            {% include exif_template %}
-        {% endwith %}
-      {% endif %}
+            {% if DISPLAY_RATINGS %}
+                <article id="rate" class="tab-pane">
+                    <!-- TODO: Move this to a reusable template snippet -->
+                    {% if request.user.is_authenticated %}
+                        <h4>{% trans "Rate this document" %}</h4>
+                        {% user_rating request.user resource "document" as user_document_rating %}
+                        <div id="user_rating" class="category-layer" data-score="{{user_document_rating}}"></div>
+                    {% endif %}
+                    <h4>{% trans 'Average Rating' %}</h4>
+                    {% overall_rating resource "document" as document_rating %}
+                    {% num_ratings resource as num_votes %}
+                    <div class="overall_rating" style="float:left" data-score="{{ document_rating }}"></div> ({{num_votes}})
+                    <!-- TODO: Add display of who gave what rating based -->
+                </article>
+            {% endif %}
+
+            {% if EXIF_ENABLED and exif_data %}
+                {% with "exif/_exif_document_detail.html" as exif_template %}
+                    {% include exif_template %}
+                {% endwith %}
+            {% endif %}
+        </div>
     </div>
-  </div>
 {% endblock %}
 
 {% block extra_script %}
-{{ block.super }}
-{% if DISPLAY_SOCIAL %}
-    {% include 'facebook_sdk.html' %}
-{% endif %}
+    {{ block.super }}
+    {% if DISPLAY_SOCIAL %}
+        {% include 'facebook_sdk.html' %}
+    {% endif %}
     {% if request.user.is_authenticated %}
         {% user_rating_js request.user resource "document" %}
     {% else %}
@@ -104,11 +102,11 @@
     {% include 'request_download.html' %}
     <script type="text/javascript">
         {% if DISPLAY_SOCIAL %}
-        (function() {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-            po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-        })();
+            (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
         {% endif %}
     </script>
     {% include "_permissions_form_js.html" %}
