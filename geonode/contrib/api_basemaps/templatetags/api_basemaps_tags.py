@@ -37,4 +37,4 @@ def bing_api_key():
 
 @register.simple_tag
 def google_api_key():
-    return getattr(settings, "GOOGLE_API_KEY", "AIzaSyCkHVW_nelO8mAy6liMFnyMHYUjvqZTDGQ")
+    return getattr(settings, "GOOGLE_API_KEY", None)
