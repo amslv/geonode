@@ -1404,7 +1404,7 @@ a.bg-danger:focus {
 }
 
 
-.x-combo-list-item {
+.x-combo-list-item, x-combo-selected {
     color: black;
 }
 
