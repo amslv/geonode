@@ -1299,6 +1299,12 @@ mark,
   background-color: #fcf8e3;
   padding: 0.2em;
 }
+
+.x-form-text, textarea.x-form-field {
+    color: black;
+}
+
+
 .text-left {
   text-align: left;
 }
