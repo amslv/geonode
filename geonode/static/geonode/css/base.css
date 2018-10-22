@@ -7030,7 +7030,8 @@ article.tab-pane {
   padding-bottom: 0;
 }
 .home .jumbotron {
-  background: #2c689c;
+    background-size: cover;
+    background: url("../img/jumbotrom-background.jpg");
   color: white;
   margin-bottom: 0;
   padding: 7.5em 0 3.75em;
@@ -7165,7 +7166,7 @@ article.tab-pane {
 .jumbotron {
     background-size: cover;
     background: url("../img/jumbotrom-background.jpg");
-        color: white;
+    color: white;
   padding: 40px 0 60px;
   margin-top: -10px;
 }
