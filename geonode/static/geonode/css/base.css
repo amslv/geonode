@@ -1416,6 +1416,7 @@ ol ol {
 .list-unstyled {
   padding-left: 0;
   list-style: none;
+    color: white;
 }
 .list-inline {
   padding-left: 0;
