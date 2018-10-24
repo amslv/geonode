@@ -89,7 +89,7 @@
                                             <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a>
                                             </p>
                                             <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("No") }}
-                                                {% blocktrans count counter=facets.map %}Map{% plural %}
+                                                {% blocktrans count counter=facets.map %}Docs{% plural %}
                                                     Maps{% endblocktrans %}</a></h2>
                                             <p>{% trans "Data is available for browsing, aggregating and styling to generate maps which can be saved, downloaded, shared publicly or restricted to specify users only." %}</p>
                                             {% if user.is_authenticated %}
