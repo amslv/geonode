@@ -11,6 +11,7 @@ psycopg2<=2.7.3.1 # python-psycopg2 (2.7.3.1 in our ppa)
 Django==1.8.19 # python-django (1.8.19 in our ppa) FIXME
 
 # Other
+django-maploom==1.7.0
 amqp==2.2.2 # (python-amqp 2.2.2 in our ppa)
 anyjson<=0.3.3 # (python-anyjson 0.3.3 in our ppa)
 arrow==0.12.1 # (python-arrow 0.12.1 in our ppa)
