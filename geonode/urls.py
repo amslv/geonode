@@ -29,6 +29,7 @@ from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import javascript_catalog
 from django.contrib.sitemaps.views import sitemap
+from maploom.geonode.urls import urlpatterns as maploom_urls
 
 import geonode.proxy.urls
 from . import views
@@ -259,3 +260,9 @@ if settings.MONITORING_ENABLED:
     urlpatterns += [url(r'^monitoring/',
                         include('geonode.contrib.monitoring.urls',
                                 namespace='monitoring'))]
+
+urlpatterns = patterns('',
+                       url(r'^maploom/maps/new', 'geonode.maps.views.new_map', {'template': 'maps/maploom.html'},
+                           name='maploom-map-new'),
+                       url(r'^maploom/maps/(?P<mapid>\d+)/view', 'geonode.maps.views.map_view',
+                           {'template': 'maps/maploom.html'}, name='maploom-map-view'),)
