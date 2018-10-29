@@ -44,18 +44,25 @@ except ImportError:
     from paver.easy import pushd
 
 from geonode.settings import (on_travis,
+                              core_tests,
+                              internal_apps_tests,
                               integration_tests,
                               INSTALLED_APPS,
                               GEONODE_CORE_APPS,
+                              GEONODE_INTERNAL_APPS,
                               GEONODE_APPS,
                               OGC_SERVER,
-                              ASYNC_SIGNALS,
-                              TEST_RUNNER_KEEPDB,
-                              TEST_RUNNER_PARALLEL)
+                              ASYNC_SIGNALS)
 
 _django_11 = django.VERSION[0] == 1 and django.VERSION[1] >= 11 and django.VERSION[2] >= 2
-_keepdb = '-k' if TEST_RUNNER_KEEPDB else ''
-_parallel = ('--parallel=%s' % TEST_RUNNER_PARALLEL) if TEST_RUNNER_PARALLEL else ''
+
+try:
+    from geonode.settings import TEST_RUNNER_KEEPDB, TEST_RUNNER_PARALLEL
+    _keepdb = '-k' if TEST_RUNNER_KEEPDB else ''
+    _parallel = ('--parallel=%s' % TEST_RUNNER_PARALLEL) if TEST_RUNNER_PARALLEL else ''
+except:
+    _keepdb = ''
+    _parallel = ''
 
 assert sys.version_info >= (2, 6), \
     SystemError("GeoNode Build requires python 2.6 or better")
@@ -495,6 +502,10 @@ def stop_geoserver():
     """
     Stop GeoServer
     """
+    # we use docker-compose for integration tests
+    if integration_tests:
+        return
+
     # only start if using Geoserver backend
     _backend = os.environ.get('BACKEND', OGC_SERVER['default']['BACKEND'])
     if _backend == 'geonode.qgis_server' or 'geonode.geoserver' not in INSTALLED_APPS:
@@ -617,6 +628,10 @@ def start_geoserver(options):
     """
     Start GeoServer with GeoNode extensions
     """
+    # we use docker-compose for integration tests
+    if integration_tests:
+        return
+
     # only start if using Geoserver backend
     _backend = os.environ.get('BACKEND', OGC_SERVER['default']['BACKEND'])
     if _backend == 'geonode.qgis_server' or 'geonode.geoserver' not in INSTALLED_APPS:
@@ -754,7 +769,10 @@ def test(options):
     Run GeoNode's Unit Test Suite
     """
     if on_travis:
-        _apps = [app for app in tuple(GEONODE_APPS) if 'contrib' not in app] if _django_11 else tuple(GEONODE_CORE_APPS)
+        if core_tests:
+            _apps = tuple(GEONODE_CORE_APPS)
+        if internal_apps_tests:
+            _apps = tuple(GEONODE_INTERNAL_APPS)
     else:
         _apps = tuple(GEONODE_APPS)
 
@@ -887,7 +905,8 @@ def run_tests(options):
     Executes the entire test suite.
     """
     if options.get('coverage'):
-        prefix = 'coverage run --branch --source=geonode --omit="*/management/*,geonode/contrib/*,*/test*,*/wsgi*,*/middleware*"'
+        prefix = 'coverage run --branch --source=geonode \
+            --omit="*/management/*,*/test*,*/wsgi*,*/middleware*,*/context_processors*,geonode/qgis_server/*,geonode/contrib/*,geonode/upload/*"'
     else:
         prefix = 'python'
     local = options.get('local', 'false')  # travis uses default to false

@@ -1075,6 +1075,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
+  color: #333333;
   background-color: #fff;
 }
 input,
@@ -1298,12 +1299,6 @@ mark,
   background-color: #fcf8e3;
   padding: 0.2em;
 }
-
-.x-form-text, textarea.x-form-field {
-    color: black;
-}
-
-
 .text-left {
   text-align: left;
 }
@@ -1403,16 +1398,10 @@ a.bg-danger:focus {
   background-color: #e4b9b9;
 }
 .page-header {
-    padding-bottom: 10px;
-    margin: 44px 0 22px;
-    border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+  margin: 44px 0 22px;
+  border-bottom: 1px solid #eeeeee;
 }
-
-
-.x-combo-list-item, x-combo-selected {
-    color: black;
-}
-
 ul,
 ol {
   margin-top: 0;
@@ -1427,7 +1416,6 @@ ol ol {
 .list-unstyled {
   padding-left: 0;
   list-style: none;
-    color: white;
 }
 .list-inline {
   padding-left: 0;
@@ -1586,7 +1574,6 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  color: #333333;
 }
 @media (min-width: 768px) {
   .container {
@@ -2602,7 +2589,6 @@ label {
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
-    color: black;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -4682,24 +4668,24 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #333333;
+  color: #fff;
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {
-  color: #333333;
+  color: #9d9d9d;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #333333;
+  color: #9d9d9d;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #333333;
+  color: #fff;
   background-color: transparent;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #333333;
+  color: #fff;
   background-color: #080808;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
@@ -6935,33 +6921,33 @@ article.tab-pane {
 /* ------ Nav
 ------------------------------ */
 .navbar-inverse {
-  background-color: #eeeeee;
+  background-color: #333333;
   border: 0;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #555;
+  color: white;
   font-weight: 600;
   padding-top: 25px;
   padding-bottom: 25px;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
-  background-color: #ccc;
+  background-color: #2c689c;
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #ccc;
+  background-color: #2c689c;
 }
 .navbar-nav .dropdown-menu {
-  background-color: #eeeeee;
-  border-top: 1px solid #eeeeee;
+  background-color: #2c689c;
+  border-top: 1px solid #2c689c;
 }
 .navbar-nav .dropdown-menu a {
-  color: #333333;
+  color: white;
 }
 .navbar-nav .dropdown-menu li a:hover {
-  background-color: #ccc;
-  color: #333333;
+  background-color: #204d74;
+  color: white;
 }
 .navbar-nav .dropdown-menu .divider {
   background-color: #204d74;
@@ -7003,10 +6989,12 @@ article.tab-pane {
   margin-left: 10px;
 }
 .navbar-brand {
-  background: url("../img/insa.png") no-repeat 0 10px;
-  background-size: 80%;
+  background: url(../img/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   text-indent: -9999px;
-  height: 85px;
+  height: 65px;
   width: 200px;
 }
 .navbar-collapse {
@@ -7023,15 +7011,15 @@ article.tab-pane {
 /* ------ Home
 ------------------------------ */
 .home .navbar-inverse {
-  background-color: #eeeeee;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .home #wrap {
   margin-top: -60px;
   padding-bottom: 0;
 }
 .home .jumbotron {
-    background-size: cover;
-    background: url("../img/jumbotrom-background.jpg");
+  position: relative;
+  background: #2c689c;
   color: white;
   margin-bottom: 0;
   padding: 7.5em 0 3.75em;
@@ -7164,10 +7152,10 @@ article.tab-pane {
 /* Home
 ----------------------- */
 .jumbotron {
-    background-size: cover;
-    background: url("../img/jumbotrom-background.jpg");
-    color: white;
+  background: #2c689c;
+  color: white;
   padding: 40px 0 60px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
   margin-top: -10px;
 }
 .jumbotron a {
@@ -7186,6 +7174,12 @@ article.tab-pane {
 .home-facets a:hover {
   color: #2c689c;
   text-decoration: none;
+}
+.partner_logo {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 250px;
 }
 /* Items
 ----------------------- */
@@ -7612,7 +7606,7 @@ nav.filter li a {
     width: 360px;
   }
 }
-/* Upload Time Frame
+/* Upload Time
 ----------------------- */
 /*#timeForm label {
   display: inline;
@@ -7659,7 +7653,7 @@ nav.filter li a {
 /* Footer
 ----------------------- */
 footer {
-  color: #eee !important;
+  color: white;
   padding: 1.5em;
 }
 footer a {
@@ -7670,6 +7664,20 @@ footer a:hover {
 }
 footer form {
   color: #333333;
+}
+/* Copyright
+----------------------- */
+.footer-copyright {
+  padding: 30px 0;
+}
+.footer-copyright .copyright {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+.footer-copyright .copyright small {
+  text-transform: uppercase;
+  font-size: 14px;
 }
 /* Etc
 ----------------------- */
@@ -7694,6 +7702,9 @@ footer form {
 }
 .filter input.datepicker {
   width: 100%;
+}
+#composerCart .list-group i {
+  margin-right: 0;
 }
 .selections {
   margin-top: 1em;
@@ -7897,7 +7908,7 @@ footer form {
     overflow: hidden!important;
   }
   .home .navbar-inverse {
-    background-color: #eee;
+    background-color: #333333;
   }
   .navbar-inverse .navbar-nav > li > a {
     padding-bottom: 0.75em;

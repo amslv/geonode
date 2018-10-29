@@ -91,7 +91,8 @@ from geonode.geoserver.helpers import (gs_catalog,
 from .tasks import delete_layer
 
 if check_ogc_backend(geoserver.BACKEND_PACKAGE):
-    from geonode.geoserver.helpers import _render_thumbnail
+    from geonode.geoserver.helpers import (_render_thumbnail,
+                                           _prepare_thumbnail_body_from_opts)
 if check_ogc_backend(qgis_server.BACKEND_PACKAGE):
     from geonode.qgis_server.models import QGISServerLayer
 CONTEXT_LOG_FILE = ogc_server_settings.LOG_FILE
@@ -426,9 +427,13 @@ def layer_detail(request, layername, template='layers/layer_detail.html'):
             wms_capabilities = wms_capabilities_resp.getvalue()
             if wms_capabilities:
                 import xml.etree.ElementTree as ET
+                namespaces = {'wms': 'http://www.opengis.net/wms',
+                              'xlink': 'http://www.w3.org/1999/xlink',
+                              'xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
+
                 e = ET.fromstring(wms_capabilities)
                 for atype in e.findall(
-                        "./[Name='%s']/Extent[@name='time']" % (layername)):
+                        "./[wms:Name='%s']/wms:Dimension[@name='time']" % (layer.alternate), namespaces):
                     dim_name = atype.get('name')
                     if dim_name:
                         dim_name = str(dim_name).lower()
@@ -535,9 +540,13 @@ def layer_detail(request, layername, template='layers/layer_detail.html'):
             wms_capabilities = wms_capabilities_resp.getvalue()
             if wms_capabilities:
                 import xml.etree.ElementTree as ET
+                namespaces = {'wms': 'http://www.opengis.net/wms',
+                              'xlink': 'http://www.w3.org/1999/xlink',
+                              'xsi': 'http://www.w3.org/2001/XMLSchema-instance'}
+
                 e = ET.fromstring(wms_capabilities)
                 for atype in e.findall(
-                        "./[Name='%s']/Extent[@name='time']" % (layername)):
+                        "./[wms:Name='%s']/wms:Dimension[@name='time']" % (layer.alternate), namespaces):
                     dim_name = atype.get('name')
                     if dim_name:
                         dim_name = str(dim_name).lower()
@@ -1384,7 +1393,12 @@ def layer_thumbnail(request, layername):
                     request.body)['image'].split(';base64,')
                 image = base64.b64decode(image)
             else:
-                image = _render_thumbnail(request.body)
+                image = None
+                try:
+                    image = _prepare_thumbnail_body_from_opts(request.body,
+                                                              request=request)
+                except BaseException:
+                    image = _render_thumbnail(request.body)
 
             if not image:
                 return

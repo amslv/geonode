@@ -36,6 +36,7 @@ from django.conf.global_settings import DATETIME_INPUT_FORMATS
 from geonode import get_version
 from kombu import Queue, Exchange
 
+
 # GeoNode Version
 VERSION = get_version()
 
@@ -80,7 +81,7 @@ try:
     ALLOWED_HOSTS = ast.literal_eval(os.getenv('ALLOWED_HOSTS'))
 except ValueError:
     # fallback to regular list of values separated with misc chars
-    ALLOWED_HOSTS = ['*'] if os.getenv('ALLOWED_HOSTS') is None \
+    ALLOWED_HOSTS = ['localhost', 'django', 'geonode'] if os.getenv('ALLOWED_HOSTS') is None \
         else re.split(r' *[,|:|;] *', os.getenv('ALLOWED_HOSTS'))
 
 # AUTH_IP_WHITELIST property limits access to users/groups REST endpoints
@@ -291,6 +292,7 @@ GEONODE_INTERNAL_APPS = (
     # GeoNode internal apps
     'geonode.people',
     'geonode.client',
+    'geonode.themes',
     'geonode.proxy',
     'geonode.social',
     'geonode.groups',
@@ -329,8 +331,6 @@ GEONODE_CONTRIB_APPS = (
 GEONODE_APPS = GEONODE_CORE_APPS + GEONODE_INTERNAL_APPS + GEONODE_CONTRIB_APPS
 
 INSTALLED_APPS = (
-
-    'maploom',
 
     'modeltranslation',
 
@@ -510,6 +510,7 @@ TEMPLATES = [
                 # 'django.core.context_processors.request',
                 'geonode.context_processors.resource_urls',
                 'geonode.geoserver.context_processors.geoserver_urls',
+                'geonode.themes.context_processors.custom_theme'
             ],
             # Either remove APP_DIRS or remove the 'loaders' option.
             # 'loaders': [
@@ -575,12 +576,33 @@ AUTHENTICATION_BACKENDS = (
 
 OAUTH2_PROVIDER = {
     'SCOPES': {
+        'openid': 'Default to OpenID',
         'read': 'Read scope',
         'write': 'Write scope',
         'groups': 'Access to your groups'
     },
 
     'CLIENT_ID_GENERATOR_CLASS': 'oauth2_provider.generators.ClientIdGenerator',
+    # 'OAUTH2_VALIDATOR_CLASS': 'geonode.security.oauth2_validators.OIDCValidator',
+
+    # OpenID Connect
+    # "OIDC_ISS_ENDPOINT": "http://localhost:8000",
+    # "OIDC_USERINFO_ENDPOINT": "http://localhost:8000/api/o/v4/tokeninfo/",
+    "OIDC_RSA_PRIVATE_KEY": b"""-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQCIThjbTwpYu4Lwqp8oA7PqD6Ij/GwpLFJuPbWVaeCDaX6T7mh8
+mJMIEgl/VIZasLH8SwU5mZ4sPeiqk7NgJq1XDo97q5mlFoNVHMCH38KQzSIBWtbq
+WnEEnQdiqBbCmmIebLd4OcfpbIVUI89cnCq7U0M1ie0KOopWSHWOP6/35QIDAQAB
+AoGBAIdwmtBotM5A3LaJxAY9z6uXhzSc4Vj0OqBiXymtgDL0Q5t4/Yg5D3ioe5lz
+guFgzCr23KVEmOA7UBMXGtlC9V+iizVSbF4g2GqPLBKk+IYcAhfbSCg5rbbtQ5m2
+PZxKZlJOQnjFLeh4sxitd84GfX16RfAhsvIiaN4d4CG+RAlhAkEA1Vitep0aHKmA
+KRIGvZrgfH7uEZh2rRsCoo9lTxCT8ocCU964iEUxNH050yKdqYzVnNyFysY7wFgL
+gsVzPROE6QJBAKOOWj9mN7uxhjRv2L4iYJ/rZaloVA49KBZEhvI+PgC5kAIrNVaS
+n1kbJtFg54IS8HsYIP4YxONLqmDuhZL2rZ0CQQDId9wCo85eclMPxHV7AiXANdDj
+zbxt6jxunYlXYr9yG7RvNI921HVo2eZU42j8YW5zR6+cGusYUGL4jSo8kLPJAkAG
+SLPi97Rwe7OiVCHJvFxmCI9RYPbJzUO7B0sAB7AuKvMDglF8UAnbTJXDOavrbXrb
+3+N0n9MAwKl9K+zp5pxpAkBSEUlYA0kDUqRgfuAXrrO/JYErGzE0UpaHxq5gCvTf
+g+gp5fQ4nmDrSNHjakzQCX2mKMsx/GLWZzoIDd7ECV9f
+-----END RSA PRIVATE KEY-----"""
 }
 # authorized exempt urls needed for oauth when GeoNode is set to lockdown
 AUTH_EXEMPT_URLS = ('/api/o/*', '/api/roles', '/api/adminRole', '/api/users',)
@@ -642,14 +664,19 @@ THEME_ACCOUNT_CONTACT_EMAIL = os.getenv(
 #
 
 on_travis = ast.literal_eval(os.environ.get('ON_TRAVIS', 'False'))
+core_tests = ast.literal_eval(os.environ.get('TEST_RUN_CORE', 'False'))
+internal_apps_tests = ast.literal_eval(os.environ.get('TEST_RUN_INTERNAL_APPS', 'False'))
 integration_tests = ast.literal_eval(os.environ.get('TEST_RUN_INTEGRATION', 'False'))
 
 # Setting a custom test runner to avoid running the tests for
 # some problematic 3rd party apps
 # Default Nose Test Suite
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Django 1.11 ParallelTestSuite
+TEST_RUNNER = 'geonode.tests.suite.runner.GeoNodeBaseSuiteDiscoverRunner'
 TEST_RUNNER_KEEPDB = 0
-TEST_RUNNER_PARALLEL = 0
+TEST_RUNNER_PARALLEL = 1
 
 # GeoNode test suite
 # TEST_RUNNER = 'geonode.tests.suite.runner.DjangoParallelTestSuiteRunner'
@@ -671,7 +698,7 @@ NOSE_ARGS = [
 #
 # GeoNode specific settings
 #
-SITEURL = os.getenv('SITEURL', "http://150.165.85.24")
+SITEURL = os.getenv('SITEURL', "http://localhost:8000/")
 
 # we need hostname for deployed
 _surl = urlparse(SITEURL)
@@ -699,7 +726,7 @@ MISSING_THUMBNAIL = os.getenv(
 CACHE_TIME = int(os.getenv('CACHE_TIME', '0'))
 
 GEOSERVER_LOCATION = os.getenv(
-    'GEOSERVER_LOCATION', 'http://150.165.85.24/geoserver/'
+    'GEOSERVER_LOCATION', 'http://localhost:8080/geoserver/'
 )
 
 GEOSERVER_PUBLIC_LOCATION = os.getenv(
@@ -735,6 +762,7 @@ OGC_SERVER = {
         'PRINT_NG_ENABLED': True,
         'GEONODE_SECURITY_ENABLED': True,
         'GEOFENCE_SECURITY_ENABLED': GEOFENCE_SECURITY_ENABLED,
+        'GEOFENCE_URL': os.getenv('GEOFENCE_URL', 'internal:/'),
         'GEOGIG_ENABLED': False,
         'WMST_ENABLED': False,
         'BACKEND_WRITE_ENABLED': True,
@@ -896,7 +924,7 @@ DEFAULT_MAP_CENTER = (0, 0)
 DEFAULT_MAP_ZOOM = 0
 
 ALT_OSM_BASEMAPS = ast.literal_eval(os.environ.get('ALT_OSM_BASEMAPS', 'False'))
-CARTODB_BASEMAPS = ast.literal_eval(os.environ.get('CARTODB_BASEMAPS', 'True'))
+CARTODB_BASEMAPS = ast.literal_eval(os.environ.get('CARTODB_BASEMAPS', 'False'))
 STAMEN_BASEMAPS = ast.literal_eval(os.environ.get('STAMEN_BASEMAPS', 'False'))
 THUNDERFOREST_BASEMAPS = ast.literal_eval(os.environ.get('THUNDERFOREST_BASEMAPS', 'False'))
 MAPBOX_ACCESS_TOKEN = os.environ.get('MAPBOX_ACCESS_TOKEN', None)
@@ -1201,6 +1229,14 @@ GEONODE_CLIENT_HOOKSET = "geonode.client.hooksets.LeafletHookSet"
 """
 GEONODE_CLIENT_LAYER_PREVIEW_LIBRARY = 'maploom'  # DEPRECATED use HOOKSET instead
 GEONODE_CLIENT_HOOKSET = "geonode.client.hooksets.MaploomHookSet"
+CORS_ORIGIN_WHITELIST = (
+    HOSTNAME
+)
+"""
+
+# To enable the WorldMap based Client enable those
+"""
+GEONODE_CLIENT_HOOKSET = "geonode.client.hooksets.WorldMapHookSet"
 CORS_ORIGIN_WHITELIST = (
     HOSTNAME
 )
@@ -1573,7 +1609,7 @@ INVITATIONS_ADAPTER = ACCOUNT_ADAPTER
 
 # Choose thumbnail generator -- this is the default generator
 THUMBNAIL_GENERATOR = "geonode.layers.utils.create_gs_thumbnail_geonode"
-
+THUMBNAIL_GENERATOR_DEFAULT_BG = r"http://a.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 GEOTIFF_IO_ENABLED = strtobool(
     os.getenv('GEOTIFF_IO_ENABLED', 'False')
@@ -1590,34 +1626,6 @@ GEOTIFF_IO_BASE_URL = os.getenv(
 USE_WORLDMAP = strtobool(os.getenv('USE_WORLDMAP', 'False'))
 
 if USE_WORLDMAP:
-    # WorldMap requirest PostgreSQL and PostGIS
-    PG_HOST = os.getenv('PG_HOST', 'localhost')
-    PG_USERNAME = os.getenv('PG_USERNAME', 'worldmap')
-    PG_PASSWORD = os.getenv('PG_PASSWORD', 'worldmap')
-    PG_WORLDMAP_DJANGO_DB = os.getenv('PG_WORLDMAP_DJANGO_DB', 'geonode')
-    PG_WORLDMAP_UPLOADS_DB = os.getenv('PG_WORLDMAP_UPLOADS_DB', 'geonode_data')
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'NAME': PG_WORLDMAP_DJANGO_DB,
-            'USER': PG_USERNAME,
-            'PASSWORD': PG_PASSWORD,
-            'HOST': PG_HOST,
-            'PORT': '5432',
-            'CONN_TOUT': 900,
-        },
-        # vector datastore for uploads
-        'datastore': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            # 'ENGINE': '', # Empty ENGINE name disables
-            'NAME': PG_WORLDMAP_UPLOADS_DB,
-            'USER': PG_USERNAME,
-            'PASSWORD': PG_PASSWORD,
-            'HOST': PG_HOST,
-            'PORT': '5432',
-            'CONN_TOUT': 900,
-        }
-    }
     GEONODE_CLIENT_LOCATION = '/static/worldmap_client/'
     GAZETTEER_DB_ALIAS = 'default'
     INSTALLED_APPS += (

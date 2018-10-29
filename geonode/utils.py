@@ -23,7 +23,6 @@ import base64
 import copy
 import datetime
 import logging
-import math
 import os
 import re
 import uuid
@@ -41,6 +40,7 @@ import gc
 import weakref
 import traceback
 
+from math import atan, exp, log, pi, sin, tan, floor
 from contextlib import closing
 from zipfile import ZipFile, is_zipfile, ZIP_DEFLATED
 from StringIO import StringIO
@@ -192,6 +192,22 @@ def bbox_to_wkt(x0, x1, y0, y1, srid="4326"):
     return wkt
 
 
+def _v(coord, x, source_srid=4326, target_srid=3857):
+    if source_srid == 4326 and x and abs(coord) != 180.0:
+        coord = coord - (round(coord / 360.0) * 360.0)
+    if source_srid == 4326 and target_srid != 4326:
+        if x and coord >= 180.0:
+            return 179.999
+        elif x and coord <= -180.0:
+            return -179.999
+
+        if not x and coord >= 90.0:
+            return 89.999
+        elif not x and coord <= -90.0:
+            return -89.999
+    return coord
+
+
 def bbox_to_projection(native_bbox, target_srid=4326):
     """
         native_bbox must be in the form
@@ -204,19 +220,6 @@ def bbox_to_projection(native_bbox, target_srid=4326):
         source_srid = int(proj.split(":")[1]) if proj and ':' in proj else int(proj)
     except BaseException:
         source_srid = target_srid
-
-    def _v(coord, x, source_srid=4326, target_srid=3857):
-        if source_srid == 4326 and target_srid != 4326:
-            if x and coord >= 180.0:
-                return 179.0
-            elif x and coord <= -180.0:
-                return -179.0
-
-            if not x and coord >= 90.0:
-                return 89.0
-            elif not x and coord <= -90.0:
-                return -89.0
-        return coord
 
     if source_srid != target_srid:
         try:
@@ -236,6 +239,38 @@ def bbox_to_projection(native_bbox, target_srid=4326):
             logger.debug(tb)
 
     return native_bbox
+
+
+def bounds_to_zoom_level(bounds, width, height):
+    WORLD_DIM = {'height': 256., 'width': 256.}
+    ZOOM_MAX = 21
+
+    def latRad(lat):
+        _sin = sin(lat * pi / 180.0)
+        if abs(_sin) != 1.0:
+            radX2 = log((1.0 + _sin) / (1.0 - _sin)) / 2.0
+        else:
+            radX2 = log(1.0) / 2.0
+        return max(min(radX2, pi), -pi) / 2.0
+
+    def zoom(mapPx, worldPx, fraction):
+        try:
+            return floor(log(mapPx / worldPx / fraction) / log(2.0))
+        except BaseException:
+            return 0
+
+    ne = [float(bounds[2]), float(bounds[3])]
+    sw = [float(bounds[0]), float(bounds[1])]
+    latFraction = (latRad(ne[1]) - latRad(sw[1])) / pi
+    lngDiff = ne[0] - sw[0]
+    lngFraction = ((lngDiff + 360.0) if (lngDiff < 0) else lngDiff) / 360.0
+    latZoom = zoom(float(height), WORLD_DIM['height'], latFraction)
+    lngZoom = zoom(float(width), WORLD_DIM['width'], lngFraction)
+    ratio = float(max(width, height)) / float(min(width, height))
+    z_offset = 0 if ratio >= 1.5 else -1
+    zoom = int(max(latZoom, lngZoom) + z_offset)
+    zoom = int(min(zoom, ZOOM_MAX))
+    return max(zoom, 0)
 
 
 def llbbox_to_mercator(llbbox):
@@ -261,13 +296,13 @@ def forward_mercator(lonlat):
         # With data sets that only have one point the value of this
         # expression becomes negative infinity. In order to continue,
         # we wrap this in a try catch block.
-        n = math.tan((90 + lonlat[1]) * math.pi / 360)
+        n = tan((90 + lonlat[1]) * pi / 360)
     except ValueError:
         n = 0
     if n <= 0:
         y = float("-inf")
     else:
-        y = math.log(n) / math.pi * 20037508.34
+        y = log(n) / pi * 20037508.34
     return (x, y)
 
 
@@ -277,8 +312,8 @@ def inverse_mercator(xy):
     """
     lon = (xy[0] / 20037508.34) * 180
     lat = (xy[1] / 20037508.34) * 180
-    lat = 180 / math.pi * \
-        (2 * math.atan(math.exp(lat * math.pi / 180)) - math.pi / 2)
+    lat = 180 / pi * \
+        (2 * atan(exp(lat * pi / 180)) - pi / 2)
     return (lon, lat)
 
 
