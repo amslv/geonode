@@ -330,6 +330,8 @@ GEONODE_APPS = GEONODE_CORE_APPS + GEONODE_INTERNAL_APPS + GEONODE_CONTRIB_APPS
 
 INSTALLED_APPS = (
 
+    'maploom',
+
     'modeltranslation',
 
     # Boostrap admin theme
