@@ -6936,21 +6936,21 @@ article.tab-pane {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #2c689c;
+  background-color: #cecece;
 }
 .navbar-nav .dropdown-menu {
-  background-color: #2c689c;
-  border-top: 1px solid #2c689c;
+  background-color: #cecece;
+  border-top: 1px solid #cecece;
 }
 .navbar-nav .dropdown-menu a {
   color: white;
 }
 .navbar-nav .dropdown-menu li a:hover {
-  background-color: #204d74;
+  background-color: #cecece;
   color: white;
 }
 .navbar-nav .dropdown-menu .divider {
-  background-color: #204d74;
+  background-color: #cecece;
 }
 .navbar-nav .search {
   left: 15px;
