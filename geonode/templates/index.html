@@ -39,8 +39,8 @@
             {% with facet_type='home' %}
              {% facets as facets %}
               <div class="panel panel-default">
+                <div class="col-md-4">
                   <div class="panel-body">
-                    <div class="col-md-4">
                       <p><a href="{% url "layer_browse" %}"><i class="fa fa-square-o fa-4x rotate-45"></i></a></p>
                       <h2><a href="{% url "layer_browse" %}">{{ facets.layer|default:_("No") }} {% blocktrans count counter=facets.layer %}Layer{% plural %}Layers{% endblocktrans %}</a></h2>
                       <p>{% trans "Click to search for geospatial data published by other users, organizations and public sources. Download data in standard formats." %}</p>
@@ -53,8 +53,8 @@
                   </div>
               </div>
               <div class="panel panel-default">
+                <div class="col-md-4">
                 <div class="panel-body">
-                  <div class="col-md-4">
                     <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
                     <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("No") }} {% blocktrans count counter=facets.map %}Map{% plural %}Maps{% endblocktrans %}</a></h2>
                     <p>{% trans "Data is available for browsing, aggregating and styling to generate maps which can be saved, downloaded, shared publicly or restricted to specify users only." %}</p>
@@ -67,8 +67,8 @@
                 </div>
               </div>
               <div class="panel panel-default">
+                <div class="col-md-4">
                 <div class="panel-body">
-                  <div class="col-md-4">
                     <p><a href="{% url "document_browse" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
                     <h2><a href="{% url "document_browse" %}">{{ facets.document|default:_("No") }} {% blocktrans count counter=facets.document %}Document{% plural %}Documents{% endblocktrans %}</a></h2>
                     <p>{% trans "As for the layers and maps GeoNode allows to publish tabular and text data, manage theirs metadata and associated documents." %}</p>
