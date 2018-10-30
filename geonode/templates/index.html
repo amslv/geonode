@@ -38,7 +38,6 @@
             <div class="row home-facets">
             {% with facet_type='home' %}
              {% facets as facets %}
-              <div class="panel panel-default">
                 <div class="col-md-4">
                   <p><a href="{% url "layer_browse" %}"><i class="fa fa-square-o fa-4x rotate-45"></i></a></p>
                   <h2><a href="{% url "layer_browse" %}">{{ facets.layer|default:_("No") }} {% blocktrans count counter=facets.layer %}Layer{% plural %}Layers{% endblocktrans %}</a></h2>
@@ -49,8 +48,6 @@
                   <p class="text-center"><a class="btn btn-default" href="{% url "layer_browse" %}" role="button">{% trans "Explore layers" %} &raquo;</a></p>
                   {% endif %}
                 </div>
-              </div>
-              <div class="panel panel-default">
                 <div class="col-md-4">
                   <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
                   <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("No") }} {% blocktrans count counter=facets.map %}Map{% plural %}Maps{% endblocktrans %}</a></h2>
@@ -60,9 +57,7 @@
                   {% else %}
                   <p><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">{% trans "Explore maps" %} &raquo;</a></p>
                   {% endif %}
-                </div>
-              </div>
-              <div class="panel panel-default">
+                  </div>
                 <div class="col-md-4">
                   <p><a href="{% url "document_browse" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
                   <h2><a href="{% url "document_browse" %}">{{ facets.document|default:_("No") }} {% blocktrans count counter=facets.document %}Document{% plural %}Documents{% endblocktrans %}</a></h2>
@@ -72,8 +67,7 @@
                   {% else %}
                   <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">{% trans "Explore documents" %} &raquo;</a></p>
                   {% endif %}
-                </div>
-              </div>
+                </div>  
             {% endwith %}
             </div>
           </div>
