@@ -20,7 +20,7 @@
   		<p></p>
 		<p>{{custom_theme.jumbotron_welcome_content|default:_("GeoNode is an open source platform for sharing geospatial data and maps.")}}</p>
 		{% if not custom_theme.jumbotron_cta_hide %}
-  		<a class="btn btn-default btn-lg" target="_blank" href="{{custom_theme.jumbotron_cta_link|default:_("http://docs.geonode.org/en/master/tutorials/users/index.html")}}" role="button">{{custom_theme.jumbotron_cta_text|default:_("Get Started &raquo;")}}</a>
+  		<a class="btn btn-default btn-lg" target="_blank" href="{{custom_theme.jumbotron_cta_link|default:_("https://portal.insa.gov.br/")}}" role="button">{{custom_theme.jumbotron_cta_text|default:_("Get Started &raquo;")}}</a>
 		{% endif %}
 	</div>
   </div>
@@ -28,8 +28,6 @@
   {% endblock hero %}
 
   {% block mainbody %}
-
-
       {% block showcase %}
       <section id="showcase">
         <div class="row">
@@ -106,9 +104,7 @@
         </section>
         {% endif %}
       {% endblock partners %}
-
   {% endblock mainbody %}
-
 {% endblock middle %}
 
 {% block extra_script %}
