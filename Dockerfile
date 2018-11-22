@@ -16,7 +16,7 @@ WORKDIR /opt/geonode
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt --upgrade \
     && python manage.py makemigrations --settings=geonode.settings \
-    && python manage.py migrate --settings=geonode.settings
+    && python manage.py migrate --settings=geonode.settings \
     && python manage.py runserver
 
 EXPOSE 8000
