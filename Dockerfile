@@ -1,14 +1,24 @@
-FROM geonode/geonode:latest
-MAINTAINER GeoNode development team
+FROM centos:centos7
 
-COPY requirements.txt /usr/src/app/
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt --upgrade
-RUN python manage.py makemigrations --settings=geonode.settings
-RUN python manage.py migrate --settings=geonode.settings
+MAINTAINER SIMSAB
+
+WORKDIR /opt
+
+RUN yum clean all && yum install -y \
+    python-pip \
+    git \
+    sudo \
+    && rm -rf /var/cache/yum   \
+    && git clone https://github.com/simsab-ufcg/geonode
+
+WORKDIR /opt/geonode
+
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt --upgrade \
+    && python manage.py makemigrations --settings=geonode.settings \
+    && python manage.py migrate --settings=geonode.settings
+    && python manage.py runserver
 
 EXPOSE 8000
 
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-# CMD ["paver", "start_django", "-b", "0.0.0.0:8000"]
 CMD ["uwsgi", "--ini", "uwsgi.ini"]
