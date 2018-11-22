@@ -5,6 +5,7 @@ MAINTAINER SIMSAB
 WORKDIR /opt
 
 RUN yum clean all && yum install -y \
+    epel-release \
     python-pip \
     git \
     sudo \
