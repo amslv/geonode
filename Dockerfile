@@ -33,8 +33,8 @@ RUN pip install --upgrade pip
 # compatible with the provided libgdal-dev
 RUN pip install GDAL==1.10 --global-option=build_ext --global-option="-I/usr/include/gdal"
 
-# install shallow clone of geonode master branch
-RUN git clone --depth=1 git://github.com/simsab-ufcg/geonode.git --branch master /opt/geonode
+# install shallow clone of geonode dev branch
+RUN git clone --depth=1 git://github.com/simsab-ufcg/geonode.git --branch develop /opt/geonode
 RUN cd /opt/geonode/; pip install --upgrade --no-cache-dir -r requirements.txt; pip install --upgrade -e .
 
 
