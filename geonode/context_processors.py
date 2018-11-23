@@ -36,7 +36,7 @@ def resource_urls(request):
         ACCOUNT_OPEN_SIGNUP=settings.ACCOUNT_OPEN_SIGNUP,
         ACCOUNT_APPROVAL_REQUIRED=settings.ACCOUNT_APPROVAL_REQUIRED,
         VERSION=get_version(),
-        SITE_NAME='TESTE',
+        SITE_NAME='Portal da Desertificação',
         SITE_DOMAIN=site.domain,
         SITEURL=settings.SITEURL,
         INSTALLED_APPS=settings.INSTALLED_APPS,

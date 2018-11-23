@@ -3,7 +3,7 @@
 {% load static from staticfiles %}
 {% load base_tags %}
 
-{% block title %} {% trans "Welcome!" %} - {{ block.super }} {% endblock %}
+{% block title %} Início - {{ block.super }} {% endblock %}
 
 {% block body_class %}home{% endblock %}
 
@@ -16,11 +16,11 @@
   {% else %}
   <div class="jumbotron">
   	<div class="container">
-        <h1>{{custom_theme.jumbotron_welcome_title|default:_("Welcome")}}</h1>
+        <h1>{{custom_theme.jumbotron_welcome_title|default:_("Nome da aplicação")}}</h1>
   		<p></p>
-		<p>{{custom_theme.jumbotron_welcome_content|default:_("GeoNode is an open source platform for sharing geospatial data and maps.")}}</p>
+		<p>{{custom_theme.jumbotron_welcome_content|default:_("Texto breve com descrição da aplicação.")}}</p>
 		{% if not custom_theme.jumbotron_cta_hide %}
-  		<a class="btn btn-default btn-lg" target="_blank" href="{{custom_theme.jumbotron_cta_link|default:_("https://portal.insa.gov.br/")}}" role="button">{{custom_theme.jumbotron_cta_text|default:_("Get Started &raquo;")}}</a>
+  		<a class="btn btn-default btn-lg" target="_blank" href="{{custom_theme.jumbotron_cta_link|default:_("https://portal.insa.gov.br/")}}" role="button">{{custom_theme.jumbotron_cta_text|default:_("Iniciar aplicação &raquo;")}}</a>
 		{% endif %}
 	</div>
   </div>
@@ -33,18 +33,16 @@
         <div class="row">
           <div class="container text-center">
             <div class="row home-facets">
-            {% with facet_type='home' %}
-             {% facets as facets %}
-                <div class="col-md-4">
+              <div class="col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "layer_browse" %}"><i class="fa fa-square-o fa-4x rotate-45"></i></a></p>
-                        <h2><a href="{% url "layer_browse" %}">{{ facets.layer|default:_("No") }} {% blocktrans count counter=facets.layer %}Layer{% plural %}Layers{% endblocktrans %}</a></h2>
-                        <p>{% trans "Click to search for geospatial data published by other users, organizations and public sources. Download data in standard formats." %}</p>
+                        <h2><a href="{% url "layer_browse" %}">{{ facets.layer|default:_("Não há") }} {% blocktrans count counter=facets.layer %}Layer{% plural %}Layers{% endblocktrans %}</a></h2>
+                        <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "layer_upload" %}" role="button">{% trans "Add layers" %} &raquo;</a></p>
                         {% else %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "layer_browse" %}" role="button">{% trans "Explore layers" %} &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href="{% url "layer_browse" %}" role="button">Explorar camadas &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>
@@ -53,12 +51,12 @@
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
-                        <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("No") }} {% blocktrans count counter=facets.map %}Map{% plural %}Maps{% endblocktrans %}</a></h2>
-                        <p>{% trans "Data is available for browsing, aggregating and styling to generate maps which can be saved, downloaded, shared publicly or restricted to specify users only." %}</p>
+                        <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("Não há") }} {% blocktrans count counter=facets.map %}Map{% plural %}Maps{% endblocktrans %}</a></h2>
+                        <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
-                        <p><a class="btn btn-default" href="{% url "new_map" %}" role="button">{% trans "Create maps" %} &raquo;</a></p>
+                        <p><a class="btn btn-default" href="{% url "new_map" %}" role="button">Criar mapas &raquo;</a></p>
                         {% else %}
-                        <p><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">{% trans "Explore maps" %} &raquo;</a></p>
+                        <p><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">Explorar mapas &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>
@@ -67,18 +65,18 @@
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "document_browse" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
-                        <h2><a href="{% url "document_browse" %}">{{ facets.document|default:_("No") }} {% blocktrans count counter=facets.document %}Document{% plural %}Documents{% endblocktrans %}</a></h2>
-                        <p>{% trans "As for the layers and maps GeoNode allows to publish tabular and text data, manage theirs metadata and associated documents." %}</p>
+                        <h2><a href="{% url "document_browse" %}">{{ facets.document|default:_("Não há") }} {% blocktrans count counter=facets.document %}Document{% plural %}Aplicação{% endblocktrans %}</a></h2>
+                        <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">{% trans "Add documents" %} &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">{% trans "Explore documents" %} &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>
                 </div>  
-            {% endwith %}
             </div>
+            <p class="text-center">(Texto explicativo sobre o APP) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </section>
