@@ -1,23 +1,64 @@
-FROM centos:centos7
-
+FROM python:2.7.14
 MAINTAINER SIMSAB
 
-WORKDIR /opt
+RUN mkdir -p /opt/{app,geonode}
 
-RUN yum -y update; yum clean all
-RUN yum -y install git; yum clean all
-RUN yum -y install sudo; yum clean all
-RUN yum -y install epel-release; yum clean all
-RUN yum -y install python-pip; yum clean all
-RUN git clone https://github.com/simsab-ufcg/geonode.git
+WORKDIR /opt/app
 
-WORKDIR /opt/geonode
+# This section is borrowed from the official Django image but adds GDAL and others
+RUN apt-get update && apt-get install -y \
+		gcc \
+		gettext \
+		postgresql-client libpq-dev \
+		sqlite3 \
+                python-gdal python-psycopg2 \
+                python-imaging python-lxml \
+                python-dev libgdal-dev \
+                python-ldap \
+                libmemcached-dev libsasl2-dev zlib1g-dev \
+                python-pylibmc \
+	--no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip \
-    && pip install -r requirements.txt --upgrade \
-    && python manage.py makemigrations --settings=geonode.settings \
-    && python manage.py migrate --settings=geonode.settings
+
+COPY wait-for-databases.sh /opt/bin/wait-for-databases
+RUN chmod +x /opt/bin/wait-for-databases
+
+# Upgrade pip
+RUN pip install --upgrade pip
+
+# To understand the next section (the need for requirements.txt and setup.py)
+# Please read: https://packaging.python.org/requirements/
+
+# python-gdal does not seem to work, let's install manually the version that is
+# compatible with the provided libgdal-dev
+RUN pip install GDAL==1.10 --global-option=build_ext --global-option="-I/usr/include/gdal"
+
+# install shallow clone of geonode master branch
+RUN git clone --depth=1 git://github.com/simsab-ufcg/geonode.git --branch master /opt/geonode
+RUN cd /opt/geonode/; pip install --upgrade --no-cache-dir -r requirements.txt; pip install --upgrade -e .
+
+
+RUN cp /optgeonode/tasks.py /opt/app/
+RUN cp /opt/geonode/entrypoint.sh /opt/app/
+
+RUN chmod +x /opt/app/tasks.py \
+    && chmod +x /opt/app/entrypoint.sh
+
+
+# use latest master
+ONBUILD RUN cd /opt/geonode/; git pull ; pip install --upgrade --no-cache-dir -r requirements.txt; pip install --upgrade -e .
+ONBUILD COPY . /opt/app
+ONBUILD RUN pip install --upgrade --no-cache-dir -r /opt/app/requirements.txt
+ONBUILD RUN pip install -e /opt/app --upgrade
+
+# Update the requirements from the local env in case they differ from the pre-built ones.
+ONBUILD COPY requirements.txt /opt/app/
+ONBUILD RUN pip install --upgrade --no-cache-dir -r requirements.txt
+
+ONBUILD COPY . /opt/app/
+ONBUILD RUN pip install --upgrade --no-cache-dir -e /opt/app/
 
 EXPOSE 8000
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/opt/app/entrypoint.sh"]
+CMD ["uwsgi", "--ini", "/opt/app/uwsgi.ini"]
