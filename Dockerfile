@@ -19,10 +19,6 @@ RUN apt-get update && apt-get install -y \
                 python-pylibmc \
 	--no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-
-COPY wait-for-databases.sh /opt/bin/wait-for-databases
-RUN chmod +x /opt/bin/wait-for-databases
-
 # Upgrade pip
 RUN pip install --upgrade pip
 
@@ -38,8 +34,11 @@ RUN git clone --depth=1 git://github.com/simsab-ufcg/geonode.git --branch develo
 RUN cd /opt/geonode/; pip install --upgrade --no-cache-dir -r requirements.txt; pip install --upgrade -e .
 
 
-RUN cp /optgeonode/tasks.py /opt/app/
+RUN cp /opt/geonode/tasks.py /opt/app/
 RUN cp /opt/geonode/entrypoint.sh /opt/app/
+
+COPY wait-for-databases.sh /opt/bin/wait-for-databases
+RUN chmod +x /opt/bin/wait-for-databases
 
 RUN chmod +x /opt/app/tasks.py \
     && chmod +x /opt/app/entrypoint.sh
