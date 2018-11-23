@@ -37,9 +37,6 @@ RUN cd /opt/geonode/; pip install --upgrade --no-cache-dir -r requirements.txt; 
 RUN cp /opt/geonode/tasks.py /opt/app/
 RUN cp /opt/geonode/entrypoint.sh /opt/app/
 
-COPY wait-for-databases.sh /opt/bin/wait-for-databases
-RUN chmod +x /opt/bin/wait-for-databases
-
 RUN chmod +x /opt/app/tasks.py \
     && chmod +x /opt/app/entrypoint.sh
 
