@@ -68,9 +68,9 @@
                         <h2><a href="{% url "document_browse" %}">{{ facets.document|default:_("Não há") }} {% blocktrans count counter=facets.document %}Document{% plural %}Aplicação{% endblocktrans %}</a></h2>
                         <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href=""{% url "app" %}"" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href=""{% url "app" %}"" role="button">Iniciar aplicação &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>

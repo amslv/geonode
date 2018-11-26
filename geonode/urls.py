@@ -70,6 +70,9 @@ urlpatterns = [
                 url(r'^about/$',
                     TemplateView.as_view(template_name='about.html'),
                     name='about'),
+                url(r'^desertification/$',
+                    TemplateView.as_view(template_name='sunburst_chart.html'),
+                    name='app'),
               ]
 
 # WorldMap
