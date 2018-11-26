@@ -1,7 +1,7 @@
 {% extends "geonode_base.html" %}
 {% load i18n %}
 
-{% block body %}
+{% block head %}
 <style type="text/css">
   .sunburst {
     width: 40%;
@@ -9,7 +9,14 @@
   }
 
 </style>
+{% endblock head %}
+
+{% block body %}
 <div id="chart" class="sunburst"></div>
+{% endblock %}
+
+{% block extra_script %}
+{% block super %}
 {% if DEBUG_STATIC %}
 <script src="{% static "lib/js/d3.min.js" %}"></script>
 {% endif %}
@@ -180,4 +187,4 @@
       (document.getElementById('chart'));
   });
 </script>
-{% endblock %}
+{% endblock extra_script %}
