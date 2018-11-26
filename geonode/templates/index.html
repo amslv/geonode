@@ -64,8 +64,8 @@
                 <div class="col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-body">
-                        <p><a href="{% url "document_browse" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
-                        <h2><a href="{% url "document_browse" %}">{{ facets.document|default:_("Não há") }} {% blocktrans count counter=facets.document %}Document{% plural %}Aplicação{% endblocktrans %}</a></h2>
+                        <p><a href="{% url "app" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
+                        <h2><a href="{% url "app" %}">{{ facets.document|default:_("Não há") }} {% blocktrans count counter=facets.document %}Aplicação{% endblocktrans %}</a></h2>
                         <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Iniciar aplicação &raquo;</a></p>
