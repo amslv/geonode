@@ -386,7 +386,8 @@
     <script src="{% static "lib/js/select2.js" %}?v={{ VERSION }}"></script>
     <script src="{% static "lib/js/waypoints.js" %}?v={{ VERSION }}"></script>
     {% else %}
-    <script src="{% static "lib/js/d3.min.js" %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="//d3js.org/d3.v5.min.js"></script>
     <script src="{% static "lib/js/assets.min.js" %}?v={{ VERSION }}"></script>
     {% endif %}
     <script src="{% static "geonode/js/utils/utils.js" %}?v={{ VERSION }}"></script>
