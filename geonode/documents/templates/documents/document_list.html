@@ -8,7 +8,9 @@
 
 {% block body %}
 <div class="page-header">
+  {% if user.is_authenticated %}
   <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">{% trans "Upload Documents" %}</a>
+  {% endif %}
   <h2>{% trans "Explore Documents" %}</h2>
 </div>
   {% with include_type_filter='true' %}
