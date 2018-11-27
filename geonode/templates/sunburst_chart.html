@@ -10,7 +10,7 @@
 {% block super %}
 <script src="{% static "geonode/js/utils/d3.js" %}?v={{ VERSION }}"></script>
 <script type="text/javascript">
-  var json = {
+  const insa = {
     "name": "Desertificação",
     "children": [{
         "name": "Estado",
@@ -167,7 +167,7 @@
     ]
   };
   var color = d3.scaleOrdinal(d3.schemePaired);
-  d3.json(json).then(data => {
+  d3.json(insa).then(data => {
     Sunburst()
       .data(data)
       .label('name')
