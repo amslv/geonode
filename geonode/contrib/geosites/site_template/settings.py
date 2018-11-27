@@ -37,7 +37,7 @@ except:
     execfile(os.path.join(GEOSITES_ROOT, 'pre_settings.py'))
 
 SITE_ID = $SITE_ID  # flake8: noqa
-SITE_NAME = '$SITE_NAME'
+SITE_NAME = 'Portal da Desertificação'
 # Should be unique for each site
 SECRET_KEY = "fbk3CC3N6jt1AU9mGIcI"
 
