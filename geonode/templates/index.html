@@ -37,7 +37,7 @@
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "layer_browse" %}"><i class="fa fa-square-o fa-4x rotate-45"></i></a></p>
-                        <h2><a href="{% url "layer_browse" %}">{{ facets.layer|default:_("Não há") }} {% blocktrans count counter=facets.layer %}Layer{% endblocktrans %}</a></h2>
+                        <h2><a href="{% url "layer_browse" %}">{{ facets.layer|default:_("Não há") }} {% blocktrans %}Layer{% endblocktrans %}</a></h2>
                         <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "layer_upload" %}" role="button">Adicionar Layers &raquo;</a></p>
@@ -51,7 +51,7 @@
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
-                        <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("Não há") }} {% blocktrans count counter=facets.map %}Map{% endblocktrans %}</a></h2>
+                        <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("Não há") }} {% blocktrans%}Map{% endblocktrans %}</a></h2>
                         <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
                         <p><a class="btn btn-default" href="{% url "new_map" %}" role="button">Criar mapas &raquo;</a></p>
