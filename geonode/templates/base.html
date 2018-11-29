@@ -137,9 +137,9 @@
                 <form id="search" action="{% url "search" %}" >
                   <span class="fa fa-search"></span>
                   {% if HAYSTACK_SEARCH %}
-                  <input id="search_input" type="text" placeholder="Search" name="q">
+                  <input id="search_input" type="text" placeholder="Pesquisar" name="q">
                   {% else %}
-                  <input id="search_input" type="text" placeholder="Search" name="title__icontains">
+                  <input id="search_input" type="text" placeholder="Pesquisar" name="title__icontains">
                   {% endif %}
                 </form>
               </div>
@@ -252,7 +252,7 @@
             <li>{% trans "Maps" %}</li>
             <li><a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Explore Maps" %}</a></li>
             {% if user.is_authenticated %}
-            <li> <a href="{% url "new_map" %}">{% trans "Create Map" %}</a></li>
+            <li> <a href="{% url "new_map" %}">Criar um mapa</a></li>
             {% endif %}
           </ul>
         </div>

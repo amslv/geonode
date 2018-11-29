@@ -3,7 +3,7 @@
 <div class="row resourcebase-snippet">
   <div ng-if="results.length == 0" ng-cloak>
     {% endverbatim %}
-    <div><h3>{% trans "No content created yet." %}</h3></div>
+    <div style=" padding-left:2% "><h3>Ainda não há conteúdo.</h3></div>
     {% verbatim %}
   </div>
   <article ng-repeat="item in results" resource_id="{{ item.id }}" ng-cloak class="ng-cloak">

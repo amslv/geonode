@@ -14,7 +14,7 @@
   <h2>{% trans "Explore Documents" %}</h2>
 </div>
   {% with include_type_filter='true' %}
-  {% with header='Document Type' %}
+  {% with header='Tipo' %}
   {% with filter='doc_type__in' %}
   {% include "search/_search_content.html" %}
   {% endwith %}
