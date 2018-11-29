@@ -51,12 +51,12 @@
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
-                        <h2><a href="{% url "maps_browse" %}">Mapas</a></h2>
+                        <h2><a href="{% url "maps_browse" %}">APP</a></h2>
                         <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
-                        <p><a class="btn btn-default" href="{% url "new_map" %}" role="button">Criar mapas &raquo;</a></p>
+                        <p><a class="btn btn-default" href="{% url "new_map" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
-                        <p><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">Explorar mapas &raquo;</a></p>
+                        <p><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>
