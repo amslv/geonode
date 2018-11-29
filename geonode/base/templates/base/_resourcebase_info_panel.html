@@ -146,12 +146,7 @@
     <dt>{% trans "Purpose" %}</dt>
     <dd>{{ resource.purpose|escape|urlize|linebreaks|safe|truncatechars:160 }}</dd>
     {% endif %}
-
-    {% if resource.language %}
-    <dt>{% trans "Language" %}</dt>
-    <dd>{{ resource.language_title }}</dd>
-    {% endif %}
-
+    
     {% if resource.temporal_extent_start and resource.temporal_extent_end %}
     <dt>{% trans "Temporal Extent" %}</dt>
     <dd>{{ resource.temporal_extent_start }} - {{ resource.temporal_extent_end }}</dd>
