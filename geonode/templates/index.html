@@ -65,12 +65,12 @@
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "app" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
-                        <h2><a href="{% url "app" %}">APP</a></h2>
+                        <h2><a href="{% url "app" %}">Documentos</a></h2>
                         <p>Trecho descritivo sobre a aba</p>
                         {% if user.is_authenticated %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
                         {% else %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>
