@@ -287,7 +287,7 @@ define(['underscore',
                 } else if ('url' in data) {
                     window.location = data.url;
                 } else {
-                    common.logError("unexpected response");
+                    common.logError("resposta inesperada");
                 }
            },
            failure: function (resp, status) {
@@ -304,13 +304,13 @@ define(['underscore',
      */
     doUploads = function () {
         if ($.isEmptyObject(layers)) {
-            common.logError('Please provide some files');
+            common.logError('Por favor, adicione algum arquivo');
             return false;
         }
 
         var checked = checkFiles() && checkGeogig();
         if ($.isEmptyObject(layers) || !checked) {
-            alert(gettext('You are trying to upload an incomplete set of files or not all mandatory options have been validated.\n\nPlease check for errors in the form!'));
+            alert(gettext('Você está tentando fazer o upload de um conjunto incompleto de arquivos, ou nem todas as opções obrigatórias foram validadas.\n\nPor favor, busque por erros no formulário!'));
         } else {
             $.each(layers, function (name, layerinfo) {
                 layerinfo.uploadFiles();

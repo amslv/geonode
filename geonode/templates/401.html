@@ -7,7 +7,7 @@
         {% if error_title %}
           {{ error_title }}
         {% else %}
-          {% trans "Not Permitted" %}
+          Não permitido
         {% endif %}
       </h3>
     </div>
@@ -22,7 +22,7 @@
     {% if not request.user.is_anonymous %}
     Verifique se você está conectado como o usuário correto.
     {% else %}
-    {% blocktrans %}Please login or register and retry.{% endblocktrans %}
+    Por favor, logue-se ou registre-se, então, tente novamente.
     {% endif %}
     </p>
 {% endblock %}
