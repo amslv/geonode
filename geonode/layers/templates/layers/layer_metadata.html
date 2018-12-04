@@ -43,7 +43,7 @@
       {% endif %}
 
       {% if layer_form.errors or attribute_form.errors or category_form.errors or author_form.errors or poc.errors %}
-    	  <p class="bg-danger">{% blocktrans %}Error updating metadata.  Please check the following fields: {% endblocktrans %}</p>
+    	  <p class="bg-danger">Erro ao tentar atualizar metadados. Por favor, verifique os seguintes campos:</p>
           <ul class="bg-danger">
           {% if author_form.errors %}
             <li>{% trans "Metadata Author" %}</li>
