@@ -4,8 +4,8 @@
 {% block extra_head %}
 {{ block.super }}{% endblock %}
 
-{% block title %}{%  trans "Activity Feed for"  %} {{ group.title }}{% endblock %}
-{% block content_title %}{%  trans "Activity Feed for"  %} {{ group.title }}{% endblock %}
+{% block title %}Feed de atividades {{ group.title }}{% endblock %}
+{% block content_title %}Feed de atividades para {{ group.title }}{% endblock %}
 
 {% comment %}
 {% block navlinks %}
@@ -16,17 +16,17 @@
 
 {% block body_outer %}
 <div class="page-header">
-  <h2 class="page-title">{%  trans "Activity Feed for"  %} <a href="{% url "group_detail" group.slug %}">{{ group.title }}</a></h2>
+  <h2 class="page-title">Feed de atividades <a href="{% url "group_detail" group.slug %}">{{ group.title }}</a></h2>
 </div>
 
 <div class="row">
   <div class="col-md-8">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#all" data-toggle="tab"><i class=""></i>{% trans "All" %}</a></li>
-      <li><a href="#layers" data-toggle="tab"><i class="fa fa-square-o rotate-45"></i> {% trans "Layers" %}</a></li>
-      <li><a href="#maps" data-toggle="tab"><i class="fa fa-map-marker"></i> {% trans "Maps" %}</a></li>
-      <li><a href="#documents" data-toggle="tab"><i class="fa fa-file-text-o"></i> {% trans "Documents" %}</a></li>
-      <li><a href="#comments" data-toggle="tab"><i class="fa fa-comment-o"></i> {% trans "Comments" %}</a></li>
+      <li class="active"><a href="#all" data-toggle="tab"><i class=""></i>Tudo</a></li>
+      <li><a href="#layers" data-toggle="tab"><i class="fa fa-square-o rotate-45"></i> Camadas</a></li>
+      <li><a href="#maps" data-toggle="tab"><i class="fa fa-map-marker"></i> Mapas</a></li>
+      <li><a href="#documents" data-toggle="tab"><i class="fa fa-file-text-o"></i> Documentos</a></li>
+      <li><a href="#comments" data-toggle="tab"><i class="fa fa-comment-o"></i> Comentários</a></li>
     </ul>
     <div class="tab-content">
       <article id="all" class="tab-pane active">
