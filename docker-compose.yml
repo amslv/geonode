@@ -17,7 +17,7 @@ services:
       - ./scripts/docker/env/production/db.env
 
   angular-frontend:
-    image: docker-registry.insa.gov.br:5000/angular-frontend:1.1
+    image: docker-registry.insa.gov.br:5000/angular-frontend:1.2
     restart: unless-stopped
     container_name: angular-frontend${COMPOSE_PROJECT_NAME}
     stdin_open: true
