@@ -2,12 +2,12 @@
 
 {% load i18n %}
 
-{% block title %}{% trans "Account" %}{% endblock %}
+{% block title %}Conta{% endblock %}
 
 {% block body_outer %}
-    <h1>{% trans "E-mail Addresses" %}</h1>
+    <h1>Endereços de email</h1>
 {% if user.emailaddress_set.all %}
-<p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
+<p>Os seguintes endereços de email estão associados à sua conta:</p>
 
 <form action="{% url 'account_email' %}" class="email_list" method="post">
 {% csrf_token %}
@@ -21,36 +21,36 @@
 
 {{ emailaddress.email }}
     {% if emailaddress.verified %}
-    <span class="verified">{% trans "Verified" %}</span>
+    <span class="verified">Verificado</span>
     {% else %}
-    <span class="unverified">{% trans "Unverified" %}</span>
+    <span class="unverified">Não verificado</span>
     {% endif %}
-      {% if emailaddress.primary %}<span class="primary">{% trans "Primary" %}</span>{% endif %}
+      {% if emailaddress.primary %}<span class="primary">Primário</span>{% endif %}
 </label>
 </div>
   {% endfor %}
 
 <div class="buttonHolder">
-      <button class="secondaryAction" type="submit" name="action_primary" >{% trans 'Make Primary' %}</button>
-      <button class="secondaryAction" type="submit" name="action_send" >{% trans 'Re-send Verification' %}</button>
-      <button class="primaryAction" type="submit" name="action_remove" >{% trans 'Remove' %}</button>
+      <button class="secondaryAction" type="submit" name="action_primary" >Tornar primário</button>
+      <button class="secondaryAction" type="submit" name="action_send" >Reenviar verificação</button>
+      <button class="primaryAction" type="submit" name="action_remove" >Remover</button>
 </div>
 
 </fieldset>
 </form>
 
 {% else %}
-<p><strong>{% trans 'Warning:'%}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}</p>
+<p><strong>Aviso:</strong> Você atualmente não tem nenhum endereço de email vinculado. Adicione um endereço de email para que você possa receber notificações, resetar sua senha, etc.</p>
 
 {% endif %}
 
 
-    <h2>{% trans "Add E-mail Address" %}</h2>
+    <h2>Adicionar endereço de email</h2>
 
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
         {{ form.as_p }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+        <button name="action_add" type="submit">Adicionar email</button>
     </form>
 
 {% endblock %}
