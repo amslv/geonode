@@ -2,9 +2,9 @@
 {% load i18n %}
 {% load staticfiles %}
 
-{% block title %} {% trans "Upload Layer"  %} - {{ block.super }}  {% endblock %}
+{% block title %} Upload de camadas - {{ block.super }}  {% endblock %}
 
-{% block body_class %}layers upload{% endblock %}
+{% block body_class %}upload de camada{% endblock %}
 
 
 {% block head %}
@@ -14,8 +14,8 @@
 
 {% block body_outer %}
 <div class="page-header">
-  <a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}" class="btn btn-primary pull-right">{% trans "Explore Layers" %}</a>
-  <h2 class="page-title">{% trans "Upload Layers" %}</h2>
+  <a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}" class="btn btn-primary pull-right">Explorar camadas</a>
+  <h2 class="page-title">Fazer upload de camadas</h2>
 
   <script language="javascript">
     var json_mosaics = [
@@ -37,23 +37,23 @@
   <div class="col-md-8">
     {% if incomplete %}
     <section class="widget" id="incomplete-download-list">
-      <h3>{% trans "Incomplete Uploads" %}</h3>
-      <p>{% trans "You have the following incomplete uploads" %}:</p>
+      <h3>Uploads incompletos</h3>
+      <p>Você tem os seguintes uploads incompletos:</p>
       {% for u in incomplete %}
       <div class="clearfix uip" id="incomplete-{{ u.import_id }}">
-        <div class="pull-left">{{ u.name }}, {% trans "last updated on" %} {{ u.date }}</div>
+        <div class="pull-left">{{ u.name }}, atualizado pela última vez em {{ u.date }}</div>
         <div class="upload_actions pull-right">
           <a class="btn btn-mini" href="#" id="resume-{{ u.import_id }}">{% trans "Resume" %}</a>
-          <a class="btn btn-mini" href="#" id="delete-{{ u.import_id }}"><i class="icon-trash"></i> {% trans "Delete" %}</a>
+          <a class="btn btn-mini" href="#" id="delete-{{ u.import_id }}"><i class="icon-trash"></i> Deletar</a>
         </div>
       </div>
       {% endfor %}
     </section>
     <div id="confirm-delete" class="hidden alert alert-warning">
-      {% trans "Are you sure you want to delete this upload?" %}
-      <a href="#y" class="btn btn-danger">{% trans "Delete" %}</a>
-      <a href="#n" class="btn btn-default">{% trans "Cancel" %}</a>
-      <a href="#yy">{% trans "Delete, and don't ask me again." %}</a>
+      Tem certeza que deseja deletar esse upload
+      <a href="#y" class="btn btn-danger">Deletar</a>
+      <a href="#n" class="btn btn-default">Cancelar</a>
+      <a href="#yy">Deletar e não me perguntar de novo.</a>
     </div>
     {% endif %}
 
@@ -73,12 +73,12 @@
       <h3><i class="fa fa-cloud-upload"></i><br />{% trans "Drop files here" %}</h3>
     </section>
 
-    <p>{% trans " or select them one by one:" %}</p>
+    <p>ou selecione os arquivos um a um:</p>
 
     <form id="file-uploader" method="post" enctype="multipart/form-data">
       <!-- UI change to hide the list of previously uploaded files from the user -->
       <input type="file" id="file-input" style="display: none;" multiple>
-      <input class="btn btn-default" type="button" value="{% trans "Choose Files" %}" onclick="document.getElementById('file-input').click();">
+      <input class="btn btn-default" type="button" value="Escolher arquivos" onclick="document.getElementById('file-input').click();">
     </form>
 
     <section class="widget">
@@ -104,14 +104,14 @@
     </section>
 
     <section>
-      <a href="{% url "layer_upload" %}" id="clear-button" class="btn btn-default">{% trans "Clear" %}</a>
-      <a href="#" id="upload-button" class="btn btn-danger">{% trans "Upload files" %}</a>
+      <a href="{% url "layer_upload" %}" id="clear-button" class="btn btn-default">Limpar</a>
+      <a href="#" id="upload-button" class="btn btn-danger">Fazer upload de arquivos</a>
     </section>
   </div>
 
   {% if GEONODE_SECURITY_ENABLED %}
   <div class="col-md-4">
-    <h3>{% trans "Permissions"  %}</h3>
+    <h3>Permissões</h3>
     <form id="permission_form">
       {% include "_permissions.html" %}
     </form>

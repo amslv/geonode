@@ -4,11 +4,11 @@
 {% load bootstrap_tags %}
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Log in" %}{% endblock %}
+{% block head_title %}Logar{% endblock %}
 
 {% block body_outer %}
   <div class="page-header">
-    <h2>{% trans "Log in to an existing account" %}</h2>
+    <h2>Logar com uma conta existente</h2>
   </div>
 
 <div class="row">
@@ -31,8 +31,8 @@
       {% include "socialaccount/snippets/login_extra.html" %}
 
     {% else %}
-      <p>{% blocktrans %}If you have not created an account yet, then please
-      <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+      <p>Se você ainda não criou a sua conta, por favor,
+      <a href="{{ signup_url }}">registre-se</a> primeiro.</p>
     {% endif %}
     <form role="form" method="POST" action="{% url 'account_login' %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
       {% csrf_token %}
@@ -41,7 +41,7 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
       <div class="form-group">
-          <p><a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></p>
+          <p><a href="{% url 'account_reset_password' %}">Esqueceu sua senha?</a></p>
       </div>
       <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
     </form>

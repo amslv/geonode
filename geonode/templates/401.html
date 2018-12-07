@@ -7,7 +7,7 @@
         {% if error_title %}
           {{ error_title }}
         {% else %}
-          {% trans "Not Permitted" %}
+          Não permitido
         {% endif %}
       </h3>
     </div>
@@ -15,16 +15,14 @@
     {% if error_message %}
       {{ error_message }}
     {% else %}
-      {% blocktrans %}
-          You are not allowed to perform this operation.
-      {% endblocktrans %}
+      Você não tem autorização para realizar esta ação
     {% endif %}
     </p>
     <p>
     {% if not request.user.is_anonymous %}
-    {% blocktrans %}Please verify that you are logged in as the correct user.{%endblocktrans%}
+    Verifique se você está conectado como o usuário correto.
     {% else %}
-    {% blocktrans %}Please login or register and retry.{% endblocktrans %}
+    Por favor, logue-se ou registre-se, então, tente novamente.
     {% endif %}
     </p>
 {% endblock %}

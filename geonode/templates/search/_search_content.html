@@ -8,12 +8,12 @@
         <div class="btn-group btn-group-justified" role="group" aria-label="tools">
           {% if request.user.is_authenticated %}
           <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" ng-disabled="!cart.getCart().items.length" data-toggle="modal" data-target="#_bulk_permissions">{% trans "Set permissions" %}</button>
+            <button type="button" class="btn btn-default" ng-disabled="!cart.getCart().items.length" data-toggle="modal" data-target="#_bulk_permissions">Ajustar permissões</button>
           </div>
           {% endif %}
           {% if facet_type == 'layers' %}
           <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" ng-disabled="!cart.getCart().items.length" ng-click="newMap()">{% trans "Create a Map" %}</button>
+            <button type="button" class="btn btn-default" ng-disabled="!cart.getCart().items.length" ng-click="newMap()">Criar um mapa</button>
           </div>
           {% endif %}
         </div>
@@ -21,7 +21,7 @@
 
         <div class="selections">
             {% trans "Filters" %}
-            <a href="." id="clear-search" class="pull-right">{% trans "Clear" %}</a>
+            <a href="." id="clear-search" class="pull-right">Limpar</a>
         </div>
             {% if SEARCH_FILTERS.TEXT_ENABLED %}
               {% include "search/_text_filter.html" %}

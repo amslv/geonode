@@ -101,18 +101,18 @@ logger = logging.getLogger("geonode.layers.views")
 
 DEFAULT_SEARCH_BATCH_SIZE = 10
 MAX_SEARCH_BATCH_SIZE = 25
-GENERIC_UPLOAD_ERROR = _("There was an error while attempting to upload your data. \
-Please try again, or contact and administrator if the problem continues.")
+GENERIC_UPLOAD_ERROR = _("Houve um erro enquanto tentavamos fazer upload dos seus dados. \
+Por favor, tente novamente ou contate um administrador se o problema persistir.")
 
 METADATA_UPLOADED_PRESERVE_ERROR = _("Note: this layer's orginal metadata was \
 populated and preserved by importing a metadata XML file. This metadata cannot be edited.")
 
-_PERMISSION_MSG_DELETE = _("You are not permitted to delete this layer")
-_PERMISSION_MSG_GENERIC = _('You do not have permissions for this layer.')
-_PERMISSION_MSG_MODIFY = _("You are not permitted to modify this layer")
+_PERMISSION_MSG_DELETE = _("Voce nao tem permissao para deletar essa camada.")
+_PERMISSION_MSG_GENERIC = _('Voce nao tem permissoes para essa camada.')
+_PERMISSION_MSG_MODIFY = _("Voce nao tem permissao para modificar essa camada.")
 _PERMISSION_MSG_METADATA = _(
-    "You are not permitted to modify this layer's metadata")
-_PERMISSION_MSG_VIEW = _("You are not permitted to view this layer")
+    "Voce nao tem permissao para alterar os metadados dessa camada.")
+_PERMISSION_MSG_VIEW = _("Voce nao tem permissao para visualizar essa camada.")
 
 
 def log_snippet(log_file):

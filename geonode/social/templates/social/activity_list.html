@@ -1,7 +1,7 @@
 {% extends 'geonode_base.html' %}
 {% load activity_tags  social_tags i18n %}
 
-{% block title %}{% trans "Recent activity" %}{% endblock %}
+{% block title %}Atividades recentes{% endblock %}
 
 {% comment %}
 {% block subnav %}
@@ -12,15 +12,15 @@
 
 {% block body %}
 <div class="page-title">
-  <h2>{% trans "Recent activity" %}</h2>
+  <h2>Atividades recentes</h2>
 </div>
 <div class="row">
   <div class="col-md-12">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#all" data-toggle="tab"><i class=""></i>{% trans "All" %}</a></li>
-      <li><a href="#layers" data-toggle="tab"><i class="fa fa-square-o rotate-45"></i> {% trans "Layers" %}</a></li>
-      <li><a href="#maps" data-toggle="tab"><i class="fa fa-map-marker"></i> {% trans "Maps" %}</a></li>
-      <li><a href="#comments" data-toggle="tab"><i class="fa fa-comment-o"></i> {% trans "Comments" %}</a></li>
+      <li class="active"><a href="#all" data-toggle="tab"><i class=""></i>Tudo</a></li>
+      <li><a href="#layers" data-toggle="tab"><i class="fa fa-square-o rotate-45"></i> Camadas</a></li>
+      <li><a href="#maps" data-toggle="tab"><i class="fa fa-map-marker"></i> Mapas</a></li>
+      <li><a href="#comments" data-toggle="tab"><i class="fa fa-comment-o"></i> Comentários</a></li>
     </ul>
     <div class="tab-content">
       <article id="all" class="tab-pane active">
@@ -28,7 +28,7 @@
         {% for action in action_list %}
           {% activity_item action %}
           {% empty %}
-          <p>{% trans "No actions yet" %}</p>
+          <p>Ainda não há ações.</p>
         {% endfor %}
         </ul>
       </article>
@@ -37,7 +37,7 @@
         {% for action in action_list_layers %}
           {% activity_item action %}
           {% empty %}
-          <p>{% trans "No actions yet" %}</p>
+          <p>Ainda não há ações.</p>
         {% endfor %}
         </ul>
       </article>
@@ -46,7 +46,7 @@
         {% for action in action_list_maps %}
           {% activity_item action %}
           {% empty %}
-          <p>{% trans "No actions yet" %}</p>
+          <p>Ainda não há ações.</p>
         {% endfor %}
         </ul>
       </article>
@@ -55,7 +55,7 @@
         {% for action in action_list_comments %}
           {% activity_item action %}
           {% empty %}
-          <p>{% trans "No actions yet" %}</p>
+          <p>Ainda não há ações.</p>
         {% endfor %}
         </ul>
       </article>

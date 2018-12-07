@@ -2,21 +2,21 @@
 {% load i18n avatar_tags %}
 {% load bootstrap_tags %}
 
-{% block body_class %}edit people{% endblock %}
+{% block body_class %}editar pessoas{% endblock %}
 
 {% block body %}
 <div class="page-header">
   {% if user == profile %}
-    <h2 class="page-title">{% trans "Edit Your Profile" %}</h2>
+    <h2 class="page-title">Edite seu perfil</h2>
   {% else %}
-    <h2 class="page-title">{% trans "Edit Profile for" %} {{ profile.username }}</h2>
+    <h2 class="page-title">Editar perfil de {{ profile.username }}</h2>
   {% endif %}
 </div>
 
 <div class="col-xs-3 col-md-2 profile-image">
   {% autoescape off %}{% avatar profile.username 240 %}{% endautoescape %}
   {% if user == profile %}
-  <p><a class="btn btn-primary btn-block" href="{% url 'avatar_change' %}">{% trans "Change your avatar" %}</a></p>
+  <p><a class="btn btn-primary btn-block" href="{% url 'avatar_change' %}">Mude seu avatar</a></p>
   {% endif %}
 </div>
 
@@ -27,7 +27,7 @@
       {{ form|as_bootstrap }}
     </div>
     <div class="form-actions">
-      <input type="submit" class="btn btn-primary" value="{% trans "Update profile" %}" />
+      <input type="submit" class="btn btn-primary" value="Atualizar perfil" />
     </div>
   </form>
 </div>

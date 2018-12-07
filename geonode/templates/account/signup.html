@@ -4,11 +4,11 @@
 {% load bootstrap_tags %}
 {% load account socialaccount %}
 
-{% block title %}{% trans "Sign up" %}{% endblock %}
+{% block title %}Registrar{% endblock %}
 
 {% block body_outer %}
     <div class="page-header">
-        <h2>{% trans "Sign up" %}</h2>
+        <h2>Registrar</h2>
     </div>
     <div class="row">
       {% get_providers as socialaccount_providers %}
@@ -21,7 +21,7 @@
       {% endif %}
     </div>
     <div class="row">
-      <p>{% trans "Create a new local account" %}</p>
+      <p>Criar uma nova conta</p>
       <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
           <fieldset>
               {% csrf_token %}
@@ -30,7 +30,7 @@
                   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
               {% endif %}
               <div class="form-actions">
-                  <button type="submit" class="btn btn-primary">{% trans "Sign up" %}</button>
+                  <button type="submit" class="btn btn-primary">Registrar</button>
               </div>
           </fieldset>
       </form>
