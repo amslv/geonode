@@ -231,26 +231,26 @@
         <div class="col-md-2">
           <ul class="list-unstyled">
             <li>{% trans "Data" %}</li>
-            <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Layers" %}</a></li>
-            <li><a href="{% url "document_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Documents" %}</a></li>
-            <li><a href="{% url "services" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Remote Services" %}</a></li>
+            <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Camadas</a></li>
+            <li><a href="{% url "document_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Documentos</a></li>
+            <li><a href="{% url "services" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Serviços remotos</a></li>
             {% if user.is_authenticated %}
                 <li role="separator" class="divider"></li>
-                <li><a href="{% url "layer_upload" %}">{% trans "Upload Layer" %}</a></li>
+                <li><a href="{% url "layer_upload" %}">Fazer upload de camada</a></li>
                 {% if 'geonode.contrib.createlayer' in INSTALLED_APPS %}
-                    <li><a href="{% url "layer_create" %}">{% trans "Create Layer" %}</a></li>
+                    <li><a href="{% url "layer_create" %}">Criar camada</a></li>
                 {% endif %}
-                <li><a href="{% url "document_upload" %}">{% trans "Upload Document" %}</a></li>
+                <li><a href="{% url "document_upload" %}">Fazer upload de documento</a></li>
             {% endif %}
             {% if user.is_superuser or user.is_staff %}
-                <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
+                <li><a href="{% url "register_service" %}">Adicionar serviço remoto</a></li>
             {% endif %}
           </ul>
         </div>
         <div class="col-md-2">
           <ul class="list-unstyled">
-            <li>{% trans "Maps" %}</li>
-            <li><a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Explore Maps" %}</a></li>
+            <li>Mapas</li>
+            <li><a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Explorar mapas</a></li>
             {% if user.is_authenticated %}
             <li> <a href="{% url "new_map" %}">Criar um mapa</a></li>
             {% endif %}
@@ -258,16 +258,16 @@
         </div>
     <div class="col-md-2">
           <ul class="list-unstyled">
-            <li>{% trans "About" %}</li>
-            <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
-            <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
+            <li>Sobre</li>
+            <li><a href="{% url "profile_browse" %}">Pessoas</a></li>
+            <li><a href="{% url "group_list" %}">Grupos</a></li>
             {% if perms.announcements.can_manage %}
-            <li><a href="{% url "announcements_list" %}">{% trans "Announcements" %}</a></li>
+            <li><a href="{% url "announcements_list" %}">Anúncios</a></li>
             {% endif %}
             <li><a href="{% url "geonode.invitations:geonode-send-invite" %}">Convide usuários</a></li>
             {% if user.is_superuser %}
-            <li><a href="/admin/people/profile/add/">{% trans "Add User" %}</a></li>
-            <li><a href="{% url "group_create" %}">{% trans "Create Group" %}</a></li>
+            <li><a href="/admin/people/profile/add/">Adicionar usuário</a></li>
+            <li><a href="{% url "group_create" %}">Criar grupos</a></li>
             {% endif %}
           </ul>
         </div>
@@ -276,7 +276,7 @@
           {% block contactus %}
           {% if custom_theme.contactus %}
           <ul class="list-unstyled">
-              <li style="text-align: left;"><h2 style="margin-top: 0px;">Contact Us </h2> </li>
+              <li style="text-align: left;"><h2 style="margin-top: 0px;">Contate-nos </h2> </li>
               {% if custom_theme.contact_name %}<li style="text-align: left;">{{ custom_theme.contact_name }}</li>{% endif %}
               {% if custom_theme.contact_position %}<li style="text-align: left;">{{ custom_theme.contact_position }}</li>{% endif %}
               {% if custom_theme.contact_administrative_area %}<li style="text-align: left;">{{ custom_theme.contact_administrative_area }}</li>{% endif %}
@@ -292,8 +292,8 @@
           {% endif %}
           {% endblock contactus %}
           <ul class="list-unstyled">
-            <li>Produzido pelo <a href="https://portal.insa.gov.br/">INSA</a> <em>{% trans "version" %} {{ VERSION }}</em></li>
-            <li><a href="{% url "developer" %}">{% trans "Developers" %}</a> | <a href="{% url "about" %}">{% trans "About" %}</a><li>
+            <li>Produzido pelo <a href="https://portal.insa.gov.br/">INSA</a> <em>versão {{ VERSION }}</em></li>
+            <li><a href="{% url "developer" %}">Desenvolvedores</a> | <a href="{% url "about" %}">Sobre</a><li>
           </ul>
         </div>
       </div>
@@ -336,11 +336,11 @@
                 <hr>
               {% endif %}
               <div class="form-group">
-                <label for="id_username" class="sr-only">{% trans "Username" %}:</label>
+                <label for="id_username" class="sr-only">Usuário:</label>
                 <input id="id_username" class="form-control" name="login" placeholder="{% trans "Username" %}" type="text" />
               </div>
               <div class="form-group">
-                <label for="id_password" class="sr-only">{% trans "Password" %}:</label>
+                <label for="id_password" class="sr-only">Senha:</label>
                 <input id="id_password" class="form-control" name="password" placeholder="{% trans "Password" %}" type="password" />
               </div>
               <label class="checkbox">
