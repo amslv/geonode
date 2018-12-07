@@ -16,9 +16,9 @@
   {% else %}
   <div class="jumbotron">
   	<div class="container">
-        <h1>{{custom_theme.jumbotron_welcome_title|default:_("Nome da aplicação")}}</h1>
+        <h1>{{custom_theme.jumbotron_welcome_title|default:_("SADes")}}</h1>
   		<p></p>
-		<p>{{custom_theme.jumbotron_welcome_content|default:_("Texto breve com descrição da aplicação.")}}</p>
+		<p>{{custom_theme.jumbotron_welcome_content|default:_("Por meio do processamento de imagens georreferenciadas, da criação de mapas e da exibição de dados relacionados à desertificação no semiárido brasileiro, o SADes (Sistema de Avaliação da Desertificação) possui o intuito de auxiliar o Instituto Nacional do Semiárido a gerenciar e a compartilhar informações a respeito do estado atual da desertificação no semiárido brasileiro.")}}</p>
 		{% if not custom_theme.jumbotron_cta_hide %}
   		<a class="btn btn-default btn-lg" target="_blank" href="{{custom_theme.jumbotron_cta_link|default:_("https://portal.insa.gov.br/")}}" role="button">{{custom_theme.jumbotron_cta_text|default:_("Iniciar aplicação &raquo;")}}</a>
 		{% endif %}
@@ -76,7 +76,6 @@
                   </div>
                 </div>  
             </div>
-            <p class="text-center">(Texto explicativo sobre o APP) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </section>
