@@ -1,0 +1,8 @@
+{% extends "upload/layer_upload_base.html" %}
+{% load i18n %}
+{% block body_class %}data data-list upload{% endblock %}
+
+{% block body %}
+<p>Seu upload está completo ou você não resumiu um anterior.</p>
+<p>Retornar para <a href="{% url "layer_upload" %}">Formulário de upload</a>.</p>
+{% endblock %}

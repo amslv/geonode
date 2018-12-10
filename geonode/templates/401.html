@@ -1,0 +1,28 @@
+{% extends "geonode_base.html" %}
+{% load i18n %}
+
+{% block body %}
+    <div id="description">
+      <h3>
+        {% if error_title %}
+          {{ error_title }}
+        {% else %}
+          Não permitido
+        {% endif %}
+      </h3>
+    </div>
+    <p>
+    {% if error_message %}
+      {{ error_message }}
+    {% else %}
+      Você não tem autorização para realizar esta ação
+    {% endif %}
+    </p>
+    <p>
+    {% if not request.user.is_anonymous %}
+    Verifique se você está conectado como o usuário correto.
+    {% else %}
+    Por favor, logue-se ou registre-se, então, tente novamente.
+    {% endif %}
+    </p>
+{% endblock %}
