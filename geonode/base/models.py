@@ -205,7 +205,7 @@ class Region(MPTTModel):
         blank=True,
         null=True)
     srid = models.CharField(
-        max_length=30,
+        max_length=255,
         blank=False,
         null=False,
         default='EPSG:4326')

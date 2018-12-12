@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('julian_end', models.IntegerField(null=True, verbose_name='Julian Date End', blank=True)),
                 ('project', models.CharField(max_length=255, null=True, verbose_name='Project', blank=True)),
                 ('feature', django.contrib.gis.db.models.fields.GeometryField(srid=4326, null=True, verbose_name='Geometry', blank=True)),
-                ('username', models.CharField(max_length=30, null=True, verbose_name='User Name', blank=True)),
+                ('username', models.CharField(max_length=255, null=True, verbose_name='User Name', blank=True)),
             ],
         ),
         migrations.AlterUniqueTogether(

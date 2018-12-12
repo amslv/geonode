@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='region',
             name='srid',
-            field=models.CharField(default=b'EPSG:4326', max_length=30),
+            field=models.CharField(default=b'EPSG:4326', max_length=255),
         ),
         migrations.AlterField(
             model_name='resourcebase',
             name='srid',
-            field=models.CharField(default=b'EPSG:4326', max_length=30),
+            field=models.CharField(default=b'EPSG:4326', max_length=255),
         ),
     ]
