@@ -20,10 +20,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('import_id', models.BigIntegerField(null=True)),
-                ('state', models.CharField(max_length=16)),
+                ('state', models.CharField(max_length=255)),
                 ('date', models.DateTimeField(default=now, verbose_name=b'date')),
-                ('upload_dir', models.CharField(max_length=100, null=True)),
-                ('name', models.CharField(max_length=64, null=True)),
+                ('upload_dir', models.CharField(max_length=255, null=True)),
+                ('name', models.CharField(max_length=255, null=True)),
                 ('complete', models.BooleanField(default=False)),
                 ('session', models.TextField(null=True)),
                 ('metadata', models.TextField(null=True)),
