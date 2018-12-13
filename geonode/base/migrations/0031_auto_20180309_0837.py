@@ -15,41 +15,41 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='region',
             name='bbox_x0',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
         migrations.AlterField(
             model_name='region',
             name='bbox_x1',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
         migrations.AlterField(
             model_name='region',
             name='bbox_y0',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
         migrations.AlterField(
             model_name='region',
             name='bbox_y1',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
         migrations.AlterField(
             model_name='resourcebase',
             name='bbox_x0',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
         migrations.AlterField(
             model_name='resourcebase',
             name='bbox_x1',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
         migrations.AlterField(
             model_name='resourcebase',
             name='bbox_y0',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
         migrations.AlterField(
             model_name='resourcebase',
             name='bbox_y1',
-            field=models.DecimalField(blank=True, decimal_places=15, max_digits=30, null=True),
+            field=models.DecimalField(blank=True, decimal_places=15, max_digits=100, null=True),
         ),
     ]
