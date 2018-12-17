@@ -24,7 +24,9 @@
             <a href="." id="clear-search" class="pull-right">Limpar</a>
         </div>
             {% if SEARCH_FILTERS.TEXT_ENABLED %}
-              {% include "search/_text_filter.html" %}
+              {% if facet_type != 'layers' %}
+                {% include "search/_text_filter.html" %}
+              {% endif %}
             {% endif  %}
         <div id="slide-pane">
             {% if SEARCH_FILTERS.H_KEYWORDS_ENABLED %}
