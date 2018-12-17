@@ -37,7 +37,7 @@
               <div class="col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-body">
-                        <p><a href="{% url "layer_browse" %}"><i class="fa fa-square-o fa-4x rotate-45"></i></a></p>
+                        <p><a href="{% url "layer_browse" %}"><img src="{% static 'geonode/img/camadas.svg' %}"></a></p>
                         <h2><a href="{% url "layer_browse" %}">Camadas</a></h2>
                         <p>Acesse uma variedade de indicadores e índices, que retratam aspectos ambientais, sociais, econômicos e institucionais, distribuídos espacialmente para todo o semiárido brasileiro.</p>
                         {% if user.is_authenticated %}
@@ -51,7 +51,7 @@
                 <div class="col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-body">
-                        <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
+                        <p><a href="{% url "maps_browse" %}"><img src="{% static 'geonode/img/app.svg' %}"></a></p>
                         <h2><a href="{% url "maps_browse" %}">Aplicação</a></h2>
                         <p>Conheça nossa aplicação, obtenha detalhes sobre os produtos gerados e visualize-os em uma plataforma WebGIS dinâmica.</p>
                         <br>
@@ -66,8 +66,8 @@
                 <div class="col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-body">
-                        <p><a href="{% url "app" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
-                        <h2><a href="{% url "app" %}">Documentos</a></h2>
+                        <p><a href="{% url "document_browse" %}"><img src="{% static 'geonode/img/documentos.svg' %}"></a></p>
+                        <h2><a href="{% url "document_browse" %}">Documentos</a></h2>
                         <p>Fique por dentro dos procedimentos metodológicos e importantes referências utilizadas por nossa equipe.</p>
                         <br>
                         <br>

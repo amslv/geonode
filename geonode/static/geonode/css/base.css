@@ -8029,6 +8029,12 @@ form-inline {
 }
 
 #logo-insa{
-  width: 15%;
-  height: 15%;
+  width: 8%;
+  height: 8%;
+  float: right;
+}
+
+#logo-portal{
+  width: 10%;
+  height: 10%;
 }
