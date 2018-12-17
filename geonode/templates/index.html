@@ -54,6 +54,7 @@
                         <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
                         <h2><a href="{% url "maps_browse" %}">Aplicação</a></h2>
                         <p>Conheça nossa aplicação, obtenha detalhes sobre os produtos gerados e visualize-os em uma plataforma WebGIS dinâmica.</p>
+                        <br>
                         {% if user.is_authenticated %}
                         <p><a class="btn btn-default" href="{% url "new_map" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
@@ -68,6 +69,8 @@
                         <p><a href="{% url "app" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
                         <h2><a href="{% url "app" %}">Documentos</a></h2>
                         <p>Fique por dentro dos procedimentos metodológicos e importantes referências utilizadas por nossa equipe.</p>
+                        <br>
+                        <br>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
                         {% else %}
