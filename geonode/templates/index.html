@@ -18,10 +18,11 @@
   	<div class="container">
         <h1>{{custom_theme.jumbotron_welcome_title|default:_("SADes")}}</h1>
   		<p></p>
-		<p>{{custom_theme.jumbotron_welcome_content|default:_("Por meio do processamento de imagens georreferenciadas, da criação de mapas e da exibição de dados relacionados à desertificação no semiárido brasileiro, o SADes (Sistema de Avaliação da Desertificação) possui o intuito de auxiliar o Instituto Nacional do Semiárido a gerenciar e a compartilhar informações a respeito do estado atual da desertificação no semiárido brasileiro.")}}</p>
-		{% if not custom_theme.jumbotron_cta_hide %}
+		<p>{{custom_theme.jumbotron_welcome_content|default:_("Em suma, 27 indicadores organizados nas categorias DPSIR (Força Motriz, Pressão, Estado, Impacto e Resposta), são integrados através de uma modelagem de análise multicriterial (Promethee). O resultado principal é um índice de desertificação calculado para todos os 1262 municípios do Semiárido.")}}</p>
+		<!-- {% if not custom_theme.jumbotron_cta_hide %}
   		<a class="btn btn-default btn-lg" target="_blank" href="{{custom_theme.jumbotron_cta_link|default:_("https://portal.insa.gov.br/")}}" role="button">{{custom_theme.jumbotron_cta_text|default:_("Iniciar aplicação &raquo;")}}</a>
-		{% endif %}
+    {% endif %}
+    -->
 	</div>
   </div>
   {% endif %}
@@ -38,7 +39,7 @@
                       <div class="panel-body">
                         <p><a href="{% url "layer_browse" %}"><i class="fa fa-square-o fa-4x rotate-45"></i></a></p>
                         <h2><a href="{% url "layer_browse" %}">Camadas</a></h2>
-                        <p>Trecho descritivo sobre a aba</p>
+                        <p>Acesse uma variedade de indicadores e índices, que retratam aspectos ambientais, sociais, econômicos e institucionais, distribuídos espacialmente para todo o semiárido brasileiro.</p>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "layer_upload" %}" role="button">Adicionar Layers &raquo;</a></p>
                         {% else %}
@@ -51,8 +52,8 @@
                   <div class="panel panel-default">
                       <div class="panel-body">
                         <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-4x"></i></a></p>
-                        <h2><a href="{% url "maps_browse" %}">APP</a></h2>
-                        <p>Trecho descritivo sobre a aba</p>
+                        <h2><a href="{% url "maps_browse" %}">Aplicação</a></h2>
+                        <p>Conheça nossa aplicação, obtenha detalhes sobre os produtos gerados e visualize-os em uma plataforma WebGIS dinâmica.</p>
                         {% if user.is_authenticated %}
                         <p><a class="btn btn-default" href="{% url "new_map" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
@@ -66,7 +67,7 @@
                       <div class="panel-body">
                         <p><a href="{% url "app" %}"><i class="fa fa-newspaper-o fa-4x"></i></a></p>
                         <h2><a href="{% url "app" %}">Documentos</a></h2>
-                        <p>Trecho descritivo sobre a aba</p>
+                        <p>Fique por dentro dos procedimentos metodológicos e importantes referências utilizadas por nossa equipe.</p>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
                         {% else %}

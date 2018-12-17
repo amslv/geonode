@@ -12,6 +12,7 @@
     <dd>{{ resource.srid }}</dd>
     {% endif %}
 
+    <!-- REMOVENDO INFO EM DOCUMENTOS
     {% if LICENSES_ENABLED and LICENSES_DETAIL == 'above' and resource.license %}
     <dt>{% trans "License" %}</dt>
     <dd itemprop="license">{{ resource.license.name_long }} <a href="#license-more-above" data-toggle="collapse" data-target=".license-more-above"><i class="fa fa-info-circle"></i></a></dd>
@@ -24,12 +25,14 @@
         + For more info see <a href="{{ resource.license.url }}">{{ resource.license.url }}</a>.
       {% endif %}
     </dd>
+    -->
 
     {% if resource.abstract %}
     <dt>{% trans "Abstract" %}</dt>
     <dd itemprop="description">{{ resource.abstract|escape|urlize|linebreaks|safe|truncatechars:500 }}</dd>
     {% endif %}
 
+    <!--
     {% if resource.date %}
     <dt>{% trans resource.date_type|title %} {% trans "Date" %}</dt>
       {% if resource.date_type == 'creation' %}
@@ -40,6 +43,7 @@
         <dd itemprop="dateModified" datetime="{{ resource.date|date:"c"}}">{{ resource.date }}</dd>
       {% endif %}
     {% endif %}
+    
 
     {% if resource.display_type %}
     <dt>{% trans "Type" %}</dt>
@@ -57,6 +61,7 @@
       {% endfor %}
     </dd>
     {% endif %}
+    -->
 
     {% if resource.category %}
     <dt>{% trans "Category" %}</dt>
@@ -68,6 +73,7 @@
       {% endif %}
     {% endif %}
 
+    <!--
     {% if resource.regions.all %}
     <dt>{% trans "Regions" %}</dt>
     <dd itemprop="keywords">
@@ -94,13 +100,16 @@
     <dt>{% trans "Group" %}</dt>
     <dd><a href="/groups/group/{{ resource.group.name }}/activity/">{{ group }}</a> </dd>
     {% endif %}
+    -->
 
   </dl>
 
+  <!--
   <dl class="dl-horizontal">
     <dt><a href="#more" data-toggle="collapse" data-target=".more">{% trans "More info" %}</a></dt>
     <dd>-</dd>
   </dl>
+  -->
 
   <dl class="dl-horizontal">
     <div class="more collapse">

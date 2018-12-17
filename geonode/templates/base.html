@@ -118,6 +118,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav toolbar navbar-shifted">
           {% block tabs %}
+          <!-- MUDANDO NAV
           <li id="nav_layers">
                 <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Camadas</a></li>
             </li>
@@ -127,6 +128,17 @@
           <li id="nav_maps">
               <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Mapas</a>
             </li>
+          -->
+          <li id="nav_layers">
+              <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Camadas</a></li>
+          </li>
+          <li id="nav_maps">
+              <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Aplicação</a>
+            </li>
+          <li id="nav_docs">
+            <li><a href="{% url "document_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Documentos</a></li>
+          </li>
+          
       {% block extra_tab %}
             {% endblock %}
             {% endblock %}
@@ -143,7 +155,7 @@
                   {% endif %}
                 </form>
               </div>
-          </li>
+            </li>
             {% if not user.is_authenticated and ACCOUNT_OPEN_SIGNUP %}
             <li><a href="{% url "account_signup" %}">Registrar</a></li>
             {% endif %}
@@ -225,6 +237,12 @@
   {% endblock %}
 
   {% block footer %}
+  <footer>
+    <div class="container-fluid">
+        <img id="logo-insa" src="{% static 'geonode/img/insa-logo.svg' %}">
+    </div>
+  </footer>
+  <!-- RETIRANDO FOOTER
   <footer>
     <div class="container">
       <div class="row">
@@ -313,7 +331,7 @@
       </div>
     </section>
   {% endif %}
-
+-->
   {% endblock footer %}
 
 
