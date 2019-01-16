@@ -13,11 +13,9 @@
   {% endif %}
   <h2>{% trans "Explore Documents" %}</h2>
 </div>
-  {% with include_type_filter='true' %}
-  {% with header='Tipo' %}
+  {% with include_type_filter='false' %}
   {% with filter='doc_type__in' %}
   {% include "search/_search_content.html" %}
-  {% endwith %}
   {% endwith %}
   {% endwith %}
   {% include "_bulk_permissions_form.html" %}

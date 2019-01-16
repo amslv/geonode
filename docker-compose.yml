@@ -2,7 +2,7 @@ version: '2.2'
 services:
 
   db:
-    image: docker-registry.insa.gov.br:5000/geonode/postgis:9.6
+    image: geonode/postgis:9.6
     restart: unless-stopped
     container_name: db4${COMPOSE_PROJECT_NAME}
     stdin_open: true
@@ -16,21 +16,18 @@ services:
     env_file:
       - ./scripts/docker/env/production/db.env
 
-  angular-frontend:
-    image: docker-registry.insa.gov.br:5000/angular-frontend:1.2
+  elasticsearch:
+    image: elasticsearch:2.4.1
     restart: unless-stopped
-    container_name: angular-frontend${COMPOSE_PROJECT_NAME}
+    container_name: elasticsearch4${COMPOSE_PROJECT_NAME}
     stdin_open: true
     # tty: true
     labels:
-        org.geonode.component: angular-frontend
+        org.geonode.component: elasticsearch
         org.geonode.instance.name: geonode
-    ports:
-      - "8080:80"
-
 
   rabbitmq:
-    image: docker-registry.insa.gov.br:5000/rabbitmq:latest
+    image: rabbitmq
     restart: unless-stopped
     container_name: rabbitmq4${COMPOSE_PROJECT_NAME}
     stdin_open: true
@@ -41,7 +38,7 @@ services:
 
   celery:
     restart: unless-stopped
-    image: docker-registry.insa.gov.br:5000/geonode/geonode:latest
+    image: geonode/geonode:latest
     container_name: celery4${COMPOSE_PROJECT_NAME}
     stdin_open: true
     # tty: true
@@ -50,26 +47,18 @@ services:
         org.geonode.instance.name: geonode
     depends_on:
       - db
+      - elasticsearch
       - rabbitmq
-    command: celery worker --app=geonode.celery_app:app -B -l INFO
+    # command: celery worker --app=geonode.celery_app:app -B -l INFO
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - statics:/mnt/volumes/statics
+      - geoserver-data-dir:/geoserver_data/data
     env_file:
       - ./scripts/docker/env/production/celery.env
 
-  data-dir-conf:
-    image: docker-registry.insa.gov.br:5000/geonode/geoserver_data:2.14.x 
-    restart: on-failure
-    container_name: gsconf4${COMPOSE_PROJECT_NAME}
-    labels:
-        org.geonode.component: conf
-        org.geonode.instance.name: geonode
-    command: /bin/true
-    volumes:
-      - geoserver-data-dir:/geoserver_data/data
-
   geoserver:
-    image: docker-registry.insa.gov.br:5000/geonode/geoserver:2.14.x
+    image: geonode/geoserver:2.14.x
     restart: unless-stopped
     container_name: geoserver4${COMPOSE_PROJECT_NAME}
     stdin_open: true
@@ -79,6 +68,7 @@ services:
         org.geonode.instance.name: geonode
     depends_on:
       - db
+      - elasticsearch
       - rabbitmq
       - data-dir-conf
     volumes:
@@ -89,7 +79,7 @@ services:
 
   django:
     restart: unless-stopped
-    image: docker-registry.insa.gov.br:5000/geonode/geonode:latest
+    image: geonode/geonode:latest
     container_name: django4${COMPOSE_PROJECT_NAME}
     stdin_open: true
     # tty: true
@@ -98,17 +88,20 @@ services:
         org.geonode.instance.name: geonode
     depends_on:
       - db
+      - elasticsearch
       - rabbitmq
+      - data-dir-conf
     # command: paver start_django -b 0.0.0.0:8000
-    command: uwsgi --ini uwsgi.ini
+    # command: uwsgi --ini uwsgi.ini
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - statics:/mnt/volumes/statics
       - geoserver-data-dir:/geoserver_data/data
     env_file:
       - ./scripts/docker/env/production/django.env
 
   geonode:
-    image: docker-registry.insa.gov.br:5000/geonode/nginx:geoserver
+    image: geonode/nginx:geoserver
     restart: unless-stopped
     container_name: nginx4${COMPOSE_PROJECT_NAME}
     stdin_open: true
@@ -122,8 +115,23 @@ services:
       - geoserver
     ports:
       - "80:80"
+    volumes:
+      - statics:/mnt/volumes/statics
+
+  data-dir-conf:
+    image: geonode/geoserver_data:2.14.x
+    restart: on-failure
+    container_name: gsconf4${COMPOSE_PROJECT_NAME}
+    labels:
+        org.geonode.component: conf
+        org.geonode.instance.name: geonode
+    command: /bin/true
+    volumes:
+      - geoserver-data-dir:/geoserver_data/data
 
 volumes:
+  statics:
+    name: ${COMPOSE_PROJECT_NAME}-statics
   geoserver-data-dir:
     name: ${COMPOSE_PROJECT_NAME}-gsdatadir
   dbdata:

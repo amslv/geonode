@@ -8027,3 +8027,14 @@ form-inline {
   color: #bd362f;
   font-style: italic;
 }
+
+#logo-insa{
+  width: 8%;
+  height: 8%;
+  float: right;
+}
+
+#logo-portal{
+  width: 10%;
+  height: 10%;
+}

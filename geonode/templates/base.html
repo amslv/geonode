@@ -118,6 +118,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav toolbar navbar-shifted">
           {% block tabs %}
+          <!-- MUDANDO NAV
           <li id="nav_layers">
                 <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Camadas</a></li>
             </li>
@@ -127,11 +128,23 @@
           <li id="nav_maps">
               <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Mapas</a>
             </li>
+          -->
+          <li id="nav_layers">
+              <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Camadas</a></li>
+          </li>
+          <li id="nav_maps">
+              <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Aplicação</a>
+            </li>
+          <li id="nav_docs">
+            <li><a href="{% url "document_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Documentos</a></li>
+          </li>
+          
       {% block extra_tab %}
             {% endblock %}
             {% endblock %}
           </ul>
         <ul class="nav navbar-nav navbar-right">
+            <!--
             <li>
               <div class="search">
                 <form id="search" action="{% url "search" %}" >
@@ -143,7 +156,8 @@
                   {% endif %}
                 </form>
               </div>
-          </li>
+            </li>
+            -->
             {% if not user.is_authenticated and ACCOUNT_OPEN_SIGNUP %}
             <li><a href="{% url "account_signup" %}">Registrar</a></li>
             {% endif %}
@@ -184,6 +198,7 @@
           {% else %}
           <li><a href="#" data-toggle="modal" data-target="#SigninModal" role="button" >Entrar</a></li>
               {% endif %}
+              
             </ul>
           </div> <!--/.nav-collapse -->
         </div>
@@ -225,6 +240,15 @@
   {% endblock %}
 
   {% block footer %}
+  <footer>
+    <div class="container-fluid">
+        <img id="logo-insa" src="{% static 'geonode/img/insa.svg' %}">
+        <a href="https://portaldadesertificacao.insa.gov.br/" target="_blank">
+          <img id="logo-portal" src="{% static 'geonode/img/portal.svg' %}">
+        </a>
+    </div>
+  </footer>
+  <!-- RETIRANDO FOOTER
   <footer>
     <div class="container">
       <div class="row">
@@ -313,7 +337,7 @@
       </div>
     </section>
   {% endif %}
-
+-->
   {% endblock footer %}
 
 
