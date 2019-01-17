@@ -59,7 +59,7 @@
       border-top: 4px solid transparent;
       border-left: 6px solid #658ed0;
       border-bottom: 4px solid transparent;
-      top: 21px;
+      top: 18px;
       right: -5px;
     }
 
@@ -431,15 +431,10 @@
       let breadcrumbsArr = getNameArray(data.__dataNode, []);
 
       let breadcrumbs_container = $("#breadcrumbs");
-
-      if (breadcrumbs_container.empty()) {
-        breadcrumbs_container.append('<span class="crumb"> Desertificação </span>')
-      } else {
-        breadcrumbs_container.empty();
-        breadcrumbsArr.reverse().forEach((value) => {
-          breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
-        });
-      }
+      breadcrumbs_container.empty();
+      breadcrumbsArr.reverse().forEach((value) => {
+        breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
+      });
     }
 
     let getNameArray = (data, array) => {
@@ -496,17 +491,6 @@
         .width(chartContainerSize)
         .height(chartContainerSize)
         .color((d, parent) => color(parent ? parent.data.name : null));
-
-      var layer1 = new ol.layer.Image({
-        source: new ol.source.ImageWMS({
-          url: GEOSERVER_URL,
-          params: { LAYERS: 'geonode:aedm_1' },
-          ratio: 1,
-          serverType: "geoserver"
-        })
-      });
-      map.addLayer(defaultL);
-      map.addLayer(layer1);
 
       sunburst.onNodeClick(choosenData => {
         map.getLayers().clear();
