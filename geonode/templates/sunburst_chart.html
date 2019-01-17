@@ -3,12 +3,12 @@
 {% load static from staticfiles %}
 
 {% block body_outer %}
-  <!-- TODO download this css (Issue 1) -->
-  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+<!-- TODO download this css (Issue 1) -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
 
-  <!-- TODO put in other file (Issue 2) -->
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Lato');
+<!-- TODO put in other file (Issue 2) -->
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Lato');
     #map {
       width: 100%;
       height: 100%;
@@ -110,50 +110,50 @@
     }
 
   </style>
-  
-  <body>
-    <div class="content">
-        <div class="row">
-          <div id="breadcrumbs" class="crumbs breadcrumb"></div>
-        </div>
-        <div id="container-chart" class="container-chart">
-          <div id="chart" class="chart"></div>
-        </div>
-        <div class="container-map">
-          <div id="map" class="map"></div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div id="container-description" class="container-description">
-                    <div class="row">
-                        <div class="col">
-                            <div class="container-description-row">
-                              <div class="container-description-row-content">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
-                                perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                          <div class="container-description-row">
-                            <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-                            <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
-                          </div>
-                      </div>
-                    </div>
+
+<body>
+  <div class="content">
+    <div class="row">
+      <div id="breadcrumbs" class="crumbs breadcrumb"></div>
+    </div>
+    <div id="container-chart" class="container-chart">
+      <div id="chart" class="chart"></div>
+    </div>
+    <div class="container-map">
+      <div id="map" class="map"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div id="container-description" class="container-description">
+          <div class="row">
+            <div class="col">
+              <div class="container-description-row">
+                <div class="container-description-row-content">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
+                  perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
                 </div>
               </div>
+            </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <div class="container-description-row">
+                <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
+                <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-{% endblock %}
+    </div>
+  </div>
+  {% endblock %}
 
-{% block extra_script %}
-{% block super %}
+  {% block extra_script %}
+  {% block super %}
   <!-- TODO download this scripts (Issue 1) -->
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -167,275 +167,279 @@
 
     // (refactoring) TODO put in another file (Issue 6)
     const dataDesertificacao = {
-          name: "Desertificação",
-          imgName: "geonode:aedm_1",
-          description: "geonode:aedm_1 ...",
-          linkDocumentation: "http://google.com?anything=geonode:aedm_1",
+      name: "Desertificação",
+      imgName: "geonode:aedm_1",
+      description: "geonode:aedm_1 ...",
+      linkDocumentation: "http://google.com?anything=geonode:aedm_1",
+      children: [
+        {
+          name: "Estado",
+          imgName: "geonode:dprur_wgs",
+          description: "geonode:dprur_wgs ...",
+          linkDocumentation: "http://google.com?anything=geonode:dprur_wgs",
+          size: 2,
           children: [
             {
-              name: "Estado",
-              imgName: "geonode:dprur_wgs",
-              description: "geonode:dprur_wgs ...",
-              linkDocumentation: "http://google.com?anything=geonode:dprur_wgs",              
-              size: 2,
+              name: "Condição Ambiental",
+              size: 3.3,
+              imgName: "geonode:aernp",
+              description: "geonode:aernp ...",
+              linkDocumentation: "http://google.com?anything=geonode:geonode:aernp",
               children: [
                 {
-                  name: "Condição Ambiental",
-                  size: 3.3,                
-                  imgName: "geonode:aernp",
-                  description: "geonode:aernp ...",
-                  linkDocumentation: "http://google.com?anything=geonode:geonode:aernp",                      
-                  children: [
-                    {
-                      name: "Indice de Aridez",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Indice de Seca",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Cobertura Vegetal",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Grau de Fertilidade do Solo",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      imgName: "geonode:uapha",
-                      size: 3.3
-                    },
-                    {
-                      name: "Risco de Erosão Hidrica",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    }
-                  ]
-                },
-                {
-                  name: "Condição Econômica",
-                  size: 3.3,
-                  imgName: "geonode:afagp_1",
-                  description: "geonode:afagp_1 ...",
-                  linkDocumentation: "http://google.com?anything=geonode:geonode:afagp_1",     
-                  children: [
-                    {
-                      name: "Renda Per Capita Rural",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Produtividade do Feijão",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Produtividade do Milho",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    }
-                  ]
-                },
-                {
-                  name: "Condição Social",
-                  size: 3.3,
-                  imgName: "geonode:analf",
-                  description: "geonode:analf ...",
-                  linkDocumentation: "http://google.com?anything=geonode:geonode:analf",                  
-                  children: [
-                    {
-                      name: "Densidade de População Rural",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Estabelecimentos Rurais Dirigidos por Mulheres",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              name: "Força Motriz",
-              imgName: "geonode:vptr",
-              description: "geonode:vptr ...",
-              linkDocumentation: "http://google.com?anything=geonode:geonode:vptr",                 
-              size: 2,
-              children: [
-                {
-                  name: "Concentração de Terra",
-                  size: 3.3,
-                  imgName: "geonode:dprur",
+                  name: "Indice de Aridez",
                   description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                        
-                  children: [
-                    {
-                      name:
-                        "Área dos estabelecimentos Rurais menores que o modulo fiscal",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                            
-                      size: 3.3
-                    },
-                    {
-                      name:
-                        "Área dos estabelecimentos Rurais sob regime de não propriedade",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                            
-                      size: 3.3
-                    }
-                  ]
-                },
-                {
-                  name: "Influência da População Urbana",
-                  imgName: "geonode:dtsaa_nmin",
-                  description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
+                  linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
-                  name: "Desigualdade Social no Campo",
-                  size: 3.3,
-                  imgName: "geonode:nogip",
+                  name: "Indice de Seca",
                   description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
-                  children: [
-                    {
-                      name: "Analfabetismo no Campo",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "População rural abaixo da linha de pobreza",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    }
-                  ]
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                },
+                {
+                  name: "Cobertura Vegetal",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                },
+                {
+                  name: "Grau de Fertilidade do Solo",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  imgName: "geonode:uapha",
+                  size: 3.3
+                },
+                {
+                  name: "Risco de Erosão Hidrica",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
                 }
               ]
             },
             {
-              name: "Resposta",
-              imgName: "geonode:nong",
-              description: "...",
-              linkDocumentation: "http://google.com?anything=geonode:...",                  
-              size: 2,
+              name: "Condição Econômica",
+              size: 3.3,
+              imgName: "geonode:afagp_1",
+              description: "geonode:afagp_1 ...",
+              linkDocumentation: "http://google.com?anything=geonode:geonode:afagp_1",
               children: [
                 {
-                  name: "Organização da Sociedade Civil",
+                  name: "Renda Per Capita Rural",
                   description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
-                  size: 2
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
                 },
                 {
-                  name: "Organização do Poder Público",
+                  name: "Produtividade do Feijão",
                   description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
-                  size: 2
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                },
+                {
+                  name: "Produtividade do Milho",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
                 }
               ]
             },
             {
-              name: "Impacto",
-              imgName: "geonode:npdrs",
-              description: "...",
-              linkDocumentation: "http://google.com?anything=geonode:...",                  
-              size: 2,
+              name: "Condição Social",
+              size: 3.3,
+              imgName: "geonode:analf",
+              description: "geonode:analf ...",
+              linkDocumentation: "http://google.com?anything=geonode:geonode:analf",
               children: [
                 {
-                  name: "Taxa de Migração do Campo para a Cidade",
+                  name: "Densidade de População Rural",
                   description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
-                  size: 5
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
                 },
                 {
-                  name: "Variação da Participação da Agropecuária no PIB",
+                  name: "Estabelecimentos Rurais Dirigidos por Mulheres",
                   description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
-                  size: 5
-                }
-              ]
-            },
-            {
-              name: "Pressão",
-              imgName: "geonode:npuc",
-              description: "...",
-              linkDocumentation: "http://google.com?anything=geonode:...",    
-              size: 2,
-              children: [
-                {
-                  name: "Desmatamento",
-                  size: 5,
-                  imgName: "geonode:pralp",
-                  description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
-                  children: [
-                    {
-                      name: "Avanço da fronteira agropecuária",
-                      imgName: "geonode:vpr_10",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Mudança da cobertura vegetal",
-                      imgName: "geonode:rpcr",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    }
-                  ]
-                },
-                {
-                  name: "Manejamento Inadequado da Terra",
-                  size: 5,
-                  imgName: "geonode:rctf2006mm",
-                  description: "...",
-                  linkDocumentation: "http://google.com?anything=geonode:...",                      
-                  children: [
-                    {
-                      name: "Carga animal excessiva",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    },
-                    {
-                      name: "Recorrência de Incêndio",
-                      description: "...",
-                      linkDocumentation: "http://google.com?anything=geonode:...",                          
-                      size: 3.3
-                    }
-                  ]
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
                 }
               ]
             }
           ]
-        };
+        },
+        {
+          name: "Força Motriz",
+          imgName: "geonode:vptr",
+          description: "geonode:vptr ...",
+          linkDocumentation: "http://google.com?anything=geonode:geonode:vptr",
+          size: 2,
+          children: [
+            {
+              name: "Concentração de Terra",
+              size: 3.3,
+              imgName: "geonode:dprur",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              children: [
+                {
+                  name:
+                    "Área dos estabelecimentos Rurais menores que o modulo fiscal",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                },
+                {
+                  name:
+                    "Área dos estabelecimentos Rurais sob regime de não propriedade",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                }
+              ]
+            },
+            {
+              name: "Influência da População Urbana",
+              imgName: "geonode:dtsaa_nmin",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              size: 3.3
+            },
+            {
+              name: "Desigualdade Social no Campo",
+              size: 3.3,
+              imgName: "geonode:nogip",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              children: [
+                {
+                  name: "Analfabetismo no Campo",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                },
+                {
+                  name: "População rural abaixo da linha de pobreza",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: "Resposta",
+          imgName: "geonode:nong",
+          description: "...",
+          linkDocumentation: "http://google.com?anything=geonode:...",
+          size: 2,
+          children: [
+            {
+              name: "Organização da Sociedade Civil",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              size: 2
+            },
+            {
+              name: "Organização do Poder Público",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              size: 2
+            }
+          ]
+        },
+        {
+          name: "Impacto",
+          imgName: "geonode:npdrs",
+          description: "...",
+          linkDocumentation: "http://google.com?anything=geonode:...",
+          size: 2,
+          children: [
+            {
+              name: "Taxa de Migração do Campo para a Cidade",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              size: 5
+            },
+            {
+              name: "Variação da Participação da Agropecuária no PIB",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              size: 5
+            }
+          ]
+        },
+        {
+          name: "Pressão",
+          imgName: "geonode:npuc",
+          description: "...",
+          linkDocumentation: "http://google.com?anything=geonode:...",
+          size: 2,
+          children: [
+            {
+              name: "Desmatamento",
+              size: 5,
+              imgName: "geonode:pralp",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              children: [
+                {
+                  name: "Avanço da fronteira agropecuária",
+                  imgName: "geonode:vpr_10",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                },
+                {
+                  name: "Mudança da cobertura vegetal",
+                  imgName: "geonode:rpcr",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                }
+              ]
+            },
+            {
+              name: "Manejamento Inadequado da Terra",
+              size: 5,
+              imgName: "geonode:rctf2006mm",
+              description: "...",
+              linkDocumentation: "http://google.com?anything=geonode:...",
+              children: [
+                {
+                  name: "Carga animal excessiva",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                },
+                {
+                  name: "Recorrência de Incêndio",
+                  description: "...",
+                  linkDocumentation: "http://google.com?anything=geonode:...",
+                  size: 3.3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
 
     let fillBreadcrumbs = (data) => {
       let breadcrumbsArr = getNameArray(data.__dataNode, []);
 
       let breadcrumbs_container = $("#breadcrumbs");
-      breadcrumbs_container.empty();
 
-      breadcrumbsArr.reverse().forEach((value) => {
-        breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
-      });
+      if (breadcrumbs_container.empty()) {
+        breadcrumbs_container.append('<span class="crumb"> Desertificação </span>')
+      } else {
+        breadcrumbs_container.empty();
+        breadcrumbsArr.reverse().forEach((value) => {
+          breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
+        });
+      }
     }
 
     let getNameArray = (data, array) => {
@@ -450,7 +454,7 @@
       $('#container-description-name').text(data.name ? data.name : '-');
       $('#container-description-descrip').text(data.description ? data.description : '-');
       $('#container-description-doc')
-                  .attr("href", data.linkDocumentation ? data.linkDocumentation : '-');
+        .attr("href", data.linkDocumentation ? data.linkDocumentation : '-');
     };
 
     let calculateChartSize = () => {
@@ -488,10 +492,21 @@
       let sunburst = Sunburst()
         .data(dataDesertificacao)
         .label(DATA_DESERT_ATTR_LABEL)
-        .size(DATA_DESERT_ATTR_SIZE) 
+        .size(DATA_DESERT_ATTR_SIZE)
         .width(chartContainerSize)
         .height(chartContainerSize)
         .color((d, parent) => color(parent ? parent.data.name : null));
+
+      var layer1 = new ol.layer.Image({
+        source: new ol.source.ImageWMS({
+          url: GEOSERVER_URL,
+          params: { LAYERS: 'geonode:aedm_1' },
+          ratio: 1,
+          serverType: "geoserver"
+        })
+      });
+      map.addLayer(defaultL);
+      map.addLayer(layer1);
 
       sunburst.onNodeClick(choosenData => {
         map.getLayers().clear();
@@ -515,5 +530,5 @@
     });
 
   </script>
-{% endblock super %}
-{% endblock extra_script %}
+  {% endblock super %}
+  {% endblock extra_script %}
