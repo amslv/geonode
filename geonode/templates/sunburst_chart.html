@@ -114,7 +114,11 @@
 <body>
   <div class="content">
     <div class="row">
-      <div id="breadcrumbs" class="crumbs breadcrumb"></div>
+      <div id="breadcrumbs" class="crumbs breadcrumb">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+          </ol>
+      </div>
     </div>
     <div id="container-chart" class="container-chart">
       <div id="chart" class="chart"></div>
@@ -432,14 +436,10 @@
 
       let breadcrumbs_container = $("#breadcrumbs");
       
-      if (breadcrumbs_container.empty()) {
-        breadcrumbs_container.append('<span class="crumb"> Desertificação </span>')
-      } else {
-        breadcrumbs_container.empty();
-        breadcrumbsArr.reverse().forEach((value) => {
-          breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
-        });
-      }
+      breadcrumbs_container.empty();
+      breadcrumbsArr.reverse().forEach((value) => {
+        breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
+      });
     }
 
     let getNameArray = (data, array) => {
