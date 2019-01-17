@@ -431,10 +431,15 @@
       let breadcrumbsArr = getNameArray(data.__dataNode, []);
 
       let breadcrumbs_container = $("#breadcrumbs");
-      breadcrumbs_container.empty();
-      breadcrumbsArr.reverse().forEach((value) => {
-        breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
-      });
+      
+      if (breadcrumbs_container.empty()) {
+        breadcrumbs_container.append('<span class="crumb"> Desertificação </span>')
+      } else {
+        breadcrumbs_container.empty();
+        breadcrumbsArr.reverse().forEach((value) => {
+          breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
+        });
+      }
     }
 
     let getNameArray = (data, array) => {
