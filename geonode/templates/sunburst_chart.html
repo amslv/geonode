@@ -128,7 +128,7 @@
   <div class="container">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div id="alternative-solution-description">
+        <div id="alternative-solution-description" class="alternative-solution-description">
           <div class="row">
             <div class="col">
               <div class="container-description-row">
@@ -471,6 +471,7 @@
 
     let showDescrition = (data) => {
       $('#alternative-solution-description').css('visibility', 'hidden');
+      $("alternative-solution-description").remove();                 
       $('#container-description').css('visibility', 'visible');
       $('#container-description-name').text(data.name ? data.name : '-');
       $('#container-description-descrip').text(data.description ? data.description : '-');
