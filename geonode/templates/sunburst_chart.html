@@ -65,7 +65,6 @@
 
     .container-description {
       width: 100%;
-      visibility: hidden;
       padding: 10px;
       overflow: hidden;
       margin-top: 5%;
@@ -479,7 +478,6 @@
       $(".alternative-solution-description").remove();
       var $newDescription = document.getElementById("container-description");
       $( ".panel-body" ).append($newDescription);                 
-      $('#container-description').css('visibility', 'visible');
       $('#container-description-name').text(data.name ? data.name : '-');
       $('#container-description-descrip').text(data.description ? data.description : '-');
       $('#container-description-doc')
