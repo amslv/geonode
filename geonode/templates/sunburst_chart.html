@@ -156,7 +156,6 @@
             </div>
           </div>
         </div>
-
         <div id="container-description" class="container-description">
           <div class="row">
             <div class="col">
@@ -477,7 +476,10 @@
     };
 
     let showDescrition = (data) => {
-      $(".alternative-solution-description").remove();                 
+      $(".container-description").remove();
+      $(".alternative-solution-description").remove();
+      var dynamicDescr = document.getElementById("container-description");
+      $("panel-body").append(dynamicDescr);                 
       $('#container-description').css('visibility', 'visible');
       $('#container-description-name').text(data.name ? data.name : '-');
       $('#container-description-descrip').text(data.description ? data.description : '-');
