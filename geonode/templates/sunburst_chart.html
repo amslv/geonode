@@ -470,7 +470,6 @@
     };
 
     let showDescrition = (data) => {
-      $('#alternative-solution-description').css('visibility', 'hidden');
       $("alternative-solution-description").remove();                 
       $('#container-description').css('visibility', 'visible');
       $('#container-description-name').text(data.name ? data.name : '-');
