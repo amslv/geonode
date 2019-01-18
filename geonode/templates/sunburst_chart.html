@@ -65,6 +65,7 @@
 
     .container-description {
       width: 100%;
+      visibility: hidden;
       padding: 10px;
       overflow: hidden;
       margin-top: 5%;
@@ -117,27 +118,6 @@
 
   </style>
 
-<div id="container-description" class="container-description">
-<div class="row">
-  <div class="col">
-    <div class="container-description-row">
-      <div class="container-description-row-content">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
-        perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <div class="container-description-row">
-      <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-      <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
-    </div>
-  </div>
-</div>
-</div>
 <body>
   <div class="content">
     <div class="row">
@@ -156,6 +136,28 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div id="alternative-solution-description" class="alternative-solution-description">
+          <div class="row">
+            <div class="col">
+              <div class="container-description-row">
+                <div class="container-description-row-content">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
+                  perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="container-description-row">
+                <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
+                <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="container-description" class="container-description">
           <div class="row">
             <div class="col">
               <div class="container-description-row">
@@ -475,9 +477,8 @@
     };
 
     let showDescrition = (data) => {
-      $(".alternative-solution-description").remove();
-      var $newDescription = document.getElementById("container-description");
-      $( ".panel-body" ).append($newDescription);                 
+      $(".alternative-solution-description").remove();                 
+      $('#container-description').css('visibility', 'visible');
       $('#container-description-name').text(data.name ? data.name : '-');
       $('#container-description-descrip').text(data.description ? data.description : '-');
       $('#container-description-doc')
