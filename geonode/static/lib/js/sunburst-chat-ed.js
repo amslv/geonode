@@ -1121,8 +1121,8 @@
     level_four_pressao_desmatamento_campo_color: 0xdddddd,
     level_four_pressao_manejamento_ina_color: 0xf9a86f,
     level_four_condicao_social_color: 0x61504b,
-    level_four_condicao_economica_color: 0xfaab33,
-    level_four_condicao_ambiental_color: 0xed3237,
+    level_four_condicao_economica_color: 0xed3237,
+    level_four_condicao_ambiental_color: 0xfaab33,
     
     aliceblue: 0xf0f8ff,
     antiquewhite: 0xfaebd7,
@@ -5413,6 +5413,10 @@
 
       label.append('textPath').attr('class', 'text-stroke').attr('startOffset', '50%').attr('xlink:href', function (d) {
         return '#hidden-arc-' + state.chartId + '-' + d.id;
+      });
+
+      label.style('fill', function(d) {
+        return d.data.labelColor;
       });
 
       // Entering + Updating
