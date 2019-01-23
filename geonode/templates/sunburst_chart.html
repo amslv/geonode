@@ -183,12 +183,13 @@
   {% endblock %}
   {% block extra_script %}
   {% block super %}
-  <!-- TODO download and organize this scripts (Issue 1) -->
+  <!-- TODO download this scripts (Issue 1) -->
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <script src="../static/lib/js/sunburst-chat-ed.js"></script>
   <script src="//d3js.org/d3.v5.min.js"></script>
+
   <script type="text/javascript">
     // (refactoring) TODO this constants must be setted in another file (Issue 3)
     const GEOSERVER_URL = 'http://150.165.85.24/geoserver/wms/';
@@ -280,8 +281,7 @@
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
-                {  {{ STATIC_URL }}
-  abc
+                {
                   name: "Produtividade do Feijão",
                   name: "Renda Per Capita Rural",
                   color: "level_four_condicao_ambiental_color",                  
@@ -302,8 +302,7 @@
             {
               name: "Condição Social",
               color: "level_three_estado_color",
-              labelColor: "white",                 {{ STATIC_URL }}
-  abc
+              labelColor: "white",               
               size: 3.3,
               imgName: "geonode:analf",
               description: "geonode:analf ...",
