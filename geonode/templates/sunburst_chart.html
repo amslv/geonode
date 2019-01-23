@@ -9,18 +9,21 @@
 <!-- TODO put in other file (Issue 2) -->
 <style>
   @import url('https://fonts.googleapis.com/css?family=Lato');
-    #map {
-      width: 100%;
-      height: 100%;
-      padding-top: 7%;
-      overflow: hidden;
+    .container {
+      width: 100% !important;
     }
 
-    #chart {
+    .map {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: block;
+    }
+
+    .chart {
       width: 70%;
       height: 70%;
       padding-left: 10%;
-      padding-top: 10%;
     }
 
     .content {
@@ -31,13 +34,13 @@
 
     .container-chart {
       float: left;
-      width: 40%;
+      width: 35%;
       overflow: hidden;
     }
 
     .container-map {
       float: right;
-      width: 60%;
+      width: 50%;
     }
     .crumbs {
       min-height: 15px;
@@ -64,12 +67,25 @@
     }
 
     .container-description {
-      width: 100%;
-      visibility: hidden;
-      padding: 10px;
+      background: rgb(219, 219, 219);
+      border: 0px solid rgba(219, 219, 219);
+      border-radius: 6px;      
+      width: 13%;
       overflow: hidden;
-      margin-top: 5%;
+      float: left;
+      height: 100%;
+      margin-top: 10px;
+      padding: 10px;
     }    
+
+    .container-subtitle {
+      background: rgb(219, 219, 219);
+      border: 0px solid rgba(219, 219, 219);      
+      width: 50%;
+      height: 100%;
+      margin: 5px;
+      margin: 10px;
+    }
 
     .alternative-solution-description {
       width: 100%;
@@ -95,8 +111,8 @@
     }
 
     .breadcrumb {
-      background: rgb(238, 238, 238);
-      border: 0px solid rgba(245, 245, 245, 1);
+      background: rgb(219, 219, 219);
+      border: 0px solid rgba(219, 219, 219);
       border-radius: 6px;
       display: block;
     }
@@ -120,63 +136,40 @@
 
 <body>
   <div class="content">
-    <div class="row">
-      <div id="breadcrumbs" class="crumbs breadcrumb">
-          <span class="crumb">Desertificação</span>
+    <div id="breadcrumbs" class="crumbs breadcrumb">
+        <span class="crumb">Desertificação</span>
+    </div>
+    <div id="container-description" class="container-description">
+      <div id="alternative-solution-description" class="alternative-solution-description">
+        <div class="row">
+          <div class="col">
+            <div class="container-description-row">
+              <div class="container-description-row-content">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
+                perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="container-description-row">
+              <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
+              <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="container-chart" class="container-chart">
       <div id="chart" class="chart"></div>
     </div>
+    <div>
     <div class="container-map">
       <div id="map" class="map"></div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div id="alternative-solution-description" class="alternative-solution-description">
-          <div class="row">
-            <div class="col">
-              <div class="container-description-row">
-                <div class="container-description-row-content">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
-                  perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="container-description-row">
-                <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-                <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="container-description" class="container-description">
-            <div class="row">
-              <div class="col">
-                <div class="container-description-row">
-                  <div class="container-description-row-content">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
-                    perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="container-description-row">
-                  <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-                  <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
-                </div>
-              </div>
-            </div>
-        </div>
+      <div class="container-subtitle">
+          * Legenda
       </div>
     </div>
   </div>
