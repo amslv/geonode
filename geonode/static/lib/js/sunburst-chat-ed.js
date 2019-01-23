@@ -5419,6 +5419,10 @@
         return d.data.labelColor;
       });
 
+      label.style('font-family', function(d) {
+        return d.data.labelFont ? d.data.labelFont : 'qanelas-bold';
+      });           
+
       // Entering + Updating
       var allSlices = slice.merge(newSlice);
 
@@ -5451,8 +5455,6 @@
       allSlices.selectAll('text.path-label').selectAll('textPath').text(function (d) {
         return nameOf(d.data);
       });
-
-      //
 
       function middleArcLine(d) {
         var halfPi = Math.PI / 2;

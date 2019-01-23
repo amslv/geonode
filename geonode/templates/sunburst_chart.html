@@ -8,7 +8,13 @@
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
 <!-- TODO put in other file (Issue 2) -->
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Lato');
+
+    @font-face {
+      font-family: qanelas-bold;
+      src: url(../static/lib/font/qanelas-bold.otf);
+      font-weight: bold;
+    }
+
     .container {
       width: 100% !important;
     }
@@ -30,6 +36,7 @@
       width: 100%;
       height: 500px;
       padding: 10px;
+      font-family: qanelas-bold;      
     }
 
     .container-chart {
@@ -50,8 +57,6 @@
       position: relative;
       display: inline-block;
       padding: 12px;
-      font-family: 'Lato', sans-serif;
-      font-weight: bold;
       font-size: 14px;
     }
 
