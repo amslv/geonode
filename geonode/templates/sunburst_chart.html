@@ -16,7 +16,7 @@
     }
 
     .container {
-      width: 100% !important;
+      width: 90% !important;
     }
 
     .map {
@@ -27,9 +27,7 @@
     }
 
     .chart {
-      width: 70%;
-      height: 70%;
-      padding-left: 10%;
+      margin-top: 10%;
     }
 
     .content {
@@ -41,13 +39,13 @@
 
     .container-chart {
       float: left;
-      width: 35%;
+      width: 40%;
       overflow: hidden;
     }
 
     .container-map {
       float: right;
-      width: 50%;
+      width: 60%;
     }
     .crumbs {
       min-height: 15px;
@@ -71,29 +69,28 @@
       right: -5px;
     }
 
-    .container-description {
-      background: rgb(219, 219, 219);
-      border: 0px solid rgba(219, 219, 219);
-      border-radius: 6px;      
-      width: 13%;
-      overflow: hidden;
+    .container-description {   
+      width: 65%;
+      overflow: inherit;
       float: left;
       height: 100%;
       margin-top: 10px;
-      padding: 10px;
+      padding: 10px;     
+      border-right: 1px solid lightgray;  
     }    
 
-    .container-legenda {
-      background: rgb(219, 219, 219);
-      border: 0px solid rgba(219, 219, 219);      
+    .container-legend {  
       min-width: 100px;
+      width: 25%;
       height: 100%;
       margin: 5px;
       margin: 10px;
       padding: 5px;
+      font-size: 14px;
+      float: right;
     }
 
-    .container-legenda label {
+    .container-legend label {
       display: block;
     }
 
@@ -103,6 +100,10 @@
 
     .container-description-row-content {
       float: left;
+    }
+
+    .container-description-row {
+      font-size: 14px;
     }
 
     .row {
@@ -142,39 +143,41 @@
     <div id="breadcrumbs" class="crumbs breadcrumb">
         <span class="crumb"></span>
     </div>
-    <div id="container-description" class="container-description">
-      <div class="row">
-        <div class="col">
-          <div class="container-description-row">
-            <label id="container-title-row-content" class="container-description-row-content"></label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="container-description-row">
-            <div id="container-description-row-content" class="container-description-row-content"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="container-description-row">
-            <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-            <a id="container-document-row-content" class="container-description-row-content" href="" target="_blank">Documento</a>
-          </div>
-        </div>
-      </div>
-    </div>
     <div id="container-chart" class="container-chart">
       <div id="chart" class="chart"></div>
     </div>
     <div>
     <div class="container-map">
       <div id="map" class="map"></div>
-      <div class="container-legenda">
-          <label>Legenda </label>
-          <img id="legend-image">
+      <div id="container-description" class="container-description">
+        <div class="row">
+          <div class="col">
+            <div class="container-description-row">
+              <label id="container-title-row-content"></label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="container-description-row">
+              <div id="container-description-row-content" class="container-description-row-content"></div>
+            </div>
+          </div>
+        </div>
+        <!-- TODO check with the INSA
+        <div class="row">
+          <div class="col">
+            <div class="container-description-row">
+              <label>Para saber mais sobre o assunto:&nbsp</label>
+              <a id="container-document-row-content" href="" target="_blank">Documento</a>
+            </div>
+          </div>
+        </div>
+        -->
+      </div>
+      <div class="container-legend">
+        <label>Legenda </label>
+        <img id="legend-image">
       </div>
     </div>
   </div>
@@ -198,7 +201,7 @@
       color: "level_one_desertif_color",
       labelColor: "black", 
       imgName: "geonode:aedm_1",
-      description: "Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao",
+      description: "Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao ",
       linkDocumentation: "http://google.com?anything=geonode:aedm_1",
       children: [
         {
@@ -559,7 +562,7 @@
     };
 
     let calculateChartSize = () => {
-      const DEFAULT_PERCENT_SIZE = 0.7;
+      const DEFAULT_PERCENT_SIZE = 0.9;
       const DEFAULT_SIZE = 400;
       try {
         return parseInt($("#container-chart").css('width')) * DEFAULT_PERCENT_SIZE;
