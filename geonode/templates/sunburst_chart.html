@@ -8,36 +8,46 @@
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
 <!-- TODO put in other file (Issue 2) -->
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Lato');
-    #map {
-      width: 100%;
-      height: 100%;
-      padding-top: 7%;
-      overflow: hidden;
+
+    @font-face {
+      font-family: qanelas-bold;
+      src: url(../static/lib/font/qanelas-bold.otf);
+      font-weight: bold;
     }
 
-    #chart {
+    .container {
+      width: 100% !important;
+    }
+
+    .map {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: block;
+    }
+
+    .chart {
       width: 70%;
       height: 70%;
       padding-left: 10%;
-      padding-top: 10%;
     }
 
     .content {
       width: 100%;
       height: 500px;
       padding: 10px;
+      font-family: qanelas-bold;      
     }
 
     .container-chart {
       float: left;
-      width: 40%;
+      width: 35%;
       overflow: hidden;
     }
 
     .container-map {
       float: right;
-      width: 60%;
+      width: 50%;
     }
     .crumbs {
       min-height: 15px;
@@ -47,8 +57,6 @@
       position: relative;
       display: inline-block;
       padding: 12px;
-      font-family: 'Lato', sans-serif;
-      font-weight: bold;
       font-size: 14px;
     }
 
@@ -64,12 +72,25 @@
     }
 
     .container-description {
-      width: 100%;
-      visibility: hidden;
-      padding: 10px;
+      background: rgb(219, 219, 219);
+      border: 0px solid rgba(219, 219, 219);
+      border-radius: 6px;      
+      width: 13%;
       overflow: hidden;
-      margin-top: 5%;
+      float: left;
+      height: 100%;
+      margin-top: 10px;
+      padding: 10px;
     }    
+
+    .container-subtitle {
+      background: rgb(219, 219, 219);
+      border: 0px solid rgba(219, 219, 219);      
+      width: 50%;
+      height: 100%;
+      margin: 5px;
+      margin: 10px;
+    }
 
     .alternative-solution-description {
       width: 100%;
@@ -95,8 +116,8 @@
     }
 
     .breadcrumb {
-      background: rgb(238, 238, 238);
-      border: 0px solid rgba(245, 245, 245, 1);
+      background: rgb(219, 219, 219);
+      border: 0px solid rgba(219, 219, 219);
       border-radius: 6px;
       display: block;
     }
@@ -120,63 +141,40 @@
 
 <body>
   <div class="content">
-    <div class="row">
-      <div id="breadcrumbs" class="crumbs breadcrumb">
-          <span class="crumb">Desertificação</span>
+    <div id="breadcrumbs" class="crumbs breadcrumb">
+        <span class="crumb">Desertificação</span>
+    </div>
+    <div id="container-description" class="container-description">
+      <div id="alternative-solution-description" class="alternative-solution-description">
+        <div class="row">
+          <div class="col">
+            <div class="container-description-row">
+              <div class="container-description-row-content">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
+                perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="container-description-row">
+              <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
+              <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="container-chart" class="container-chart">
       <div id="chart" class="chart"></div>
     </div>
+    <div>
     <div class="container-map">
       <div id="map" class="map"></div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div id="alternative-solution-description" class="alternative-solution-description">
-          <div class="row">
-            <div class="col">
-              <div class="container-description-row">
-                <div class="container-description-row-content">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
-                  perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="container-description-row">
-                <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-                <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="container-description" class="container-description">
-            <div class="row">
-              <div class="col">
-                <div class="container-description-row">
-                  <div class="container-description-row-content">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
-                    perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="container-description-row">
-                  <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-                  <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
-                </div>
-              </div>
-            </div>
-        </div>
+      <div class="container-subtitle">
+          * Legenda
       </div>
     </div>
   </div>
@@ -187,7 +185,7 @@
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <script src="//unpkg.com/sunburst-chart"></script>
+  <script src="../static/lib/js/sunburst-chat-ed.js"></script>
   <script src="//d3js.org/d3.v5.min.js"></script>
 
   <script type="text/javascript">
@@ -197,12 +195,16 @@
     // (refactoring) TODO put in another file (Issue 6)
     const dataDesertificacao = {
       name: "Desertificação",
+      color: "level_one_desertif_color",
+      labelColor: "black", 
       imgName: "geonode:gfsol_nmin_compress_2",
-      description: "geonode:gfsol_nmin_compress_2 ...",
+      description: "geonode:gfsol_nmin_compress_2",
       linkDocumentation: "http://google.com?anything=geonode:aedm_1",
       children: [
         {
           name: "Estado",
+          color: "level_two_color",
+          labelColor: "black",           
           imgName: "geonode:imd_r_cropped_compressed",
           description: "geonode:imd_r_cropped_compressed",
           linkDocumentation: "http://google.com?anything=geonode:vvaamm",
@@ -210,31 +212,41 @@
           children: [
             {
               name: "Condição Ambiental",
+              color: "level_three_estado_color",
+              labelColor: "white",                  
               size: 3.3,
               imgName: "geonode:aernp",
               description: "geonode:aernp ...",
               linkDocumentation: "http://google.com?anything=geonode:geonode:aernp",
               children: [
-                {
+                {                  
                   name: "Indice de Aridez",
+                  color: "level_four_condicao_ambiental_color",
+                  labelColor: "black",                      
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "Indice de Seca",
+                  color: "level_four_condicao_ambiental_color",
+                  labelColor: "black",                     
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "Cobertura Vegetal",
+                  color: "level_four_condicao_ambiental_color",
+                  labelColor: "black",                     
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "Grau de Fertilidade do Solo",
+                  color: "level_four_condicao_ambiental_color",
+                  labelColor: "black",                     
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   imgName: "geonode:uapha",
@@ -242,6 +254,8 @@
                 },
                 {
                   name: "Risco de Erosão Hidrica",
+                  color: "level_four_condicao_ambiental_color",
+                  labelColor: "black",                  
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
@@ -250,6 +264,8 @@
             },
             {
               name: "Condição Econômica",
+              color: "level_three_estado_color",
+              labelColor: "white",               
               size: 3.3,
               imgName: "geonode:afagp_1",
               description: "geonode:afagp_1 ...",
@@ -257,18 +273,24 @@
               children: [
                 {
                   name: "Renda Per Capita Rural",
+                  color: "level_four_condicao_economica_color",
+                  labelColor: "white",              
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "Produtividade do Feijão",
+                  color: "level_four_condicao_economica_color", 
+                  labelColor: "white",                 
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "Produtividade do Milho",
+                  color: "level_four_condicao_economica_color",                  
+                  labelColor: "white",
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
@@ -277,6 +299,8 @@
             },
             {
               name: "Condição Social",
+              color: "level_three_estado_color",
+              labelColor: "white",               
               size: 3.3,
               imgName: "geonode:analf",
               description: "geonode:analf ...",
@@ -284,12 +308,16 @@
               children: [
                 {
                   name: "Densidade de População Rural",
+                  color: "level_four_condicao_social_color",
+                  labelColor: "white",                      
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "Estabelecimentos Rurais Dirigidos por Mulheres",
+                  color: "level_four_condicao_social_color",
+                  labelColor: "white",                      
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
@@ -300,6 +328,8 @@
         },
         {
           name: "Força Motriz",
+          color: "level_two_color",
+          labelColor: "black",          
           imgName: "geonode:rpcr",
           description: "geonode:rpcr ...",
           linkDocumentation: "http://google.com?anything=geonode:geonode:rpcr",
@@ -307,6 +337,8 @@
           children: [
             {
               name: "Concentração de Terra",
+              color: "level_three_forca_motriz_color",
+              labelColor: "white",                                     
               size: 3.3,
               imgName: "geonode:dprur",
               description: "...",
@@ -315,6 +347,8 @@
                 {
                   name:
                     "Área dos estabelecimentos Rurais menores que o modulo fiscal",
+                  color: "level_four_condicao_terra_color",
+                  labelColor: "black",                      
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
@@ -322,6 +356,8 @@
                 {
                   name:
                     "Área dos estabelecimentos Rurais sob regime de não propriedade",
+                  color: "level_four_condicao_terra_color",
+                  labelColor: "black",                       
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
@@ -330,6 +366,8 @@
             },
             {
               name: "Influência da População Urbana",
+              color: "level_three_forca_motriz_color",
+              labelColor: "white",                 
               imgName: "geonode:dtsaa_nmin",
               description: "...",
               linkDocumentation: "http://google.com?anything=geonode:...",
@@ -337,6 +375,8 @@
             },
             {
               name: "Desigualdade Social no Campo",
+              color: "level_three_forca_motriz_color",
+              labelColor: "white",                 
               size: 3.3,
               imgName: "geonode:nogip",
               description: "...",
@@ -345,11 +385,15 @@
                 {
                   name: "Analfabetismo no Campo",
                   description: "...",
+                  color: "level_four_influencia_social_campo_color",
+                  labelColor: "white",                       
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "População rural abaixo da linha de pobreza",
+                  color: "level_four_influencia_social_campo_color",
+                  labelColor: "white",     
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
@@ -360,6 +404,8 @@
         },
         {
           name: "Resposta",
+          color: "level_two_color",
+          labelColor: "black",              
           imgName: "geonode:nong",
           description: "...",
           linkDocumentation: "http://google.com?anything=geonode:...",
@@ -367,12 +413,16 @@
           children: [
             {
               name: "Organização da Sociedade Civil",
+              color: "level_three_resposta_color",
+              labelColor: "white",                      
               description: "...",
               linkDocumentation: "http://google.com?anything=geonode:...",
               size: 2
             },
             {
               name: "Organização do Poder Público",
+              color: "level_three_resposta_color",
+              labelColor: "white",                  
               description: "...",
               linkDocumentation: "http://google.com?anything=geonode:...",
               size: 2
@@ -381,6 +431,8 @@
         },
         {
           name: "Impacto",
+          color: "level_two_color",
+          labelColor: "black",              
           imgName: "geonode:npdrs",
           description: "...",
           linkDocumentation: "http://google.com?anything=geonode:...",
@@ -388,12 +440,16 @@
           children: [
             {
               name: "Taxa de Migração do Campo para a Cidade",
+              color: "level_three_impacto_color",
+              labelColor: "white",                  
               description: "...",
               linkDocumentation: "http://google.com?anything=geonode:...",
               size: 5
             },
             {
               name: "Variação da Participação da Agropecuária no PIB",
+              color: "level_three_impacto_color",
+              labelColor: "white",                
               description: "...",
               linkDocumentation: "http://google.com?anything=geonode:...",
               size: 5
@@ -402,6 +458,8 @@
         },
         {
           name: "Pressão",
+          color: "level_two_color",
+          labelColor: "black",              
           imgName: "geonode:npuc",
           description: "...",
           linkDocumentation: "http://google.com?anything=geonode:...",
@@ -409,6 +467,8 @@
           children: [
             {
               name: "Desmatamento",
+              color: "level_three_pressao_color",
+              labelColor: "black",                    
               size: 5,
               imgName: "geonode:pralp",
               description: "...",
@@ -416,6 +476,8 @@
               children: [
                 {
                   name: "Avanço da fronteira agropecuária",
+                  color: "level_four_pressao_desmatamento_campo_color",
+                  labelColor: "black",                       
                   imgName: "geonode:vpr_10",
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
@@ -423,6 +485,8 @@
                 },
                 {
                   name: "Mudança da cobertura vegetal",
+                  color: "level_four_pressao_desmatamento_campo_color",
+                  labelColor: "black",                        
                   imgName: "geonode:rpcr",
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
@@ -432,6 +496,8 @@
             },
             {
               name: "Manejamento Inadequado da Terra",
+              color: "level_three_pressao_color",
+              labelColor: "black",               
               size: 5,
               imgName: "geonode:rctf2006mm",
               description: "...",
@@ -439,12 +505,16 @@
               children: [
                 {
                   name: "Carga animal excessiva",
+                  color: "level_four_pressao_manejamento_ina_color",
+                  labelColor: "black",                        
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
                 },
                 {
                   name: "Recorrência de Incêndio",
+                  color: "level_four_pressao_manejamento_ina_color",
+                  labelColor: "black",                       
                   description: "...",
                   linkDocumentation: "http://google.com?anything=geonode:...",
                   size: 3.3
@@ -530,7 +600,7 @@
         .size(DATA_DESERT_ATTR_SIZE)
         .width(chartContainerSize)
         .height(chartContainerSize)
-        .color((d, parent) => color(parent ? parent.data.name : null));
+        .color((d, parent) => d.color);
 
       sunburst.onNodeClick(choosenData => {
         map.getLayers().clear();
