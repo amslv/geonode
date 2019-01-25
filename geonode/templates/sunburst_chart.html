@@ -53,9 +53,8 @@
 
     .crumbs .crumb {
       position: relative;
-      display: inline-block;
       padding: 12px;
-      font-size: 14px;
+      font-family: qanelas-bold;
     }
 
     .crumbs .crumb:not(:last-of-type):before {
@@ -119,6 +118,7 @@
       border: 0px solid rgba(219, 219, 219);
       border-radius: 6px;
       display: block;
+      padding: 10px;
     }
     .breadcrumb li {
       font-size: 14px;
@@ -190,6 +190,9 @@
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <script src="../static/lib/js/sunburst-chat-ed.js"></script>
   <script src="//d3js.org/d3.v5.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/ol-geocoder@latest/dist/ol-geocoder.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/ol-geocoder"></script>  
 
   <script type="text/javascript">
     // (refactoring) TODO this constants must be setted in another file (Issue 3)
@@ -595,6 +598,25 @@
           zoom: 4
         })
       });
+
+      var geocoder = new Geocoder('nominatim', {
+        provider: 'osm',
+        lang: 'pt-BR',
+        placeholder: 'Procurar por ...',
+        targetType: 'glass-button',
+        limit: 3,
+        keepOpen: true
+      });
+
+      geocoder.on('addresschosen', function (evt) {
+        var feature = evt.feature,
+          coord = evt.coordinate,
+          address = evt.address;
+        content.innerHTML = '<p>' + address.date + '</p>';
+        overlay.setPosition(coord);
+      });
+
+      map.addControl(geocoder);  
 
       // TODO analyze this approach, because only works in the page initialization (Issue 5)
       let chartContainerSize = calculateChartSize();
