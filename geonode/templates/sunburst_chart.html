@@ -583,7 +583,10 @@
       let rootLayer = new ol.layer.Image({
         source: new ol.source.ImageWMS({
           url: GEOSERVER_URL,
-          params: { LAYERS: initialLayer},
+          params: {
+            LAYERS: initialLayer,
+            TILED: true
+          },
           ratio: 1, 
           serverType: "geoserver"
         })
