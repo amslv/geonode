@@ -36,7 +36,7 @@
       width: 100%;
       height: 500px;
       padding: 10px;
-      font-family: qanelas-bold;      
+      /* font-family: qanelas-bold;       */
     }
 
     .container-chart {
@@ -83,13 +83,18 @@
       padding: 10px;
     }    
 
-    .container-subtitle {
+    .container-legenda {
       background: rgb(219, 219, 219);
       border: 0px solid rgba(219, 219, 219);      
-      width: 50%;
+      min-width: 100px;
       height: 100%;
       margin: 5px;
       margin: 10px;
+      padding: 5px;
+    }
+
+    .container-legenda label {
+      display: block;
     }
 
     .alternative-solution-description {
@@ -173,8 +178,9 @@
     <div>
     <div class="container-map">
       <div id="map" class="map"></div>
-      <div class="container-subtitle">
-          * Legenda
+      <div class="container-legenda">
+          <label>Legenda </label>
+          <img id="legend-image">
       </div>
     </div>
   </div>
@@ -526,7 +532,14 @@
       ]
     };
 
-    let fillBreadcrumbs = (data) => {
+    fillLegend = (imgName) => {
+      const urlSufix = '?service=wms&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=' + imgName;
+      
+      const url = GEOSERVER_URL + urlSufix;
+      $('#legend-image').attr("src", url);
+    }
+
+    fillBreadcrumbs = (data) => {
       let breadcrumbsArr = getNameArray(data.__dataNode, []);
 
       let breadcrumbs_container = $("#breadcrumbs");
@@ -537,14 +550,14 @@
       });
     }
 
-    let getNameArray = (data, array) => {
+    getNameArray = (data, array) => {
       array = array || [];
       array.push(data.data.name);
       if (data.parent) getNameArray(data.parent, array);
       return array;
     };
 
-    let showDescrition = (data) => {
+    showDescrition = (data) => {
       $(".alternative-solution-description").remove();               
       $('#container-description').css('visibility', 'visible');
       $('#container-description-name').text(data.name ? data.name : '-');
@@ -568,14 +581,17 @@
         source: new ol.source.OSM()
       });
 
+      const initialLayer = 'geonode:aedm_1';
       let rootLayer = new ol.layer.Image({
         source: new ol.source.ImageWMS({
           url: GEOSERVER_URL,
-          params: { LAYERS: 'geonode:aedm_1'},
+          params: { LAYERS: initialLayer},
           ratio: 1, 
           serverType: "geoserver"
         })
       });
+
+      fillLegend(initialLayer);
 
       // TODO (refactoring) put the center parameters in a constant (Issue 4)
       let map = new ol.Map({
@@ -616,6 +632,7 @@
         map.addLayer(defaultL);
         map.addLayer(layer1);
 
+        fillLegend(choosenData.imgName);
         fillBreadcrumbs(choosenData);
         showDescrition(choosenData);
       });
