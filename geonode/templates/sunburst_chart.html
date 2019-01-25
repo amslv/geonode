@@ -580,12 +580,12 @@
       });
 
       const initialLayer = dataDesertificacao.imgName.split(':')[1];
-      let rootLayer = new ol.layer.Image({
-        source: new ol.source.ImageWMS({
+      let rootLayer = new ol.layer.TileLayer({
+        source: new ol.source.TileWMS({
           url: GEOSERVER_URL,
           params: {
-            LAYERS: initialLayer,
-            TILED: true
+            'LAYERS': initialLayer,
+            'TILED': true
           },
           ratio: 1, 
           serverType: "geoserver"
