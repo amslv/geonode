@@ -56,6 +56,8 @@ urlpatterns = [
     url(r'^(?P<layername>[^/]*)/get$', views.get_layer, name='get_layer'),
     url(r'^(?P<layername>[^/]*)/metadata_detail$',
         views.layer_metadata_detail, name='layer_metadata_detail'),
+    url(r'^(?P<layername>[^/]*)/metadata_detail_rest$',
+        views.layer_metadata_detail_rest, name='layer_metadata_detail_rest'),
     url(r'^(?P<layername>[^/]*)/metadata_upload$',
         views.layer_metadata_upload, name='layer_metadata_upload'),
     url(r'^(?P<layername>[^/]*)/style_upload$',

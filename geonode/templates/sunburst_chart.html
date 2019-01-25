@@ -97,13 +97,6 @@
       display: block;
     }
 
-    .alternative-solution-description {
-      width: 100%;
-      padding: 10px;
-      overflow: hidden;
-      margin-top: 5%;
-    }
-
     .container-description-row {      
       display: inline-block;
     }
@@ -147,27 +140,28 @@
 <body>
   <div class="content">
     <div id="breadcrumbs" class="crumbs breadcrumb">
-        <span class="crumb">Desertificação</span>
+        <span class="crumb"></span>
     </div>
     <div id="container-description" class="container-description">
-      <div id="alternative-solution-description" class="alternative-solution-description">
-        <div class="row">
-          <div class="col">
-            <div class="container-description-row">
-              <div class="container-description-row-content">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum labore deserunt, quaerat maxime iste doloribus dolores aperiam ipsa facere
-                perferendis repellat quibusdam recusandae incidunt animi vero sint voluptate sapiente dolorem!
-              </div>
-            </div>
+      <div class="row">
+        <div class="col">
+          <div class="container-description-row">
+            <label id="container-title-row-content" class="container-description-row-content"></label>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="container-description-row">
-              <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
-              <a id="container-description-doc" class="container-description-row-content" href="" target="_blank">Documento</a>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="container-description-row">
+            <div id="container-description-row-content" class="container-description-row-content"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="container-description-row">
+            <label class="container-description-row-content">Para saber mais sobre o assunto:&nbsp</label>
+            <a id="container-document-row-content" class="container-description-row-content" href="" target="_blank">Documento</a>
           </div>
         </div>
       </div>
@@ -204,7 +198,7 @@
       color: "level_one_desertif_color",
       labelColor: "black", 
       imgName: "geonode:aedm_1",
-      description: "geonode:aedm_1 ...",
+      description: "Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao Desertificaçao",
       linkDocumentation: "http://google.com?anything=geonode:aedm_1",
       children: [
         {
@@ -557,12 +551,10 @@
       return array;
     };
 
-    showDescrition = (data) => {
-      $(".alternative-solution-description").remove();               
-      $('#container-description').css('visibility', 'visible');
-      $('#container-description-name').text(data.name ? data.name : '-');
-      $('#container-description-descrip').text(data.description ? data.description : '-');
-      $('#container-description-doc')
+    fillDescrition = (data) => {
+      $('#container-title-row-content').text(data.name ? data.name : '-');
+      $('#container-description-row-content').text(data.description ? data.description : '-');
+      $('#container-document-row-content')
         .attr("href", data.linkDocumentation ? data.linkDocumentation : '-');
     };
 
@@ -581,7 +573,7 @@
         source: new ol.source.OSM()
       });
 
-      const initialLayer = 'geonode:aedm_1';
+      const initialLayer = dataDesertificacao.imgName.split(':')[1];
       let rootLayer = new ol.layer.Image({
         source: new ol.source.ImageWMS({
           url: GEOSERVER_URL,
@@ -590,8 +582,6 @@
           serverType: "geoserver"
         })
       });
-
-      fillLegend(initialLayer);
 
       // TODO (refactoring) put the center parameters in a constant (Issue 4)
       let map = new ol.Map({
@@ -634,10 +624,13 @@
 
         fillLegend(choosenData.imgName);
         fillBreadcrumbs(choosenData);
-        showDescrition(choosenData);
+        fillDescrition(choosenData);
       });
 
       sunburst($("#chart")[0]);
+      fillLegend(initialLayer);
+      fillBreadcrumbs(dataDesertificacao);
+      fillDescrition(dataDesertificacao);
     });
 
   </script>
