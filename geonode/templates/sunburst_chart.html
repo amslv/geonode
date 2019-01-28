@@ -579,7 +579,7 @@
         source: new ol.source.OSM()
       });
 
-      const initialLayer = dataDesertificacao.imgName.split(':')[1];
+      const initialLayer = dataDesertificacao.imgName;
       let rootLayer = new ol.layer.Tile({
         source: new ol.source.TileWMS({
           url: GEOSERVER_URL,
@@ -639,11 +639,15 @@
       sunburst.onNodeClick(choosenData => {
         map.getLayers().clear();
         sunburst.focusOnNode(choosenData);
-        var layer1 = new ol.layer.Image({
-          source: new ol.source.ImageWMS({
+        let imgName = choosenData.imgName;
+        var layer1 = new ol.layer.Tile({
+          source: new ol.source.TileWMS({
             url: GEOSERVER_URL,
-            params: { LAYERS: choosenData.imgName },
-            ratio: 1,
+            params: {
+              'LAYERS': imgName,
+              'TILED': 'true'
+            },
+            ratio: 3, 
             serverType: "geoserver"
           })
         });
