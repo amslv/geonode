@@ -580,12 +580,12 @@
       });
 
       const initialLayer = dataDesertificacao.imgName.split(':')[1];
-      let rootLayer = new ol.layer.Image({
-        source: new ol.source.ImageWMS({
+      let rootLayer = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
           url: GEOSERVER_URL,
           params: {
-            LAYERS: initialLayer,
-            TILED: true
+            'LAYERS': initialLayer,
+            'TILED': 'true'
           },
           ratio: 3, 
           serverType: "geoserver"
@@ -598,7 +598,7 @@
         target: "map",
         view: new ol.View({
           center: [-4615573.515972, -794945.094166],
-          zoom: 4
+          zoom: 7
         })
       });
 
