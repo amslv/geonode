@@ -1474,10 +1474,10 @@ def layer_metadata_detail_rest(
     status_code = 200
 
     try:
-        response = { 'categoty': layer.category.description }
+        response = { 'abstract': layer.abstract }
     except Exception as e:
         logger.error('Failed to upload to ftp: ' + str(e))
-        response = { 'categoty': 'None' }        
+        response = { 'abstract': 'None' }        
 
     return HttpResponse(
             json.dumps(response),
