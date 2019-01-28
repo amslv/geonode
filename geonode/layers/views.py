@@ -1480,7 +1480,7 @@ def layer_metadata_detail_rest(
         response = { 'abstract': 'None' }        
 
     return HttpResponse(
-            json.dumps(response),
+            json.dumps(response, ensure_ascii=False),
             content_type='application/json',
             status=status_code)
 
