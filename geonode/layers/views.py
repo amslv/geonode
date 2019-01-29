@@ -1474,9 +1474,9 @@ def layer_metadata_detail_rest(
     status_code = 200
 
     try:
-        response = { 'abstract': layer.abstract }
+        response = { 'abstract': layer.abstract, 'title': layer.title }
     except Exception as e:
-        logger.error('Failed to upload to ftp: ' + str(e))
+        logger.error('Occur a error while creating a response' + str(e))
         response = { 'abstract': 'None' }        
 
     return HttpResponse(

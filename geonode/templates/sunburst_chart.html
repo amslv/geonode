@@ -200,6 +200,7 @@
     const DEFAULT_LAYER_OPACITY = 0.85;
 
     // (refactoring) TODO put in another file (Issue 6)
+    // TODO remove description (Issue 9)
     const dataDesertificacao = {
       name: "Desertificação",
       color: "level_one_desertif_color",
@@ -558,11 +559,19 @@
       return array;
     };
 
-    fillDescrition = (data) => {
-      $('#container-title-row-content').text(data.name ? data.name : '-');
-      $('#container-description-row-content').text(data.description ? data.description : '-');
-      $('#container-document-row-content')
-        .attr("href", data.linkDocumentation ? data.linkDocumentation : '-');
+    fillDescrition = (data) => {      
+      $('#container-document-row-content').attr("href", data.linkDocumentation ? data.linkDocumentation : '-');
+
+      let url = window.location.hostname + '/layers/' + data.imgName + '/metadata_detail_rest';
+      $.get(url)
+      .done(function (data) {
+        $('#container-title-row-content').text(data.title);
+        $('#container-description-row-content').text(data.abstract);
+      })
+      .fail(function (error) {
+        $('#container-title-row-content').text(data.name ? data.name : '-');
+        $('#container-description-row-content').text('Sem descrição');
+      });
     };
 
     createLayer = (imgName) => {      
