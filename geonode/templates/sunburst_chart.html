@@ -195,8 +195,9 @@
   <script src="https://cdn.jsdelivr.net/npm/ol-geocoder"></script>  
 
   <script type="text/javascript">
-    // (refactoring) TODO this constants must be setted in another file (Issue 3)
+    // (refactoring) TODO this constants must be setted in another file (Issue 3)    
     const GEOSERVER_URL = 'http://150.165.85.24/geoserver/ows/';
+    const DEFAULT_LAYER_OPACITY = 0.85;
 
     // (refactoring) TODO put in another file (Issue 6)
     const dataDesertificacao = {
@@ -564,6 +565,22 @@
         .attr("href", data.linkDocumentation ? data.linkDocumentation : '-');
     };
 
+    createLayer = (imgName) => {      
+      return new ol.layer.Tile({
+          opacity: DEFAULT_LAYER_OPACITY,
+          visible: true,
+          source: new ol.source.TileWMS({
+            url: GEOSERVER_URL,
+            params: {
+              'LAYERS': imgName,
+              'TILED': 'true'
+            },
+            ratio: 3,             
+            serverType: "geoserver"
+          })
+        });
+    }
+
     let calculateChartSize = () => {
       const DEFAULT_PERCENT_SIZE = 0.9;
       const DEFAULT_SIZE = 400;
@@ -579,18 +596,8 @@
         source: new ol.source.OSM()
       });
 
-      const initialLayer = dataDesertificacao.imgName;
-      let rootLayer = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-          url: GEOSERVER_URL,
-          params: {
-            'LAYERS': initialLayer,
-            'TILED': 'true'
-          },
-          ratio: 3, 
-          serverType: "geoserver"
-        })
-      });
+      const initialImgNameLayer = dataDesertificacao.imgName;
+      let rootLayer = createLayer(initialImgNameLayer);
 
       // TODO (refactoring) put the center parameters in a constant (Issue 4)
       let map = new ol.Map({
@@ -613,9 +620,9 @@
 
       geocoder.on('addresschosen', function (evt) {
         var feature = evt.feature,
-          coord = evt.coordinate,
-          address = evt.address;
-        content.innerHTML = '<p>' + address.date + '</p>';
+        coord = evt.coordinate,
+        address = evt.address;
+        // content.innerHTML = '<p>' + address.date + '</p>';
         overlay.setPosition(coord);
       });
 
@@ -640,17 +647,7 @@
         map.getLayers().clear();
         sunburst.focusOnNode(choosenData);
         let imgName = choosenData.imgName;
-        var layer1 = new ol.layer.Tile({
-          source: new ol.source.TileWMS({
-            url: GEOSERVER_URL,
-            params: {
-              'LAYERS': imgName,
-              'TILED': 'true'
-            },
-            ratio: 3, 
-            serverType: "geoserver"
-          })
-        });
+        var layer1 = createLayer(imgName);
         map.addLayer(defaultL);
         map.addLayer(layer1);
 
@@ -660,7 +657,7 @@
       });
 
       sunburst($("#chart")[0]);
-      fillLegend(initialLayer);
+      fillLegend(initialImgNameLayer);
       fillBreadcrumbs(dataDesertificacao);
       fillDescrition(dataDesertificacao);
     });
