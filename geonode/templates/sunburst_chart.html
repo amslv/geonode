@@ -623,16 +623,12 @@
         lang: 'pt-BR',
         placeholder: 'Procurar por ...',
         targetType: 'glass-button',
-        limit: 3,
+        limit: 2,
         keepOpen: true
       });
 
       geocoder.on('addresschosen', function (evt) {
-        var feature = evt.feature,
-        coord = evt.coordinate,
-        address = evt.address;
-        // content.innerHTML = '<p>' + address.date + '</p>';
-        overlay.setPosition(coord);
+        map.getView().animate({ zoom: 12, center: evt.coordinate });
       });
 
       map.addControl(geocoder);  
