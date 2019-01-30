@@ -5454,22 +5454,21 @@
       allSlices.selectAll('text.path-label').select('textPath.text-stroke');
 
       allSlices.selectAll('text.path-label').selectAll('textPath').text(function (d) {
-        var value = nameOf(d.data);
-        var deltaAngle = state.angleScale(d.x1) - state.angleScale(d.x0);
-        var r = Math.max(0, (state.radiusScale(d.y0) + state.radiusScale(d.y1)) / 2);
-        var perimeter = r * deltaAngle;
+        // var value = nameOf(d.data);
+        // var deltaAngle = state.angleScale(d.x1) - state.angleScale(d.x0);
+        // var r = Math.max(0, (state.radiusScale(d.y0) + state.radiusScale(d.y1)) / 2);
+        // var perimeter = r * deltaAngle;
 
-        var perimeterNormalized = perimeter * 2 - 2;
-        var name = nameOf(d.data).toString();
-        var nameSize = name.length;
+        // var perimeterNormalized = perimeter * 2 - 2;
+        // var name = nameOf(d.data).toString();
+        // var nameSize = name.length;
 
-        const DOTS = '...';
-        const REDUCE_DOTS_IN_WORD_LESS_LIMIT = DOTS.length + 3;
-        if (nameSize > perimeterNormalized) {
-          name = name.substring(0, perimeterNormalized - REDUCE_DOTS_IN_WORD_LESS_LIMIT) + DOTS; 
-        }
-
-        return name;
+        // const DOTS = '...';
+        // const REDUCE_DOTS_IN_WORD_LESS_LIMIT = DOTS.length + 3;
+        // if (nameSize > perimeterNormalized) {
+        //   name = name.substring(0, perimeterNormalized - REDUCE_DOTS_IN_WORD_LESS_LIMIT) + DOTS; 
+        // }
+        return nameOf(d.data);
       });
 
       function middleArcLine(d) {
@@ -5491,12 +5490,11 @@
       }
 
       function textFits(d) {
-        // Old implementation
-        // var deltaAngle = state.angleScale(d.x1) - state.angleScale(d.x0);
-        // var r = Math.max(0, (state.radiusScale(d.y0) + state.radiusScale(d.y1)) / 2);
-        // var perimeter = r * deltaAngle;
-        // var value = nameOf(d.data).toString().length * CHAR_PX < perimeter;
-        return true;
+        var deltaAngle = state.angleScale(d.x1) - state.angleScale(d.x0);
+        var r = Math.max(0, (state.radiusScale(d.y0) + state.radiusScale(d.y1)) / 2);
+        var perimeter = r * deltaAngle;
+        var value = nameOf(d.data).toString().length * CHAR_PX < perimeter;
+        return value;
       }
 
       function getNodeStack(d) {
