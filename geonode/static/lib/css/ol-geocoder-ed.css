@@ -24,11 +24,12 @@
 }
 
 .ol-geocoder .gcd-gl-input {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    color: #222;
+    background-color: #bfbfbf;
+    border: 1px solid #bfbfbf;
+    color: #222 !important;
     font-family: inherit;
     font-size: .875em;
+    font-weight: bold;
     left: 2.5em;
     padding: 5px;
     position: absolute;
@@ -39,7 +40,7 @@
 
 .ol-geocoder .gcd-gl-input:focus {
     border: none;
-    box-shadow: inset 0 0 0 1px #4d90fe, inset 0 0 5px #4d90fe;
+    box-shadow: inset 0 0 0 1px #676880, inset 0 0 5px #676880;
     outline: none
 }
 
