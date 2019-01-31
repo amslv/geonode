@@ -218,7 +218,10 @@ var dataDesertificacao = {
                 name: "ONG's Dedicadas ao Desenvolvimento Rural Sustentável",
                 color: "level_four_sociedade_civil_color",
                 labelColor: "black", 
+<<<<<<< HEAD
                 level: 4,   
+=======
+>>>>>>> sunburst-integration-indices
                 imgName: "geonode:nong",                        
                 size: 3.3
               },
@@ -226,7 +229,10 @@ var dataDesertificacao = {
                 name: "Famílias Atendidas com Tecnologias Sociais de Acesso à Água",
                 color: "level_four_sociedade_civil_color",
                 labelColor: "black",     
+<<<<<<< HEAD
                 level: 4,   
+=======
+>>>>>>> sunburst-integration-indices
                 imgName: "geonode:dtsaa_nmin",  
                 size: 3.3
               }
@@ -244,7 +250,10 @@ var dataDesertificacao = {
                 name: "Organizações Governamentais e Instituições de Pesquisa Dedicadas ao Desenvolvimento Rural Sustentável",
                 color: "level_four_poder_publico_color",
                 labelColor: "black", 
+<<<<<<< HEAD
                 level: 4,   
+=======
+>>>>>>> sunburst-integration-indices
                 imgName: "geonode:nogip",                        
                 size: 3.3
               },
@@ -252,7 +261,10 @@ var dataDesertificacao = {
                 name: "Programas Dedicados ao Desenvolvimento Rural Sustentável",
                 color: "level_four_poder_publico_color",
                 labelColor: "black",     
+<<<<<<< HEAD
                 level: 4,   
+=======
+>>>>>>> sunburst-integration-indices
                 imgName: "geonode:npdrs",  
                 size: 3.3
               },
@@ -260,7 +272,10 @@ var dataDesertificacao = {
                 name: "Variação das Transferências de Renda",
                 color: "level_four_poder_publico_color",
                 labelColor: "black", 
+<<<<<<< HEAD
                 level: 4,   
+=======
+>>>>>>> sunburst-integration-indices
                 imgName: "geonode:vptr_1",                        
                 size: 3.3
               },
@@ -268,7 +283,10 @@ var dataDesertificacao = {
                 name: "Proteção por Unidade de Conservação",
                 color: "level_four_poder_publico_color",
                 labelColor: "black",     
+<<<<<<< HEAD
                 level: 4,   
+=======
+>>>>>>> sunburst-integration-indices
                 imgName: "geonode:npuc",  
                 size: 3.3
               }                
