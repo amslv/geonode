@@ -8,7 +8,7 @@ var dataDesertificacao = {
         name: "Estado",
         color: "level_two_color",
         labelColor: "black",           
-        imgName: "geonode:dprur",
+        imgName: "",
         size: 2,
         children: [
           {
@@ -16,7 +16,7 @@ var dataDesertificacao = {
             color: "level_three_estado_color",
             labelColor: "white",                  
             size: 3.3,
-            imgName: "geonode:aernp",
+            imgName: "",
             children: [
               {                  
                 name: "Indice de Aridez",
@@ -60,7 +60,7 @@ var dataDesertificacao = {
             color: "level_three_estado_color",
             labelColor: "white",               
             size: 3.3,
-            imgName: "geonode:afagp_1",
+            imgName: "",
             children: [
               {
                 name: "Renda Per Capita Rural",
@@ -90,7 +90,7 @@ var dataDesertificacao = {
             color: "level_three_estado_color",
             labelColor: "white",               
             size: 3.3,
-            imgName: "geonode:analf",
+            imgName: "",
             children: [
               {
                 name: "Densidade de População Rural",
@@ -114,7 +114,7 @@ var dataDesertificacao = {
         name: "Força Motriz",
         color: "level_two_color",
         labelColor: "black",          
-        imgName: "geonode:rpcr",
+        imgName: "",
         size: 2,
         children: [
           {
@@ -122,14 +122,14 @@ var dataDesertificacao = {
             color: "level_three_forca_motriz_color",
             labelColor: "white",                                     
             size: 3.3,
-            imgName: "geonode:dprur",
+            imgName: "",
             children: [
               {
                 name:
                   "Área dos Estabelecimentos Rurais Menores que o Módulo Fiscal",
                 color: "level_four_condicao_terra_color",
                 labelColor: "black",                     
-                imgName: "", 
+                imgName: "geonode:aemmf_2", 
                 size: 3.3
               },
               {
@@ -137,7 +137,7 @@ var dataDesertificacao = {
                   "Área dos Estabelecimentos Rurais Sob Regime de Não Propriedade",
                 color: "level_four_condicao_terra_color",
                 labelColor: "black",                     
-                imgName: "",  
+                imgName: "geonode:aernp",  
                 size: 3.3
               }
             ]
@@ -146,8 +146,7 @@ var dataDesertificacao = {
             name: "Influência da População Urbana",
             color: "level_three_forca_motriz_color",
             labelColor: "white",                 
-            imgName: "geonode:dtsaa_nmin",
-            imgName: "",  
+            imgName: "geonode:COMPRESSED_INF_POP",
             size: 3.3
           },
           {
@@ -155,20 +154,20 @@ var dataDesertificacao = {
             color: "level_three_forca_motriz_color",
             labelColor: "white",                 
             size: 3.3,
-            imgName: "geonode:nogip",
+            imgName: "",
             children: [
               {
                 name: "Analfabetismo no Campo",
                 color: "level_four_influencia_social_campo_color",
                 labelColor: "white", 
-                imgName: "",                        
+                imgName: "geonode:analf",                        
                 size: 3.3
               },
               {
                 name: "População Rural Abaixo da Linha de Pobreza",
                 color: "level_four_influencia_social_campo_color",
                 labelColor: "white",     
-                imgName: "",  
+                imgName: "geonode:pralp",  
                 size: 3.3
               }
             ]
@@ -179,14 +178,14 @@ var dataDesertificacao = {
         name: "Respostas",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:nong",
+        imgName: "",
         size: 2,
         children: [
           {
             name: "Organização da Sociedade Civil",
             color: "level_three_resposta_color",
             labelColor: "white",                      
-            imgName: "level_four_sociedade_civil_color", 
+            imgName: "", 
             size: 2,
             children: [
               {
@@ -248,7 +247,7 @@ var dataDesertificacao = {
         name: "Impacto",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:npdrs",
+        imgName: "",
         size: 5,
         children: [
           {
@@ -271,7 +270,7 @@ var dataDesertificacao = {
         name: "Pressão",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:npuc",
+        imgName: "",
         size: 2,
         children: [
           {
@@ -279,7 +278,7 @@ var dataDesertificacao = {
             color: "level_three_pressao_color",
             labelColor: "black",                    
             size: 7,
-            imgName: "geonode:pralp",
+            imgName: "",
             children: [
               {
                 name: "Avanço da Fronteira Agropecuária",
@@ -302,7 +301,7 @@ var dataDesertificacao = {
             color: "level_three_pressao_color",
             labelColor: "black",               
             size: 5,
-            imgName: "geonode:rctf2006mm",
+            imgName: "",
             children: [
               {
                 name: "Carga Animal Excessiva",
