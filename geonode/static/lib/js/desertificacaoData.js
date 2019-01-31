@@ -29,28 +29,28 @@ var dataDesertificacao = {
                 name: "Indice de Seca",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
-                imgName: "",                    
+                imgName: "geonode:compressed_spi",                    
                 size: 3.3
               },
               {
                 name: "Cobertura Vegetal",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",                     
-                imgName: "",
+                imgName: "geonode:COMPRESSED_COBERTURA_VEGETAL",
                 size: 3.3
               },
               {
                 name: "Grau de Fertilidade do Solo",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",                     
-                imgName: "",
+                imgName: "geonode:gfsol_nmin_compress_2",
                 size: 3.3
               },
               {
                 name: "Risco de Erosão Hidrica",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",   
-                imgName: "",               
+                imgName: "geonode:COMPRESSED_PNE_",               
                 size: 3.3
               }
             ]
@@ -66,14 +66,14 @@ var dataDesertificacao = {
                 name: "Renda Per Capita Rural",
                 color: "level_four_condicao_economica_color",
                 labelColor: "white",              
-                imgName: "",
+                imgName: "geonode:rpcr",
                 size: 3.3
               },
               {
                 name: "Produtividade do Feijão",
                 color: "level_four_condicao_economica_color", 
                 labelColor: "white",                 
-                imgName: "",
+                imgName: "geonode:rctf2006mm",
                 size: 3.3
               },
               {
@@ -96,14 +96,14 @@ var dataDesertificacao = {
                 name: "Densidade de População Rural",
                 color: "level_four_condicao_social_color",
                 labelColor: "white",  
-                imgName: "",                    
+                imgName: "geonode:dprur",                    
                 size: 3.3
               },
               {
                 name: "Estabelecimentos Rurais Dirigidos por Mulheres",
                 color: "level_four_condicao_social_color",
                 labelColor: "white",
-                imgName: "",
+                imgName: "geonode:aedm_1",
                 size: 3.3
               }
             ]
