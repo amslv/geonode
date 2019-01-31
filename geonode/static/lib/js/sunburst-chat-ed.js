@@ -6,6 +6,8 @@
 
   var xhtml = "http://www.w3.org/1999/xhtml";
 
+  var focusOnNodeGlobal;
+
   var namespaces = {
     svg: "http://www.w3.org/2000/svg",
     xhtml: xhtml,
@@ -5254,6 +5256,7 @@
         }, triggerUpdate: false },
       focusOnNode: {
         onChange: function onChange(d, state) {
+          focusOnNodeGlobal = state.focusOnNode;
           if (d && state.initialised) {
             moveStackToFront(d.__dataNode);
           }
@@ -5446,31 +5449,35 @@
 
       allSlices.select('.path-label').transition(transition$$1).styleTween('display', function (d) {
         return function () {
-          return state.showLabels && textFits(d) ? null : 'none';
+          // return state.showLabels && textFits(d) ? null : 'none';
+          return null;
         };
       });
 
-      // TODO Refactor this
       // Ensure propagation of data to children
       allSlices.selectAll('text.path-label').select('textPath.text-contour');
       allSlices.selectAll('text.path-label').select('textPath.text-stroke');
 
-      allSlices.selectAll('text.path-label').selectAll('textPath').text(function (d) {
-        // var value = nameOf(d.data);
-        // var deltaAngle = state.angleScale(d.x1) - state.angleScale(d.x0);
-        // var r = Math.max(0, (state.radiusScale(d.y0) + state.radiusScale(d.y1)) / 2);
-        // var perimeter = r * deltaAngle;
+      allSlices.selectAll('text.path-label').selectAll('textPath').text(function (d, x, y) {
+        let levelSun = focusOnNodeGlobal != null ? focusOnNodeGlobal.level : 1;
+        let name = nameOf(d.data);
+        let dataLevel = d.data.level != null ? d.data.level : 0;
+        if (levelSun == 1 && dataLevel == 4) {
+          return '...';
+        }
 
-        // var perimeterNormalized = perimeter * 2 - 2;
-        // var name = nameOf(d.data).toString();
-        // var nameSize = name.length;
+        const MAX_TEXT_SIZE = 30;
+        let indice = dataLevel - levelSun;
+        let indiceReduction = indice * 2;
+        let reductionSize = MAX_TEXT_SIZE / indiceReduction;
+        let nameNormalized = name.substring(0, reductionSize); 
 
-        // const DOTS = '...';
-        // const REDUCE_DOTS_IN_WORD_LESS_LIMIT = DOTS.length + 3;
-        // if (nameSize > perimeterNormalized) {
-        //   name = name.substring(0, perimeterNormalized - REDUCE_DOTS_IN_WORD_LESS_LIMIT) + DOTS; 
-        // }
-        return nameOf(d.data);
+        let diffSizeName = Math.abs(nameNormalized.length - name.length);
+        if (diffSizeName != null && diffSizeName > 0) {          
+          nameNormalized += '.'.repeat(Math.min(3, diffSizeName));
+        }
+
+        return nameNormalized;
       });
 
       function middleArcLine(d) {
