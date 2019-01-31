@@ -22,7 +22,7 @@ var dataDesertificacao = {
             imgName: "",
             children: [
               {                  
-                name: "Indice de Aridez",
+                name: "Índice de Aridez",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",
                 imgName: "",
@@ -30,7 +30,7 @@ var dataDesertificacao = {
                 size: 5
               },
               {
-                name: "Indice de Seca",
+                name: "Índice de Seca",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
                 level: 4,                 
@@ -40,7 +40,8 @@ var dataDesertificacao = {
               {
                 name: "Cobertura Vegetal",
                 color: "level_four_condicao_ambiental_color",
-                labelColor: "black",                     
+                labelColor: "black",    
+                imgName: "geonode:COMPRESSED_COBERTURA_VEGETAL",                 
                 level: 4,
                 size: 5
               },
@@ -54,7 +55,7 @@ var dataDesertificacao = {
                 size: 3.3
               },
               {
-                name: "Risco de Erosão Hidrica",
+                name: "Risco de Erosão Hídrica",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",   
                 level: 4,          
@@ -279,7 +280,7 @@ var dataDesertificacao = {
         name: "Impacto",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:npdrs",
+        imgName: "",
         level: 2,
         size: 5,
         children: [
