@@ -1123,6 +1123,8 @@
     level_four_condicao_social_color: 0x61504b,
     level_four_condicao_economica_color: 0xed3237,
     level_four_condicao_ambiental_color: 0xfaab33,
+    level_four_poder_publico_color: 0xecc5a4,
+    level_four_sociedade_civil_color: 0xd1c0a9,
     
     aliceblue: 0xf0f8ff,
     antiquewhite: 0xfaebd7,
