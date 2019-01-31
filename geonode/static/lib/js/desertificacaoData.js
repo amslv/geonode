@@ -9,7 +9,7 @@ var dataDesertificacao = {
         name: "Estado",
         color: "level_two_color",
         labelColor: "black",           
-        imgName: "geonode:dprur",
+        imgName: "",
         size: 2,
         level: 2,
         children: [
@@ -18,8 +18,8 @@ var dataDesertificacao = {
             color: "level_three_estado_color",
             labelColor: "white",                  
             size: 10,
-            imgName: "geonode:aernp",
             level: 3,
+            imgName: "",
             children: [
               {                  
                 name: "Indice de Aridez",
@@ -33,15 +33,14 @@ var dataDesertificacao = {
                 name: "Indice de Seca",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
-                imgName: "",   
                 level: 4,                 
+                imgName: "geonode:compressed_spi",                    
                 size: 3.3
               },
               {
                 name: "Cobertura Vegetal",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",                     
-                imgName: "",
                 level: 4,
                 size: 5
               },
@@ -49,17 +48,18 @@ var dataDesertificacao = {
                 name: "Grau de Fertilidade do Solo",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",                     
-                imgName: "",
                 level: 4,
-                size: 5
+                size: 5,
+                imgName: "geonode:gfsol_nmin_compress_2",
+                size: 3.3
               },
               {
                 name: "Risco de Erosão Hidrica",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",   
-                imgName: "",     
                 level: 4,          
-                size: 5
+                size: 5,
+                imgName: "geonode:COMPRESSED_PNE_",               
               }
             ]
           },
@@ -69,23 +69,23 @@ var dataDesertificacao = {
             labelColor: "white",               
             size: 10,
             level: 3,
-            imgName: "geonode:afagp_1",
+            imgName: "",
             children: [
               {
                 name: "Renda Per Capita Rural",
                 color: "level_four_condicao_economica_color",
                 labelColor: "white",              
                 level: 4,                          
-                imgName: "",
-                size: 5
+                size: 5,
+                imgName: "geonode:rpcr",
               },
               {
                 name: "Produtividade do Feijão",
                 color: "level_four_condicao_economica_color", 
                 labelColor: "white", 
                 level: 4,                   
-                imgName: "",
-                size: 5
+                size: 5,
+                imgName: "geonode:rctf2006mm",
               },
               {
                 name: "Produtividade do Milho",
@@ -103,23 +103,23 @@ var dataDesertificacao = {
             labelColor: "white",    
             level: 3,             
             size: 10,
-            imgName: "geonode:analf",
+            imgName: "",
             children: [
               {
                 name: "Densidade de População Rural",
                 color: "level_four_condicao_social_color",
                 labelColor: "white",  
                 level: 4,   
-                imgName: "",                    
-                size: 5
+                size: 5,
+                imgName: "geonode:dprur",                    
               },
               {
                 name: "Estabelecimentos Rurais Dirigidos por Mulheres",
                 color: "level_four_condicao_social_color",
                 labelColor: "white",
                 level: 4,   
-                imgName: "",
-                size: 5
+                size: 5,
+                imgName: "geonode:aedm_1",
               }
             ]
           }
@@ -129,8 +129,8 @@ var dataDesertificacao = {
         name: "Força Motriz",
         color: "level_two_color",
         labelColor: "black",          
-        imgName: "geonode:rpcr",
         level: 2,
+        imgName: "",
         size: 2,
         children: [
           {
@@ -139,7 +139,7 @@ var dataDesertificacao = {
             labelColor: "white",        
             level: 3,                                
             size: 10,
-            imgName: "geonode:dprur",
+            imgName: "",
             children: [
               {
                 name:
@@ -147,7 +147,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_terra_color",
                 labelColor: "black",                     
                 level: 4,   
-                imgName: "", 
+                imgName: "geonode:aemmf_2", 
                 size: 3.3
               },
               {
@@ -156,7 +156,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_terra_color",
                 labelColor: "black",                     
                 level: 4,   
-                imgName: "",  
+                imgName: "geonode:aernp",  
                 size: 3.3
               }
             ]
@@ -166,9 +166,8 @@ var dataDesertificacao = {
             color: "level_three_forca_motriz_color",
             labelColor: "white",              
             level: 3,      
-            imgName: "geonode:dtsaa_nmin",
-            imgName: "",  
-            size: 14
+            size: 14,
+            imgName: "geonode:COMPRESSED_INF_POP",
           },
           {
             name: "Desigualdade Social no Campo",
@@ -176,14 +175,14 @@ var dataDesertificacao = {
             labelColor: "white",           
             level: 3,         
             size: 10,
-            imgName: "geonode:nogip",
+            imgName: "",
             children: [
               {
                 name: "Analfabetismo no Campo",
                 color: "level_four_influencia_social_campo_color",
                 labelColor: "white", 
                 level: 4,   
-                imgName: "",                        
+                imgName: "geonode:analf",                        
                 size: 3.3
               },
               {
@@ -191,7 +190,7 @@ var dataDesertificacao = {
                 color: "level_four_influencia_social_campo_color",
                 labelColor: "white",     
                 level: 4,   
-                imgName: "",  
+                imgName: "geonode:pralp",  
                 size: 3.3
               }
             ]
@@ -202,17 +201,17 @@ var dataDesertificacao = {
         name: "Respostas",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:nong",
         level: 2,
+        imgName: "",
         size: 2,
         children: [
           {
             name: "Organização da Sociedade Civil",
             color: "level_three_resposta_color",
             labelColor: "white",                      
-            imgName: "level_four_sociedade_civil_color", 
             level: 3,   
             size: 10,
+            imgName: "", 
             children: [
               {
                 name: "ONG's Dedicadas ao Desenvolvimento Rural Sustentável",
@@ -289,16 +288,16 @@ var dataDesertificacao = {
             color: "level_three_impacto_color",
             labelColor: "white",        
             level: 3,   
-            imgName: "",            
-            size: 14
+            size: 14,
+            imgName: "geonode:vpr_10",            
           },
           {
             name: "Variação da Participação da Agropecuária no PIB",
             color: "level_three_impacto_color",
             labelColor: "white",                
             level: 3,   
-            imgName: "",  
-            size: 14
+            size: 14,
+            imgName: "geonode:vvaamm",  
           }
         ]
       },
@@ -306,7 +305,7 @@ var dataDesertificacao = {
         name: "Pressão",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:npuc",
+        imgName: "",
         size: 2,
         level: 2,
         children: [
@@ -316,14 +315,14 @@ var dataDesertificacao = {
             labelColor: "black",    
             level: 3,                   
             size: 10,
-            imgName: "geonode:pralp",
+            imgName: "",
             children: [
               {
                 name: "Avanço da Fronteira Agropecuária",
                 color: "level_four_pressao_desmatamento_campo_color",
                 labelColor: "black",                       
                 level: 4,   
-                imgName: "geonode:vpr_10",
+                imgName: "geonode:afagp_1",
                 size: 3.3
               },
               {
@@ -331,7 +330,8 @@ var dataDesertificacao = {
                 color: "level_four_pressao_desmatamento_campo_color",
                 labelColor: "black",    
                 level: 4,                       
-                imgName: "geonode:rpcr",
+                labelColor: "black",                        
+                imgName: "",
                 size: 3.3
               }
             ]
@@ -342,14 +342,14 @@ var dataDesertificacao = {
             labelColor: "black",             
             level: 3,     
             size: 10,
-            imgName: "geonode:rctf2006mm",
+            imgName: "",
             children: [
               {
                 name: "Carga Animal Excessiva",
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",
                 level: 4,   
-                imgName: "",                        
+                imgName: "geonode:uapha",                        
                 size: 3.3
               },
               {
@@ -357,7 +357,7 @@ var dataDesertificacao = {
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",   
                 level: 4,       
-                imgName: "",                
+                imgName: "geonode:COMPRESSED_INCENDIO",                
                 size: 3.3
               }
             ]
