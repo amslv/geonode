@@ -255,14 +255,14 @@ var dataDesertificacao = {
             name: "Taxa de Migração do Campo para a Cidade",
             color: "level_three_impacto_color",
             labelColor: "white",        
-            imgName: "",            
+            imgName: "geonode:vpr_10",            
             size: 3.3
           },
           {
             name: "Variação da Participação da Agropecuária no PIB",
             color: "level_three_impacto_color",
             labelColor: "white",                
-            imgName: "",  
+            imgName: "geonode:vvaamm",  
             size: 3.3
           }
         ]
@@ -285,14 +285,14 @@ var dataDesertificacao = {
                 name: "Avanço da Fronteira Agropecuária",
                 color: "level_four_pressao_desmatamento_campo_color",
                 labelColor: "black",                       
-                imgName: "geonode:vpr_10",
+                imgName: "geonode:afagp_1",
                 size: 3.3
               },
               {
                 name: "Mudança da Cobertura Vegetal",
                 color: "level_four_pressao_desmatamento_campo_color",
                 labelColor: "black",                        
-                imgName: "geonode:rpcr",
+                imgName: "",
                 size: 3.3
               }
             ]
@@ -308,14 +308,14 @@ var dataDesertificacao = {
                 name: "Carga Animal Excessiva",
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",
-                imgName: "",                        
+                imgName: "geonode:uapha",                        
                 size: 3.3
               },
               {
                 name: "Recorrência de Incêndio",
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",       
-                imgName: "",                
+                imgName: "geonode:COMPRESSED_INCENDIO",                
                 size: 3.3
               }
             ]
