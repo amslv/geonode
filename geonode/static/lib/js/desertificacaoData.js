@@ -11,7 +11,7 @@ var dataDesertificacao = {
         name2: "Estado",
         color: "level_two_color",
         labelColor: "black",           
-        imgName: "",
+        imgName: "geonode:ESTADO_COMPRESSED",
         size: 2,
         level: 2,
         children: [
@@ -148,7 +148,7 @@ var dataDesertificacao = {
         color: "level_two_color",
         labelColor: "black",          
         level: 2,
-        imgName: "",
+        imgName: "geonode:FORCA_MOTRIZ_COMPRESSED",
         size: 2,
         children: [
           {
@@ -226,7 +226,7 @@ var dataDesertificacao = {
         color: "level_two_color",
         labelColor: "black",              
         level: 2,
-        imgName: "",
+        imgName: "geonode:RESPOSTA_COMPRESSED",
         size: 2,
         children: [
           {
@@ -312,7 +312,7 @@ var dataDesertificacao = {
         name2: "Impacto",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "",
+        imgName: "geonode:IMPACTO_COMPRESSED",
         level: 2,
         size: 5,
         children: [
