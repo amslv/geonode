@@ -171,7 +171,7 @@ var dataDesertificacao = {
               },
               {
                 name: "Área dos Estabelecimentos Rurais Sob Regime de Não Propriedade",
-                name2: "AERNP - Área dos estabelecimentos rurais sob regime de não propriedade",
+                name2: "Área dos estabelecimentos rurais sob regime de não propriedade",
                 color: "level_four_condicao_terra_color",
                 labelColor: "black",                     
                 level: 4,   
