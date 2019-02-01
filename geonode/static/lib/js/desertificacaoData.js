@@ -39,7 +39,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
                 level: 4,                 
-                imgName: "geonode:compressed_spi",                    
+                imgName: "geonode:spi",
                 size: 3.3
               },
               {
@@ -55,7 +55,7 @@ var dataDesertificacao = {
                 name: "Grau de Fertilidade do Solo",
                 name2: "Grau de Fertilidade do Solo",
                 color: "level_four_condicao_ambiental_color",
-                labelColor: "black",                     
+                labelColor: "black",
                 level: 4,
                 size: 5,
                 imgName: "geonode:gfsol_nmin_compress_2",
