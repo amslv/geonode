@@ -398,7 +398,7 @@ var dataDesertificacao = {
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",   
                 level: 4,       
-                imgName: "geonode:COMPRESSED_INCENDIO",                
+                imgName: "geonode:INCENDIO_JPEG_result",                
                 size: 3.3
               }
             ]

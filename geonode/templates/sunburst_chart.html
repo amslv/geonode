@@ -227,7 +227,7 @@
         </div>
         -->
       </div>
-      <div class="container-legend">
+      <div id="container-legend" class="container-legend">
         <label>Legenda </label>
         <img id="legend-image">
       </div>
@@ -260,10 +260,18 @@
     }
 
     fillLegend = (imgName) => {
+      let legendContainerElement = $('#container-legend')
+      
+      if (imgName == null || imgName === '') {
+        legendContainerElement.css("visibility", "hidden");
+      } else {
+        legendContainerElement.css("visibility", "visible");
+      }
       const urlSufix = '?service=wms&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=' + imgName;
       
       const url = GEOSERVER_URL + urlSufix;
-      $('#legend-image').attr("src", url);
+      let legendElement = $('#legend-image');
+      legendElement.attr("src", url);
     }
 
     fillBreadcrumbs = (data) => {
