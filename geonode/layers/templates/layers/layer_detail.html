@@ -553,6 +553,13 @@
       </div>
     </div>
 
+    <li class="list-group-item">
+      <h4 class="list-group-item-heading">{%trans "Legend" %}</h4>
+      <p>{{ style.sld_title }}</p>
+        <p><img id="legend_icon" src="{{ GEOSERVER_BASE_URL }}ows/?service=wms&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer={{ resource.name }}"></p>
+      <div id='legend_placeholder'></div>
+    </li>    
+<!-- 
     {% if resource.get_legend %}
     <li class="list-group-item">
       <h4 class="list-group-item-heading">{%trans "Legend" %}</h4>
@@ -568,6 +575,7 @@
       {% endif %}
     </li>
     {% endif %}
+-->
     <!-- REMOVENDO ".. using this layer"
     <li class="list-group-item">
       <h4>{% trans "Maps using this layer" %}</h4>
