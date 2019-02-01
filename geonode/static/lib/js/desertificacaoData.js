@@ -29,7 +29,7 @@ var dataDesertificacao = {
                 name2: "Índice de Aridez",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",
-                imgName: "",
+                imgName: "geonode:ind_arid_result",
                 level: 4,
                 size: 5
               },
@@ -341,7 +341,7 @@ var dataDesertificacao = {
         name2: "Pressão",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "",
+        imgName: "geonode:PRESSAO_COMPRESSED",
         size: 2,
         level: 2,
         children: [
@@ -370,7 +370,7 @@ var dataDesertificacao = {
                 labelColor: "black",    
                 level: 4,                       
                 labelColor: "black",                        
-                imgName: "",
+                imgName: "geonode:COMPRESSED_COBERTURA_VEGETAL",
                 size: 3.3
               }
             ]
