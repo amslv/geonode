@@ -162,11 +162,11 @@ var dataDesertificacao = {
             children: [
               {
                 name: "Área dos Estabelecimentos Rurais Menores que o Módulo Fiscal",
-                name2: "",
+                name2: "Área dos estabelecimentos fiscais menores que o módulo fiscal",
                 color: "level_four_condicao_terra_color",
                 labelColor: "black",                     
                 level: 4,   
-                imgName: "geonode:aemmf_2", 
+                imgName: "geonode:aemmf2", 
                 size: 3.3
               },
               {

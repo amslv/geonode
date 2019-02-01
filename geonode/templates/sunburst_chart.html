@@ -279,7 +279,7 @@
 
     getNameArray = (data, array) => {
       array = array || [];
-      array.push(data.data.name);
+      array.push(data.data.name2);
       if (data.parent) getNameArray(data.parent, array);
       return array;
     };
@@ -292,7 +292,7 @@
         $('#container-description-row-content').text(data.abstract);
       })
       .fail(function (error) {
-        $('#container-title-row-content').text(data.name ? data.name : '-');
+        $('#container-title-row-content').text(data.name2 ? data.name2 : '-');
         $('#container-description-row-content').text('Sem descrição');
       });
     };
