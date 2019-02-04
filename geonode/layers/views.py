@@ -27,6 +27,7 @@ import traceback
 import uuid
 import decimal
 import re
+import json
 
 from django.db.models import Q
 from celery.exceptions import TimeoutError
@@ -1459,6 +1460,29 @@ def layer_metadata_detail(
         "group": group,
         'SITEURL': site_url
     })
+
+def layer_metadata_detail_rest(
+        request,
+        layername):
+
+    layer = _resolve_layer(
+        request,
+        layername,
+        'view_resourcebase',
+        _PERMISSION_MSG_METADATA)
+
+    status_code = 200
+
+    try:
+        response = { 'abstract': layer.abstract, 'title': layer.title }
+    except Exception as e:
+        logger.error('Occur a error while creating a response' + str(e))
+        response = { 'abstract': 'None' }        
+
+    return HttpResponse(
+            json.dumps(response, ensure_ascii=False),
+            content_type='application/json',
+            status=status_code)
 
 
 def layer_metadata_upload(
