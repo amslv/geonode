@@ -362,7 +362,7 @@
       return layer;
     }
 
-    let calculateChartSize = () => {
+    calculateChartSize = () => {
       const DEFAULT_PERCENT_SIZE = 0.9;
       const DEFAULT_SIZE = 400;
       try {
@@ -371,6 +371,10 @@
         return DEFAULT_SIZE;
       }
     };
+
+    stopPeddingRequests = () => {
+      window.stop();
+    }
 
     $(document).ready(() => {
       let defaultL = new ol.layer.Tile({
@@ -421,6 +425,7 @@
         .color((d, parent) => d.color);
 
       sunburst.onNodeClick(choosenData => {
+        stopPeddingRequests();
         map.getLayers().clear();
         sunburst.focusOnNode(choosenData);
         let imgName = choosenData.imgName;
@@ -442,6 +447,10 @@
       fillLegend(initialImgNameLayer);
       fillDescrition(dataDesertificacao);
     });
+
+    $(window).bind('beforeunload', function(){
+      stopPeddingRequests();
+    });    
 
   </script>
   {% endblock super %}
