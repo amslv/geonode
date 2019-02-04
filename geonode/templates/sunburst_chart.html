@@ -319,6 +319,11 @@
       if (layersLoadingCount == 0) {
         $('#map-loader').hide();
       }
+    }
+
+    tryForceEndLoading = () => {
+      $('#map-loader').hide();
+      layersLoadingCount = 0;
     }    
     
     createLayer = (imgName) => {
@@ -336,7 +341,7 @@
         })
       });
 
-      layersLoadingCount = 0;
+      tryForceEndLoading();
       layer.getSource().on('tileloadstart', function (event) {        
         tryStartLoading();
       });
