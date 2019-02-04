@@ -364,12 +364,12 @@ var dataDesertificacao = {
               },
               {
                 name: "Mudança da Cobertura Vegetal",
-                name2: "Mudança da Cobertura Vegetal",
+                name2: "Mudança da cobertura vegetal",
                 color: "level_four_pressao_desmatamento_campo_color",
                 labelColor: "black",    
                 level: 4,                       
                 labelColor: "black",                        
-                imgName: "geonode:COMPRESSED_COBERTURA_VEGETAL",
+                imgName: "",
                 size: 3.3
               }
             ]
