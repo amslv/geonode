@@ -242,7 +242,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <script src="../static/lib/js/sunburst-chat-ed.js"></script>
-  <script src="../static/lib/js/desertificacaoData.js"></script>
+  <script src="../static/lib/js/desertificacao-data.js"></script>
   <script src="//d3js.org/d3.v5.min.js"></script>
 
   <link href="../static/lib/css/ol-geocoder-ed.css" rel="stylesheet">
@@ -293,15 +293,20 @@
     };
 
     fillDescrition = (data) => {      
+      let titleContentEl = '#container-title-row-content';
+      let descriptionContentEl = '#container-description-row-content';
+      $(titleContentEl).text(data.name2 ? data.name2 : '-');
+      $(descriptionContentEl).text('');
+
       let url = window.location.protocol + '//' + window.location.hostname + '/layers/' + data.imgName + '/metadata_detail_rest';
       $.get(url)
       .done(function (data) {
-        $('#container-title-row-content').text(data.title);
-        $('#container-description-row-content').text(data.abstract);
+        $(titleContentEl).text(data.title);
+        $(descriptionContentEl).text(data.abstract);
       })
       .fail(function (error) {
-        $('#container-title-row-content').text(data.name2 ? data.name2 : '-');
-        $('#container-description-row-content').text('');
+        $(titleContentEl).text(data.name2 ? data.name2 : '-');
+        $(descriptionContentEl).text('');
       });
     };
 
