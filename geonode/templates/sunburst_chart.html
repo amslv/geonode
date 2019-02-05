@@ -317,7 +317,6 @@
           $('#map-loader').show();
         }
         layersLoadingCount++;
-        console.log("++", layersLoadingCount);
     }
 
     tryEndLoading = () => {
@@ -325,7 +324,6 @@
       if (layersLoadingCount == 0) {
         $('#map-loader').hide();
       }
-      console.log("--", layersLoadingCount);
     }
 
     tryForceEndLoading = () => {
@@ -450,7 +448,7 @@
       fillDescrition(dataDesertificacao);
     });
 
-    $(window).bind('beforeunload', function(){
+    $('#navbar li').on( "click", () => {
       stopPeddingRequests();
     });    
 
