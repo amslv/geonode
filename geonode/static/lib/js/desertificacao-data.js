@@ -340,7 +340,7 @@ var dataDesertificacao = {
         name2: "Pressão",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:PRESSAO_COMPRESSED",
+        imgName: "geonode:imd_p_deflate",
         size: 2,
         level: 2,
         children: [
