@@ -345,7 +345,7 @@
     };
 
     // TODO check. This "Loading" management might become a new js file
-    var layersLoadingCount = 0;
+    let layersLoadingCount = 0;
     tryStartLoading = () => {
       if (layersLoadingCount <= 0) {
           $('#map-loader').show();
@@ -410,6 +410,7 @@
       window.stop();
     }
 
+    let sunburst;
     $(document).ready(() => {
       let defaultL = new ol.layer.Tile({
         source: new ol.source.OSM()
@@ -450,7 +451,7 @@
       // TODO (refactoring) put the "data" in another file. (Issue 6)
       const DATA_DESERT_ATTR_LABEL = "name2";
       const DATA_DESERT_ATTR_SIZE = "size";
-      let sunburst = Sunburst()
+      sunburst = Sunburst()
         .data(dataDesertificacao)
         .label(DATA_DESERT_ATTR_LABEL)
         .size(DATA_DESERT_ATTR_SIZE)
@@ -463,7 +464,7 @@
         map.getLayers().clear();
         sunburst.focusOnNode(choosenData);
         let imgName = choosenData.imgName;
-        var layer1 = createLayer(imgName);    
+        let layer1 = createLayer(imgName);    
 
         map.addLayer(defaultL);
         map.addLayer(layer1);
@@ -484,6 +485,22 @@
 
     $('#navbar li').on( "click", () => {
       stopPeddingRequests();
+    });    
+
+    let resizing = false;
+    $(window).on('resize', function(){
+      const RESIZING_TIMEOUT = 1000;
+      if (!resizing) {
+        resizing = true;
+        setTimeout(() => {          
+          let chartContainerSize = calculateChartSize();
+          sunburst.width(chartContainerSize);
+          sunburst.height(chartContainerSize);
+          $("#chart").html('');
+          sunburst($("#chart")[0]);
+          resizing = false;          
+        }, RESIZING_TIMEOUT);
+      }
     });    
 
   </script>
