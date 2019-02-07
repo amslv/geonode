@@ -376,7 +376,9 @@
       layersLoadingCount = 0;
     }    
     
+    let currentLayer;
     createLayer = (imgName) => {
+      currentLayer = imgName;
       layer = new ol.layer.Tile({
         opacity: DEFAULT_LAYER_OPACITY,
         visible: true,
@@ -474,10 +476,15 @@
         .color((d, parent) => d.color);
 
       sunburst.onNodeClick(choosenData => {
+        let imgName = choosenData.imgName;
+        if (currentLayer === imgName) {
+          console.log('The same image. Do nothing.')
+          return;
+        }
         stopPeddingRequests();
         map.getLayers().clear();
         sunburst.focusOnNode(choosenData);
-        let imgName = choosenData.imgName;
+        
         let layer1 = createLayer(imgName);    
 
         map.addLayer(defaultL);
@@ -490,7 +497,7 @@
       });
 
       sunburst($("#chart")[0]);
-      
+
       changeAdvancedButton(initialImgNameLayer);
       fillBreadcrumbs(dataDesertificacao);
       fillLegend(initialImgNameLayer);
