@@ -3,7 +3,7 @@ var dataDesertificacao = {
     name2: "Desertificação",
     color: "level_one_desertif_color",
     labelColor: "black", 
-    imgName: "geonode:gfsol_nmin_compress_2",
+    imgName: "geonode:imd_d_deflate",
     level: 1,
     children: [
       {
@@ -11,7 +11,7 @@ var dataDesertificacao = {
         name2: "Estado",
         color: "level_two_color",
         labelColor: "black",           
-        imgName: "geonode:ESTADO_COMPRESSED",
+        imgName: "geonode:imd_e_compressed",
         size: 2,
         level: 2,
         children: [
@@ -47,7 +47,7 @@ var dataDesertificacao = {
                 name2: "Cobertura vegetal 2017",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",    
-                imgName: "geonode:COMPRESSED_COBERTURA_VEGETAL",                 
+                imgName: "geonode:cobertura_vegetal",                 
                 level: 4,
                 size: 5
               },
@@ -68,7 +68,7 @@ var dataDesertificacao = {
                 labelColor: "black",   
                 level: 4,          
                 size: 5,
-                imgName: "geonode:PNE_JPEG_result",               
+                imgName: "geonode:rehsol",               
               }
             ]
           },
@@ -147,7 +147,7 @@ var dataDesertificacao = {
         color: "level_two_color",
         labelColor: "black",          
         level: 2,
-        imgName: "geonode:FORCA_MOTRIZ_COMPRESSED",
+        imgName: "geonode:imd_f_end",
         size: 2,
         children: [
           {
@@ -340,7 +340,7 @@ var dataDesertificacao = {
         name2: "Pressão",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:imd_p_deflate",
+        imgName: "geonode:imd_p",
         size: 2,
         level: 2,
         children: [
@@ -369,7 +369,7 @@ var dataDesertificacao = {
                 labelColor: "black",    
                 level: 4,                       
                 labelColor: "black",                        
-                imgName: "geonode:cv2007",
+                imgName: "geonode:mudanca_cobertura",
                 size: 3.3
               }
             ]
@@ -398,7 +398,7 @@ var dataDesertificacao = {
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",   
                 level: 4,       
-                imgName: "geonode:INCENDIO_JPEG_result",                
+                imgName: "geonode:indicador_incendio",                
                 size: 3.3
               }
             ]
