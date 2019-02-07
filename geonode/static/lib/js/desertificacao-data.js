@@ -369,7 +369,7 @@ var dataDesertificacao = {
                 labelColor: "black",    
                 level: 4,                       
                 labelColor: "black",                        
-                imgName: "",
+                imgName: "geonode:cv2007",
                 size: 3.3
               }
             ]
