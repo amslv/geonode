@@ -11,7 +11,7 @@ var dataDesertificacao = {
         name2: "Estado",
         color: "level_two_color",
         labelColor: "black",           
-        imgName: "geonode:imd_e_compressed",
+        imgName: "geonode:imd_estado",
         size: 2,
         level: 2,
         children: [
@@ -29,7 +29,7 @@ var dataDesertificacao = {
                 name2: "Índice de aridez",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",
-                imgName: "geonode:indice_de_aridez",
+                imgName: "geonode:aridez",
                 level: 4,
                 size: 5
               },
@@ -39,7 +39,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
                 level: 4,                 
-                imgName: "geonode:spi",
+                imgName: "geonode:indice_seca",
                 size: 3.3
               },
               {
@@ -47,7 +47,7 @@ var dataDesertificacao = {
                 name2: "Cobertura vegetal 2017",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",    
-                imgName: "geonode:cobertura_vegetal",                 
+                imgName: "geonode:vegetal",                 
                 level: 4,
                 size: 5
               },
@@ -369,7 +369,7 @@ var dataDesertificacao = {
                 labelColor: "black",    
                 level: 4,                       
                 labelColor: "black",                        
-                imgName: "geonode:mudanca_cobertura",
+                imgName: "geonode:mcv",
                 size: 3.3
               }
             ]
@@ -398,7 +398,7 @@ var dataDesertificacao = {
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",   
                 level: 4,       
-                imgName: "geonode:indicador_incendio",                
+                imgName: "geonode:rc_incendio",                
                 size: 3.3
               }
             ]
