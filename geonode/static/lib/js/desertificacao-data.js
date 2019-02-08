@@ -47,7 +47,7 @@ var dataDesertificacao = {
                 name2: "Cobertura vegetal 2017",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",    
-                imgName: "geonode:vegetal",                 
+                imgName: "geonode:cveg",                 
                 level: 4,
                 size: 5
               },
