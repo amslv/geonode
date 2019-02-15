@@ -18,7 +18,7 @@
   	<div class="container">
         <h1>{{custom_theme.jumbotron_welcome_title|default:_("SADes - Sistema de Avaliação da Desertificação")}}</h1>
   		<p></p>
-		<p>{{custom_theme.jumbotron_welcome_content|default:_("Em suma, 27 indicadores organizados nas categorias DPSIR (Força Motriz, Pressão, Estado, Impacto e Resposta), são integrados através de uma modelagem de análise multicriterial (Promethee). O resultado principal é um índice de desertificação calculado para todos os 1262 municípios do Semiárido.")}}</p>
+		<p>{{custom_theme.jumbotron_welcome_content|default:_("Sistema estruturado para análise e comparação espacial da desertificação, destinado aos 1262 municípios do Semiárido brasileiro (SAB), a partir de um conjunto de 27 indicadores e organizados segundo o modelo conceitual DPSIR (Força Motriz, Pressão, Estado, Impacto e Resposta). Sendo estes, integrados através de uma modelagem de análise multicriterial (Promethee).")}}</p>
 		<!-- {% if not custom_theme.jumbotron_cta_hide %}
   		<a class="btn btn-default btn-lg" target="_blank" href="{{custom_theme.jumbotron_cta_link|default:_("https://portal.insa.gov.br/")}}" role="button">{{custom_theme.jumbotron_cta_text|default:_("Iniciar aplicação &raquo;")}}</a>
     {% endif %}
@@ -39,7 +39,7 @@
                       <div class="panel-body">
                         <p><a href="{% url "layer_browse" %}"><img src="{% static 'geonode/img/camadas.svg' %}"></a></p>
                         <h2><a href="{% url "layer_browse" %}">Camadas</a></h2>
-                        <p>Acesse uma variedade de indicadores e índices, que retratam aspectos ambientais, sociais, econômicos e institucionais, distribuídos espacialmente para todo o semiárido brasileiro.</p>
+                        <p>Indicadores e índices, que retratam aspectos ambientais, sociais, econômicos e institucionais, distribuídos espacialmente para todo o Semiárido brasileiro.</p>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "layer_upload" %}" role="button">Adicionar Layers &raquo;</a></p>
                         {% else %}
@@ -53,7 +53,7 @@
                       <div class="panel-body">
                         <p><a href="{% url "app" %}"><img src="{% static 'geonode/img/app.svg' %}"></a></p>
                         <h2><a href="{% url "app" %}">Aplicação</a></h2>
-                        <p>Conheça nossa aplicação, obtenha detalhes sobre os produtos gerados e visualize-os em uma plataforma WebGIS dinâmica.</p>
+                        <p>Detalhes e informações sobre os produtos gerados e disponíveis em uma plataforma WebGIS dinâmica.</p>
                         <br>
                         {% if user.is_authenticated %}
                         <p><a class="btn btn-default" href="{% url "app" %}" role="button">Iniciar aplicação &raquo;</a></p>
@@ -68,7 +68,7 @@
                       <div class="panel-body">
                         <p><a href="{% url "document_browse" %}"><img src="{% static 'geonode/img/documentos.svg' %}"></a></p>
                         <h2><a href="{% url "document_browse" %}">Documentos</a></h2>
-                        <p>Fique por dentro dos procedimentos metodológicos e importantes referências utilizadas por nossa equipe.</p>
+                        <p>Procedimentos metodológicos e principais referências utilizadas na geração dos dados disponibilizados no SADes.</p>
                         <br>
                         <br>
                         {% if user.is_authenticated %}
