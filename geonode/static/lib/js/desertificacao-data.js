@@ -3,7 +3,7 @@ var dataDesertificacao = {
     name2: "Desertificação",
     color: "level_one_desertif_color",
     labelColor: "black", 
-    imgName: "geonode:imd_d_deflate",
+    imgName: "geonode:imd_d",
     level: 1,
     children: [
       {
@@ -11,7 +11,7 @@ var dataDesertificacao = {
         name2: "Estado",
         color: "level_two_color",
         labelColor: "black",           
-        imgName: "geonode:imd_estado",
+        imgName: "geonode:imd_e",
         size: 2,
         level: 2,
         children: [
@@ -29,7 +29,7 @@ var dataDesertificacao = {
                 name2: "Índice de aridez",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",
-                imgName: "geonode:aridez",
+                imgName: "geonode:ind_arid",
                 level: 4,
                 size: 5
               },
@@ -39,7 +39,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
                 level: 4,                 
-                imgName: "geonode:indice_seca",
+                imgName: "geonode:spi",
                 size: 3.3
               },
               {
@@ -47,7 +47,7 @@ var dataDesertificacao = {
                 name2: "Cobertura vegetal 2017",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",    
-                imgName: "geonode:cveg",                 
+                imgName: "geonode:cobertura",                 
                 level: 4,
                 size: 5
               },
@@ -58,7 +58,7 @@ var dataDesertificacao = {
                 labelColor: "black",
                 level: 4,
                 size: 5,
-                imgName: "geonode:gfsol_nmin_compress_2",
+                imgName: "geonode:GFSOL",
                 size: 3.3
               },
               {
@@ -68,7 +68,7 @@ var dataDesertificacao = {
                 labelColor: "black",   
                 level: 4,          
                 size: 5,
-                imgName: "geonode:rehsol",               
+                imgName: "geonode:pne",               
               }
             ]
           },
@@ -135,7 +135,7 @@ var dataDesertificacao = {
                 labelColor: "white",
                 level: 4,   
                 size: 5,
-                imgName: "geonode:aedm_1",
+                imgName: "geonode:aedm",
               }
             ]
           }
@@ -147,7 +147,7 @@ var dataDesertificacao = {
         color: "level_two_color",
         labelColor: "black",          
         level: 2,
-        imgName: "geonode:imd_f_end",
+        imgName: "geonode:imd_f",
         size: 2,
         children: [
           {
@@ -186,7 +186,7 @@ var dataDesertificacao = {
             labelColor: "white",              
             level: 3,      
             size: 14,
-            imgName: "geonode:COMPRESSED_INF_POP",
+            imgName: "geonode:inf_pop",
           },
           {
             name: "Desigualdade Social no Campo",
@@ -225,7 +225,7 @@ var dataDesertificacao = {
         color: "level_two_color",
         labelColor: "black",              
         level: 2,
-        imgName: "geonode:RESPOSTA_COMPRESSED",
+        imgName: "geonode:imd_r",
         size: 2,
         children: [
           {
@@ -290,7 +290,7 @@ var dataDesertificacao = {
                 color: "level_four_poder_publico_color",
                 labelColor: "black", 
                 level: 4,   
-                imgName: "geonode:vptr_1",                        
+                imgName: "geonode:vptr",                        
                 size: 3.3
               },
               {
@@ -311,7 +311,7 @@ var dataDesertificacao = {
         name2: "Impacto",
         color: "level_two_color",
         labelColor: "black",              
-        imgName: "geonode:IMPACTO_COMPRESSED",
+        imgName: "geonode:imd_i",
         level: 2,
         size: 5,
         children: [
@@ -359,7 +359,7 @@ var dataDesertificacao = {
                 color: "level_four_pressao_desmatamento_campo_color",
                 labelColor: "black",                       
                 level: 4,   
-                imgName: "geonode:afagp_1",
+                imgName: "geonode:afagp",
                 size: 3.3
               },
               {
@@ -369,7 +369,7 @@ var dataDesertificacao = {
                 labelColor: "black",    
                 level: 4,                       
                 labelColor: "black",                        
-                imgName: "geonode:mcv",
+                imgName: "geonode:mudanca",
                 size: 3.3
               }
             ]
@@ -398,7 +398,7 @@ var dataDesertificacao = {
                 color: "level_four_pressao_manejamento_ina_color",
                 labelColor: "black",   
                 level: 4,       
-                imgName: "geonode:rc_incendio",                
+                imgName: "geonode:incendio",                
                 size: 3.3
               }
             ]
