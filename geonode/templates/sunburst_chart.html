@@ -424,7 +424,15 @@
     }
 
     let sunburst;
-    $(document).ready(() => {
+      $(document).ready(() => {
+      const layerTitleSource = new ol.source.XYZ({
+        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}'
+      })
+
+      const layerTitle = new ol.layer.Tile({
+          source: layerTitleSource
+      });
+
       let sabLayer = new ol.layer.Tile({
         opacity: 0.25,
         visible: true,
@@ -453,8 +461,12 @@
         })
       });
 
+      const defaultLSource = new ol.source.XYZ({
+        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+      })
+
       let defaultL = new ol.layer.Tile({
-        source: new ol.source.OSM()
+        source: defaultLSource
       });
 
       const initialImgNameLayer = dataDesertificacao.imgName;
@@ -462,7 +474,7 @@
 
       // TODO (refactoring) put the center parameters in a constant (Issue 4)
       let map = new ol.Map({
-        layers: [defaultL, rootLayer, aguasLayer, sabLayer],
+        layers: [defaultL, rootLayer, aguasLayer, sabLayer, layerTitle],
         target: "map",
         pixelRatio: 1,
         view: new ol.View({
@@ -520,6 +532,7 @@
         map.addLayer(layer1);
         map.addLayer(aguasLayer);
         map.addLayer(sabLayer);
+        map.addLayer(layerTitle);
         
         changeAdvancedButton(choosenData.imgName);
         fillBreadcrumbs(choosenData);
