@@ -29,7 +29,7 @@ var dataDesertificacao = {
                 name2: "Índice de aridez",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",
-                imgName: "geonode:ind_arid",
+                imgName: "geonode:ind_aridez",
                 level: 4,
                 size: 5
               },
@@ -39,7 +39,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
                 level: 4,                 
-                imgName: "geonode:spi",
+                imgName: "geonode:spi_ind_seca",
                 size: 3.3
               },
               {
@@ -47,7 +47,7 @@ var dataDesertificacao = {
                 name2: "Cobertura vegetal 2017",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",    
-                imgName: "geonode:cobertura",                 
+                imgName: "geonode:new_cobertura",                 
                 level: 4,
                 size: 5
               },
@@ -58,7 +58,7 @@ var dataDesertificacao = {
                 labelColor: "black",
                 level: 4,
                 size: 5,
-                imgName: "geonode:GFSOL",
+                imgName: "geonode:compressed_gfsol",
                 size: 3.3
               },
               {
@@ -126,7 +126,7 @@ var dataDesertificacao = {
                 labelColor: "white",  
                 level: 4,   
                 size: 5,
-                imgName: "geonode:dprur",                    
+                imgName: "geonode:dprur_1",                    
               },
               {
                 name: "Estabelecimentos Rurais Dirigidos por Mulheres",
@@ -165,7 +165,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_terra_color",
                 labelColor: "black",                     
                 level: 4,   
-                imgName: "geonode:aemmf2", 
+                imgName: "geonode:aemmf", 
                 size: 3.3
               },
               {

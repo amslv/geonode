@@ -275,7 +275,7 @@
 
   <script type="text/javascript">
     // (refactoring) TODO this constants must be setted in another file (Issue 3)    
-    const GEOSERVER_URL = 'http://150.165.85.9/geoserver/ows/';
+    const GEOSERVER_URL = 'http://192.168.15.13/geoserver/ows/';
     const DEFAULT_LAYER_OPACITY = 0.85;
 
     changeAdvancedButton = (imgName) => {
@@ -453,7 +453,7 @@
         source: new ol.source.TileWMS({
           url: GEOSERVER_URL,
           params: {
-            LAYERS: 'geonode:geoft_bho_massa_dagua',
+            LAYERS: 'geonode:massa_dagua_sab',
             TILED: "true"
           },
           ratio: 3,
