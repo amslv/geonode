@@ -34,7 +34,7 @@ fillLegend = (imgName) => {
     return array;
   };
 
-  fillDescrition = (data) => {      
+  fillDescription = (data) => {      
     let titleContentEl = '#container-title-row-content';
     let descriptionContentEl = '#container-description-row-content';
     $(titleContentEl).text(data.name2 ? data.name2 : '-');
