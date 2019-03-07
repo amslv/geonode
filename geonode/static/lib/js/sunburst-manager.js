@@ -28,7 +28,13 @@ actionOnSunbust = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, l
 	map.getLayers().clear();
 	sunburst.focusOnNode(choosenData);
 
-	let layer1 = createLayer(imgName);
+    let layer1 = createLayer(imgName);
+
+    map.addLayer(defaultL);
+	map.addLayer(layer1);
+	map.addLayer(aguasLayer);
+	map.addLayer(sabLayer);
+	map.addLayer(layerTitle);
 
 	changeAdvancedButton(choosenData.imgName);
 	fillBreadcrumbs(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
