@@ -313,20 +313,27 @@
       });      
     }
 
-    fillBreadcrumbs = (data) => {
+    fillBreadcrumbs = (map, sunburst, data, defaultL, aguasLayer, sabLayer, layerTitle) => {
+      $(".link-breadcrumbs").unbind();
       let breadcrumbsArr = getNameArray(data.__dataNode, []);
 
       let breadcrumbs_container = $("#breadcrumbs");
       
       breadcrumbs_container.empty();
       breadcrumbsArr.reverse().forEach((value) => {
-        breadcrumbs_container.append('<span class="crumb">' + value + '</span>');
+        const linkId = 'link-breadcrumbs-' + Math.floor(Math.random() * 1000000);;
+        breadcrumbs_container.append('<span class="crumb"><a id="' + linkId + '" class="link-breadcrumbs" imgname="' + value.imgName  + '">' + value.title + '</a></span>');
+        
+        $(document).on('click', '#' + linkId, function (event) {
+          actionOnSunbust(map, sunburst, value.data, defaultL, aguasLayer, sabLayer, layerTitle)        
+        }); 
       });
+
     }
 
     getNameArray = (data, array) => {
       array = array || [];
-      array.push(data.data.name2);
+      array.push({title: data.data.name2, imgName: data.data.imgName, data: data.data});
       if (data.parent) getNameArray(data.parent, array);
       return array;
     };
@@ -423,6 +430,30 @@
       window.stop();
     }
 
+    actionOnSunbust = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle) => {
+      let imgName = choosenData.imgName;
+      if (currentLayer === imgName) {
+          console.log('The same image. Do nothing.')
+          return;
+        }
+        stopPeddingRequests();
+        map.getLayers().clear();
+        sunburst.focusOnNode(choosenData);
+        
+        let layer1 = createLayer(imgName);    
+
+        map.addLayer(defaultL);
+        map.addLayer(layer1);
+        map.addLayer(aguasLayer);
+        map.addLayer(sabLayer);
+        map.addLayer(layerTitle);
+        
+        changeAdvancedButton(choosenData.imgName);
+        fillBreadcrumbs(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
+        fillLegend(choosenData.imgName);
+        fillDescrition(choosenData);      
+    }
+
     let sunburst;
       $(document).ready(() => {
       const layerTitleSource = new ol.source.XYZ({
@@ -517,33 +548,13 @@
         .color((d, parent) => d.color);
 
       sunburst.onNodeClick(choosenData => {
-        let imgName = choosenData.imgName;
-        if (currentLayer === imgName) {
-          console.log('The same image. Do nothing.')
-          return;
-        }
-        stopPeddingRequests();
-        map.getLayers().clear();
-        sunburst.focusOnNode(choosenData);
-        
-        let layer1 = createLayer(imgName);    
-
-        map.addLayer(defaultL);
-        map.addLayer(layer1);
-        map.addLayer(aguasLayer);
-        map.addLayer(sabLayer);
-        map.addLayer(layerTitle);
-        
-        changeAdvancedButton(choosenData.imgName);
-        fillBreadcrumbs(choosenData);
-        fillLegend(choosenData.imgName);
-        fillDescrition(choosenData);
+        actionOnSunbust(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
       });
 
       sunburst($("#chart")[0]);
 
       changeAdvancedButton(initialImgNameLayer);
-      fillBreadcrumbs(dataDesertificacao);
+      fillBreadcrumbs(map, sunburst, dataDesertificacao, defaultL, aguasLayer, sabLayer, layerTitle);
       fillLegend(initialImgNameLayer);
       fillDescrition(dataDesertificacao);
     });
