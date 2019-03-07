@@ -82,6 +82,10 @@ $('#navbar li').on('click', () => {
 	stopPeddingRequests();
 });
 
+$( "path" ).click(function() {
+    $("path").addClass("filter");
+});
+
 let resizing = false;
 $(window).on('resize', function() {
 	const RESIZING_TIMEOUT = 1000;
