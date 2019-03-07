@@ -75,3 +75,12 @@ let defaultL = new ol.layer.Tile({
 
 const initialImgNameLayer = dataDesertificacao.imgName;
 let rootLayer = createLayer(initialImgNameLayer);
+
+
+addLayersToMap = ()=> {
+    map.addLayer(defaultL);
+	map.addLayer(layer1);
+	map.addLayer(aguasLayer);
+	map.addLayer(sabLayer);
+	map.addLayer(layerTitle);
+}
