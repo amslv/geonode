@@ -1,6 +1,5 @@
 changeAdvancedButton = (imgName) => {
 	let url = window.location.protocol + '//' + window.location.hostname + '/maps/new?layer=' + imgName;
-
 	$('#advanced-button').attr('href', url);
 };
 
@@ -18,9 +17,9 @@ stopPeddingRequests = () => {
 	window.stop();
 };
 
-actionOnSunbust = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle) => {
-	let imgName = choosenData.imgName;
-	if (currentLayer === imgName) {
+updateSunburst = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle) => {
+	let imd_layer = choosenData.imgName;
+	if (currentLayer === imd_layer) {
 		console.log('The same image. Do nothing.');
 		return;
 	}
@@ -28,32 +27,15 @@ actionOnSunbust = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, l
 	map.getLayers().clear();
 	sunburst.focusOnNode(choosenData);
 
-    let layer1 = createLayer(imgName);
-
-    map.addLayer(defaultL);
-	map.addLayer(layer1);
-	map.addLayer(aguasLayer);
-	map.addLayer(sabLayer);
-	map.addLayer(layerTitle);
-
-	changeAdvancedButton(choosenData.imgName);
+    addLayersToMap(imd_layer);
+	changeAdvancedButton(choosenData.imd_layer);
 	fillBreadcrumbs(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
-	fillLegend(choosenData.imgName);
+	fillLegend(choosenData.imd_layer);
 	fillDescription(choosenData);
 };
 
 let sunburst;
 $(document).ready(() => {
-	let map = new ol.Map({
-		layers: [ defaultL, rootLayer, aguasLayer, sabLayer, layerTitle ],
-		target: 'map',
-		pixelRatio: 1,
-		view: new ol.View({
-			center: CENTER_COORDS,
-			zoom: 5
-		})
-	});
-
 	let geocoder = new Geocoder('nominatim', {
 		provider: 'osm',
 		lang: 'pt-BR',
@@ -87,7 +69,7 @@ $(document).ready(() => {
 		.color((d, parent) => d.color);
 
 	sunburst.onNodeClick((choosenData) => {
-		actionOnSunbust(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
+		updateSunburst(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
 	});
 	sunburst($('#chart')[0]);
 	changeAdvancedButton(initialImgNameLayer);
