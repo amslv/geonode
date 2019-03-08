@@ -27,10 +27,10 @@ updateSunburst = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, la
 	map.getLayers().clear();
 	sunburst.focusOnNode(choosenData);
 
-    addLayersToMap(imd_layer);
+        addLayersToMap(imd_layer);
 	changeAdvancedButton(choosenData.imd_layer);
 	fillBreadcrumbs(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
-	fillLegend(choosenData.imd_layer);
+	fillLegend(imd_layer);
 	fillDescription(choosenData);
 };
 

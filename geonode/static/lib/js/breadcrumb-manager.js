@@ -10,7 +10,7 @@ fillBreadcrumbs = (map, sunburst, data, defaultL, aguasLayer, sabLayer, layerTit
       breadcrumbs_container.append('<span class="crumb"><a id="' + linkId + '" class="link-breadcrumbs" imgname="' + value.imgName  + '">' + value.title + '</a></span>');
       
       $(document).on('click', '#' + linkId, function (event) {
-        actionOnSunbust(map, sunburst, value.data, defaultL, aguasLayer, sabLayer, layerTitle)        
+       	updateSunburst(map, sunburst, value.data, defaultL, aguasLayer, sabLayer, layerTitle)        
       }); 
     });
 

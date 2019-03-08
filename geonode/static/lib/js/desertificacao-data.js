@@ -39,7 +39,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
                 level: 4,                 
-                imgName: "geonode:spi_ind_seca",
+                imgName: "geonode:new_spi",
                 size: 3.3
               },
               {
