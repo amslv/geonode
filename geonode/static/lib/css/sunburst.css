@@ -200,5 +200,5 @@
    }
 
 .sunburst-viz {
-  filter: drop-shadow(0px 0px 5px #000000 ) !important;
+  filter: drop-shadow(0px 0px 3px #3b3b3b ) !important;
 }

@@ -1,3 +1,6 @@
+let sunburst;
+let currentChoosenData;
+
 changeAdvancedButton = (imgName) => {
 	let url = window.location.protocol + '//' + window.location.hostname + '/maps/new?layer=' + imgName;
 	$('#advanced-button').attr('href', url);
@@ -34,7 +37,6 @@ updateSunburst = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, la
 	fillDescription(choosenData);
 };
 
-let sunburst;
 $(document).ready(() => {
 	let geocoder = new Geocoder('nominatim', {
 		provider: 'osm',
@@ -69,6 +71,7 @@ $(document).ready(() => {
 		.color((d, parent) => d.color);
 
 	sunburst.onNodeClick((choosenData) => {
+		currentChoosenData = choosenData;
 		if (choosenData.children === undefined) {
 			const choosenDataParent = choosenData.__dataNode.parent.data
 			updateSunburst(map, sunburst, choosenDataParent, defaultL, aguasLayer, sabLayer, layerTitle);
@@ -77,6 +80,7 @@ $(document).ready(() => {
 			updateSunburst(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
 		}, 0);		
 	});
+
 	sunburst($('#chart')[0]);
 	changeAdvancedButton(initialImgNameLayer);
 	fillBreadcrumbs(map, sunburst, dataDesertificacao, defaultL, aguasLayer, sabLayer, layerTitle);
