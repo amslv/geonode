@@ -5217,7 +5217,7 @@
     }
   }
 
-  var css = ".sunburst-viz .slice path {\n  cursor: pointer;\n}\n\n.sunburst-viz text {\n  font-family: Sans-serif;\n  font-size: 12px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n  pointer-events: none;\n  fill: #222;\n}\n\n.sunburst-viz text .text-contour {\n  fill: none;\n  /* stroke: white;\n  stroke-width: 5; */\n  stroke-linejoin: 'round';\n}\n\n.sunburst-viz .main-arc {\n  stroke: white;\n  stroke-width: 1px;\n  transition: opacity .4s;\n}\n\n.sunburst-viz .main-arc:hover {\n  opacity: 0.85;\n  transition: opacity .05s;\n}\n\n.sunburst-viz .hidden-arc {\n  fill: none;\n}\n\n.sunburst-tooltip {\n  display: none;\n  position: absolute;\n  max-width: 320px;\n  margin-top: 20px;\n  margin-left: 8px;\n  padding: 5px;\n  border-radius: 3px;\n  font: 12px sans-serif;\n  color: #eee;\n  background: rgba(0,0,0,0.65);\n  pointer-events: none;\n}\n\n.sunburst-tooltip .tooltip-title {\n  font-weight: bold;\n  text-align: center;\n}\n";
+  var css = ".sunburst-viz .slice path {\n  cursor: pointer;\n}\n\n.sunburst-viz text {\n  font-family: Sans-serif;\n  font-size: 12px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n  pointer-events: none;\n  fill: #222;\n}\n\n.sunburst-viz text .text-contour {\n  fill: none;\n  /* stroke: white;\n  stroke-width: 5; */\n  stroke-linejoin: 'round';\n}\n\n.sunburst-viz .main-arc {\n  stroke: white;\n  stroke-width: 1px;\n  transition: opacity .4s;\n}\n\n.main-arc-2 {\n  stroke: blue !important;\n  stroke-width: 3px !important;\n  transition: opacity .4s; \n filter: drop-shadow(0px 0px 5px #000000 ) !important;\n}\n\n.sunburst-viz .main-arc:hover {\n  opacity: 0.85;\n  transition: opacity .05s;\n}\n\n.sunburst-viz .hidden-arc {\n  fill: none;\n}\n\n.sunburst-tooltip {\n  display: none;\n  position: absolute;\n  max-width: 320px;\n  margin-top: 20px;\n  margin-left: 8px;\n  padding: 5px;\n  border-radius: 3px;\n  font: 12px sans-serif;\n  color: #eee;\n  background: rgba(0,0,0,0.65);\n  pointer-events: none;\n}\n\n.sunburst-tooltip .tooltip-title {\n  font-weight: bold;\n  text-align: center;\n}\n";
   styleInject(css);
 
   var TRANSITION_DURATION = 750;
@@ -5342,6 +5342,10 @@
     },
 
     update: function update(state) {
+      // INSA required
+      const CSS_CLASSNAME_HIGHLIGHT_SLICE = 'main-arc-2';
+
+      $('path').removeClass(CSS_CLASSNAME_HIGHLIGHT_SLICE);
       var _this2 = this;
 
       var maxRadius = Math.min(state.width, state.height) / 2;
@@ -5351,15 +5355,27 @@
 
       if (!state.layoutData) return;
 
+      if (state.focusOnNode == undefined) {
+        state.focusOnNode = state.data;
+      }
       var focusD = state.focusOnNode && state.focusOnNode.__dataNode || { x0: 0, x1: 1, y0: 0, y1: 1 };
+      var mainPathFocusId = 'path-focused-' + Math.round(Math.random() * 1000000);
 
       var slice = state.canvas.selectAll('.slice').data(state.layoutData.filter(function (d) {
         return (// Show only slices with a large enough angle
           d.x1 >= focusD.x0 && d.x0 <= focusD.x1 && (d.x1 - d.x0) / (focusD.x1 - focusD.x0) > state.minSliceAngle / 360
         );
       }), function (d) {
+        if (focusD.data.name === d.data.name) {
+          $(this).children('.main-arc').attr('id', mainPathFocusId);
+          $(this).children('.main-arc').addClass(CSS_CLASSNAME_HIGHLIGHT_SLICE);
+        } 
         return d.id;
       });
+
+      if (focusD.constructor.name === 'Node' && focusD.children == undefined) {
+        return
+      }
 
       var nameOf = accessorFn(state.label);
       var colorOf = accessorFn(state.color);
@@ -5409,7 +5425,7 @@
         return 'hidden-arc-' + state.chartId + '-' + d.id;
       });
 
-      var label = newSlice.append('text').attr('class', 'path-label');
+      var label = newSlice.append('text').attr('class', 'path-label');      
 
       // Add white contour
       label.append('textPath').attr('class', 'text-contour').attr('startOffset', '50%').attr('xlink:href', function (d) {

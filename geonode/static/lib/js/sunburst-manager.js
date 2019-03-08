@@ -19,15 +19,15 @@ stopPeddingRequests = () => {
 
 updateSunburst = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle) => {
 	let imd_layer = choosenData.imgName;
+	sunburst.focusOnNode(choosenData);
 	if (currentLayer === imd_layer) {
 		console.log('The same image. Do nothing.');
 		return;
 	}
 	stopPeddingRequests();
-	map.getLayers().clear();
-	sunburst.focusOnNode(choosenData);
+	map.getLayers().clear();	
 
-        addLayersToMap(imd_layer);
+    addLayersToMap(imd_layer);
 	changeAdvancedButton(choosenData.imd_layer);
 	fillBreadcrumbs(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
 	fillLegend(imd_layer);
@@ -69,7 +69,13 @@ $(document).ready(() => {
 		.color((d, parent) => d.color);
 
 	sunburst.onNodeClick((choosenData) => {
-		updateSunburst(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
+		if (choosenData.children === undefined) {
+			const choosenDataParent = choosenData.__dataNode.parent.data
+			updateSunburst(map, sunburst, choosenDataParent, defaultL, aguasLayer, sabLayer, layerTitle);
+		}
+		setTimeout(function () {
+			updateSunburst(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
+		}, 0);		
 	});
 	sunburst($('#chart')[0]);
 	changeAdvancedButton(initialImgNameLayer);
