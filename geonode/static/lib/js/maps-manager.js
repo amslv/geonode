@@ -31,11 +31,11 @@ createLayer = (imgName) => {
   return layer;
 }
 
-const layerTitleSource = new ol.source.XYZ({
-    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}'
+const layerTitleSource = new ol.source.VectorTile({
+    url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}'
 });
 
-const layerTitle = new ol.layer.Tile({
+const layerTitle = new ol.layer.VectorTile({
     source: layerTitleSource
 });
 
@@ -65,11 +65,11 @@ visible: true,
     })
 });
 
-const defaultLSource = new ol.source.XYZ({
-    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+const defaultLSource = new ol.source.VectorTile({
+    url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}'
 });
 
-let defaultL = new ol.layer.Tile({
+let defaultL = new ol.layer.VectorTile({
     source: defaultLSource
 });
 
