@@ -29,7 +29,7 @@ var dataDesertificacao = {
                 name2: "Índice de aridez",
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black",
-                imgName: "geonode:ind_aridez",
+                imgName: "geonode:ind_arid",
                 level: 4,
                 size: 5
               },
@@ -39,7 +39,7 @@ var dataDesertificacao = {
                 color: "level_four_condicao_ambiental_color",
                 labelColor: "black", 
                 level: 4,                 
-                imgName: "geonode:new_spi",
+                imgName: "geonode:newnew_spi",
                 size: 3.3
               },
               {
