@@ -37,6 +37,13 @@ updateSunburst = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, la
 	fillDescription(choosenData);
 };
 
+goPenultimateLevel = (choosenData) => {
+	if (choosenData.children === undefined) {
+		const choosenDataParent = choosenData.__dataNode.parent.data
+		sunburst.focusOnNode(choosenDataParent);
+	}
+}
+
 $(document).ready(() => {
 	let geocoder = new Geocoder('nominatim', {
 		provider: 'osm',
@@ -72,10 +79,9 @@ $(document).ready(() => {
 
 	sunburst.onNodeClick((choosenData) => {
 		currentChoosenData = choosenData;
-		if (choosenData.children === undefined) {
-			const choosenDataParent = choosenData.__dataNode.parent.data
-			updateSunburst(map, sunburst, choosenDataParent, defaultL, aguasLayer, sabLayer, layerTitle);
-		}
+		// Necessary to the animation when user click in the last nivel.
+		goPenultimateLevel(choosenData);
+
 		setTimeout(function () {
 			updateSunburst(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
 		}, 0);		

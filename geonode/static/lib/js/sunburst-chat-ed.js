@@ -5342,11 +5342,12 @@
     },
 
     update: function update(state) {
-      // INSA required
+      // INSA required the Highlight
       const CSS_CLASSNAME_HIGHLIGHT_SLICE = 'main-arc-2';
       const CSS_CLASSNAME_HIGHLIGHT_TEXT_CONTOUR = 'text-contour-highligth';
+      // Cleaning last highlights
       $('path').removeClass(CSS_CLASSNAME_HIGHLIGHT_SLICE);
-      $('textPath').removeClass(CSS_CLASSNAME_HIGHLIGHT_TEXT_CONTOUR);
+      $('text').removeClass(CSS_CLASSNAME_HIGHLIGHT_TEXT_CONTOUR);
 
       var _this2 = this;
 
@@ -5371,6 +5372,7 @@
         if (focusD.data.name === d.data.name) {
           $(this).children('.main-arc').attr('id', mainPathFocusId);
           $(this).children('.main-arc').addClass(CSS_CLASSNAME_HIGHLIGHT_SLICE);
+          $(this).children('text').addClass(CSS_CLASSNAME_HIGHLIGHT_TEXT_CONTOUR);
         } 
         return d.id;
       });
@@ -5420,6 +5422,9 @@
       });
 
       newSlice.append('path').attr('class', 'main-arc').style('fill', function (d) {
+        if (focusD.data.name === d.data.name) {
+          $(this).addClass(CSS_CLASSNAME_HIGHLIGHT_SLICE);
+        }
         return colorOf(d.data, d.parent);
       });
 
