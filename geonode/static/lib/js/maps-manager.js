@@ -66,7 +66,7 @@ visible: true,
 });
 
 const defaultLSource = new ol.source.XYZ({
-    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}'
+    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
 });
 
 let defaultL = new ol.layer.Tile({
@@ -98,8 +98,8 @@ let map = new ol.Map({
 addLayersToMap = (variant_layer) => {
     let imd_layer_updated = createLayer(variant_layer);
     map.addLayer(defaultL);
-	map.addLayer(imd_layer_updated);
-	map.addLayer(aguasLayer);
-	map.addLayer(sabLayer);
-	map.addLayer(layerTitle);
+	  map.addLayer(imd_layer_updated);
+	  map.addLayer(aguasLayer);
+	  map.addLayer(sabLayer);
+	  map.addLayer(layerTitle);
 }
