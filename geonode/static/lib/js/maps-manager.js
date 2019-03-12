@@ -32,7 +32,7 @@ createLayer = (imgName) => {
 }
 
 const layerTitleSource = new ol.source.VectorTile({
-    url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}'
+    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}'
 });
 
 const layerTitle = new ol.layer.VectorTile({
@@ -66,7 +66,7 @@ visible: true,
 });
 
 const defaultLSource = new ol.source.VectorTile({
-    url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}'
+    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}'
 });
 
 let defaultL = new ol.layer.VectorTile({
