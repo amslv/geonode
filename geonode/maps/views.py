@@ -544,6 +544,37 @@ def map_view(request, mapid, snapshot=None, layer_name=None,
             'geoext')
     })
 
+@xframe_options_sameorigin
+def map_insa_view(request, mapid, snapshot=None, layer_name=None,
+             template='maps/map_insa_view.html'):
+    """
+    The view that returns the map composer opened to
+    the map with the given map ID.
+    """
+    map_obj = _resolve_map(
+        request,
+        mapid,
+        'base.view_resourcebase',
+        _PERMISSION_MSG_VIEW)
+
+    if snapshot is None:
+        config = map_obj.viewer_json(request)
+    else:
+        config = snapshot_config(snapshot, map_obj, request)
+
+    if layer_name:
+        config = add_layers_to_map_config(
+            request, map_obj, (layer_name, ), False)
+
+    return render(request, template, context={
+        'config': json.dumps(config),
+        'map': map_obj,
+        'preview': getattr(
+            settings,
+            'GEONODE_CLIENT_LAYER_PREVIEW_LIBRARY',
+            'geoext')
+    })    
+
 
 def map_view_js(request, mapid):
     map_obj = _resolve_map(
