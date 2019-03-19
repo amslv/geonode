@@ -439,15 +439,6 @@ GeoNode.plugins.LayerManager = Ext.extend(gxp.plugins.LayerTree, {
      *          }
      *      }
      */
-
-    groups: {
-            "default": "Desertificação", // title can be overridden with overlayNodeText
-            "background": {
-                title: "Base Maps", // can be overridden with baseNodeText
-                exclusive: true
-            }
-        },
-
     /** private: method[createOutputConfig] */
     createOutputConfig: function() {
         var tree = gxp.plugins.LayerManager.superclass.createOutputConfig.apply(this, arguments);
