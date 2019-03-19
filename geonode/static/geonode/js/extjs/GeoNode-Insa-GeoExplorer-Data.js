@@ -22,6 +22,56 @@ let dataGroupsHierarchy = {
                     name: 'impacto',
                     title: 'Impacto',                    
                     childrens: []
+                },
+                {
+                    name: 'resposta',
+                    title: 'Resposta',
+                    childrens: [
+                        {
+                            name: 'organizacaoDoPoderPublico',
+                            title: 'Organização do Poder Público',
+                        },
+                        {
+                            name: 'organizacaoDaSociedadeCivil',
+                            title: 'Organização da Sociedade Civil',
+                        }                        
+                    ]
+                },
+                {
+                    name: 'forcaMotriz',
+                    title: 'Força Motriz',
+                    childrens: [
+                        {
+                            name: 'desigualdadeSocilaNoCampo',
+                            title: 'Desigualdade Social no Campo',
+                        },
+                        {
+                            name: 'influenciaDaPopuçacaoUrbana',
+                            title: 'Influencia da População Urbana',
+                        },
+                        {
+                            name: 'concentracaoDeTerra',
+                            title: 'Concentração de Terra',
+                        }                        
+                    ]                    
+                },
+                {
+                    name: 'estado',
+                    title: 'Estado',
+                    childrens: [
+                        {
+                            name: 'condicaoSocial',
+                            title: 'Condição Social',
+                        },
+                        {
+                            name: 'condiçãoEconomica',
+                            title: 'Condição Econômica',
+                        },
+                        {
+                            name: 'condicaoAmbiental',
+                            title: 'Condição Ambiental',
+                        }     
+                    ]                    
                 }
             ]
         }
