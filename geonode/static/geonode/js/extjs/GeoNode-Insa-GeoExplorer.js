@@ -440,7 +440,7 @@ GeoNode.plugins.LayerManager = Ext.extend(gxp.plugins.LayerTree, {
      *      }
      */
     constructor: function(config) {
-        console.log('Insa GeoNode-Insa-Explorer.js', GeoNodeInsaGeoExplorerData);
+        console.log('Insa GeoNode-Insa-Explorer.js');
         gxp.plugins.LayerTree.superclass.constructor.apply(this, arguments);
         // TODO this "GeoNodeInsaGeoExplorerData" comes from GeoNode-Insa-GeoExplorer-Data.js
         this.groups = GeoNodeInsaGeoExplorerData.normalizeDataToGeoExplorer(GeoNodeInsaGeoExplorerData.dataGroupsHierarchy)

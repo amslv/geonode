@@ -21,7 +21,8 @@
 {% endblock %}
 {% block footer %}
     <script>
-        // TODO find the right js to save this script
+        // TODO refactor all method
+        // TODO find the right area to save this js script
 
         const PADDING_SIZE_PER_LEVEL_HIERARCHY = 26
 
@@ -30,6 +31,8 @@
                 const title = element.title
                 const hierarchyPadding = level * PADDING_SIZE_PER_LEVEL_HIERARCHY
 
+                // TODO use constants or methods in the selectors
+                // TODO find the parent. Refactoring
                 $(`.x-tree-node a span:contains("${title}")`).parent().parent().parent().css('padding-left', `${hierarchyPadding}px`)
 
                 const childrens = element.childrens
@@ -64,6 +67,8 @@
         const childrenGroupExpansion = (childrenGroups, isExpanded) => {
             childrenGroups.forEach( element => {
                 const title = element.title
+                // TODO use constants or methods in the selectors
+                // TODO find the parent. Refactoring
                 $(`.x-tree-node a span:contains("${title}")`).parent().parent().parent().css('display', isExpanded ? 'none': '')
                 const childrens = element.childrens
                 if (childrens != null && childrens.length !== 0) {
@@ -73,6 +78,7 @@
         }
 
         const onClickArrowExpansion = () => {
+            // TODO use constants or methods in the selectors
             $('div .x-tree-node-el').not(".x-tree-node-leaf").on( "click", function() {
                 const title = $(this).text()
                 const isExpanded = $(this).hasClass("x-tree-node-expanded")
@@ -93,7 +99,7 @@
             structureHierarchy()
         }
 
-        // temporary 
+        // Temporary 
         setTimeout(() => {
             init()
         }, 1000);
