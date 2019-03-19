@@ -20,48 +20,81 @@
 
 {% endblock %}
 {% block footer %}
-    aaaaaa
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         // TODO find the right js to save this script
 
         const PADDING_SIZE_PER_LEVEL_HIERARCHY = 26
 
-        const structureHierarchy = () => {
-            for(var key in dataHierarchy) {
-                const indice = dataHierarchy[key] 
-                const title = indice.title 
-                const hierarchyPadding = indice.level * PADDING_SIZE_PER_LEVEL_HIERARCHY
+        const structureLevelHierarchy = (groups, level) => {
+            groups.forEach(element => {
+                const title = element.title
+                const hierarchyPadding = level * PADDING_SIZE_PER_LEVEL_HIERARCHY
 
                 $(`.x-tree-node a span:contains("${title}")`).parent().parent().parent().css('padding-left', `${hierarchyPadding}px`)
-            }
-        }
 
-        const createActions = () => {
-            $('div .x-tree-node-el').not(".x-tree-node-leaf").on( "click", function() {
-                const value = $(this).text()
-                const isExpanded = $(this).hasClass("x-tree-node-expanded")
-
-                for(var key in dataHierarchy) {
-                    const indice = dataHierarchy[key]
-                    if (indice.title === value) {
-                        const childrens = indice.childrens
-                        for(var keyChild in childrens) {
-                            indiceChild = childrens[keyChild]
-                            const title = indiceChild
-                            $(`.x-tree-node a span:contains("${title}")`).parent().parent().parent().css('display', isExpanded ? 'none': '')
-                        }
-                    }
+                const childrens = element.childrens
+                if (childrens != null && childrens.length !== 0) {
+                    structureLevelHierarchy(childrens, level + 1)
                 }
             });
         }
 
+        const structureHierarchy = () => {
+            const firstLevel = 0
+            structureLevelHierarchy(dataGroupsHierarchy.groups, firstLevel)
+        }
+
+        const findGroupByTitle = (groups, title) => {
+            for (let i = 0; i < groups.length; i++) {
+                const group = groups[i]
+                if (group.title === title) {
+                    return group
+                }
+                const childrens = group.childrens
+                if (childrens != null && childrens.length !== 0) {
+                    groupFound = findGroupByTitle(childrens, title)
+                    if (groupFound != null) {
+                        return groupFound
+                    }
+                }
+            }
+            return null
+        }
+
+        const childrenGroupExpansion = (childrenGroups, isExpanded) => {
+            childrenGroups.forEach( element => {
+                const title = element.title
+                $(`.x-tree-node a span:contains("${title}")`).parent().parent().parent().css('display', isExpanded ? 'none': '')
+                const childrens = element.childrens
+                if (childrens != null && childrens.length !== 0) {
+                    childrenGroupExpansion(childrens, isExpanded)
+                }
+            });
+        }
+
+        const onClickArrowExpansion = () => {
+            $('div .x-tree-node-el').not(".x-tree-node-leaf").on( "click", function() {
+                const title = $(this).text()
+                const isExpanded = $(this).hasClass("x-tree-node-expanded")
+
+                const groups = dataGroupsHierarchy.groups
+                const group = findGroupByTitle(groups, title)
+                const groupChildren = group.childrens
+                childrenGroupExpansion(groupChildren, isExpanded)
+            });
+        }
+
+        const createActions = () => {
+            onClickArrowExpansion()
+        }
+
         const init = () => {
-            console.log('Init', $("img .x-tree-ec-icon"))
             createActions()
             structureHierarchy()
         }
 
+        // temporary 
         setTimeout(() => {
             init()
         }, 1000);
