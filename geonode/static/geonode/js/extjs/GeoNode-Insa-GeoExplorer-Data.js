@@ -1,4 +1,6 @@
-let dataGroupsHierarchy = {
+let GeoNodeInsaGeoExplorerData = {}
+
+GeoNodeInsaGeoExplorerData.dataGroupsHierarchy = {
     groups: [
         {
             name: 'default',
@@ -78,22 +80,22 @@ let dataGroupsHierarchy = {
     ]
 }
 
-let generateGeoNodeExplorerGroups = (groups, geoNodeExplorerGroups) => {
+GeoNodeInsaGeoExplorerData.generateGeoNodeExplorerGroups = (groups, geoNodeExplorerGroups = {}) => {
     groups.forEach(element => {
         const elementName = element.name ? element.name : element.title
         let geoNodeExplorerGroup = {}
         geoNodeExplorerGroup[`${elementName}`] = { title: element.title }
         geoNodeExplorerGroups = { ...geoNodeExplorerGroups, ...geoNodeExplorerGroup }
         if (element.childrens != null && element.childrens.length != 0) {
-            geoNodeExplorerGroups = generateGeoNodeExplorerGroups(element.childrens, geoNodeExplorerGroups)
+            geoNodeExplorerGroups = GeoNodeInsaGeoExplorerData.generateGeoNodeExplorerGroups(element.childrens, geoNodeExplorerGroups)
         }
     })
     return geoNodeExplorerGroups
 }
 
-let normalizeDataToGeoExplorer = (dataGroup) => {
+GeoNodeInsaGeoExplorerData.normalizeDataToGeoExplorer = (dataGroup) => {
     try {
-        return generateGeoNodeExplorerGroups(dataGroup.groups, {})    
+        return GeoNodeInsaGeoExplorerData.generateGeoNodeExplorerGroups(dataGroup.groups)    
     } catch (error) {
         console.log('Error while normalizing geonode explorer groups', error)
         return {}   
