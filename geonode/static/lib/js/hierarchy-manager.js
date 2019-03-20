@@ -7,7 +7,7 @@ const PADDING_SIZE_PER_LEVEL_HIERARCHY = 26
 
                 // TODO use constants or methods in the selectors
                 // TODO find the parent. Refactoring
-                $(`.x-tree-node a span:contains("${title}")`).parent().parent().parent().css('padding-left', `${hierarchyPadding}px`)
+                $(`.x-tree-node a span:contains("${title}")`).closest("li").css('padding-left', `${hierarchyPadding}px`)
 
                 const childrens = element.childrens
                 if (childrens != null && childrens.length !== 0) {
@@ -26,7 +26,7 @@ const PADDING_SIZE_PER_LEVEL_HIERARCHY = 26
                 const title = element.title
                 // TODO use constants or methods in the selectors
                 // TODO find the parent. Refactoring
-                $(`.x-tree-node a span:contains("${title}")`).parent().parent().parent().css('display', isExpanded ? 'none': '')
+                $(`.x-tree-node a span:contains("${title}")`).closest("li").css('display', isExpanded ? 'none': '')
                 const childrens = element.childrens
                 if (childrens != null && childrens.length !== 0) {
                     childrenGroupExpansion(childrens, isExpanded)
