@@ -40,6 +40,8 @@ from kombu import Queue, Exchange
 # GeoNode Version
 VERSION = get_version()
 
+REGISTRATION_OPEN = False
+
 # Defines the directory that contains the settings file as the PROJECT_ROOT
 # It is used for relative settings elsewhere.
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
