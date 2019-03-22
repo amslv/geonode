@@ -55,6 +55,7 @@
                         <h2><a href="{% url "app" %}">Aplicação</a></h2>
                         <p>Detalhes e informações sobre os produtos gerados e disponíveis em uma plataforma WebGIS dinâmica.</p>
                         <br>
+                        <br>
                         {% if user.is_authenticated %}
                         <p><a class="btn btn-default" href="{% url "app" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
@@ -69,7 +70,6 @@
                         <p><a href="{% url "document_browse" %}"><img src="{% static 'geonode/img/documentos.svg' %}"></a></p>
                         <h2><a href="{% url "document_browse" %}">Documentos</a></h2>
                         <p>Procedimentos metodológicos e principais referências utilizadas na geração dos dados disponibilizados no SADes.</p>
-                        <br>
                         <br>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
