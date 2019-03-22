@@ -10,7 +10,7 @@ createLayer = (imgName) => {
         'LAYERS': imgName,
         'TILED': 'true'
       },
-      ratio: 3,
+      ratio: 1,
       serverType: "geoserver"
     })
   });
@@ -82,7 +82,7 @@ let map = new ol.Map({
     pixelRatio: 1,
     view: new ol.View({
         center: CENTER_COORDS,
-        zoom: 5
+        zoom: 6
     })
 });
 
