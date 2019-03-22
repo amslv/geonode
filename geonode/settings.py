@@ -40,8 +40,6 @@ from kombu import Queue, Exchange
 # GeoNode Version
 VERSION = get_version()
 
-REGISTRATION_OPEN = False
-
 # Defines the directory that contains the settings file as the PROJECT_ROOT
 # It is used for relative settings elsewhere.
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -1505,7 +1503,7 @@ MAP_CLIENT_USE_CROSS_ORIGIN_CREDENTIALS = strtobool(os.getenv(
     'False'
 ))
 
-ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_OPEN_SIGNUP = False
 ACCOUNT_APPROVAL_REQUIRED = strtobool(
     os.getenv('ACCOUNT_APPROVAL_REQUIRED', 'False')
 )
