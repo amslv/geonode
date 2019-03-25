@@ -82,7 +82,7 @@ let map = new ol.Map({
     pixelRatio: 1,
     view: new ol.View({
         center: CENTER_COORDS,
-        zoom: 6
+        zoom: 5
     })
 });
 
