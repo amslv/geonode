@@ -6934,7 +6934,7 @@ article.tab-pane {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
 }
 /* ------ Nav
 ------------------------------ */
