@@ -45,17 +45,13 @@ goPenultimateLevel = (choosenData) => {
 	}
 }
 
-addEventSunburstBackButton = (map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle) => {
-	// TODO get this element by sunburst object
-	// TODO maybe implement this behavior in the sunburst JS(edited)
-	$(`#${SunburstProps.BUTTON_BACK_LEVEL_NAME}`).on('click', function () {
-		if (currentChoosenData !== undefined 
-				&& currentChoosenData.__dataNode !== undefined
-				&& currentChoosenData.__dataNode.parent !== undefined) {
-			let parentData = currentChoosenData.__dataNode.parent.data
-			updateSunburst(map, sunburst, parentData, defaultL, aguasLayer, sabLayer, layerTitle);
-		}
-	});
+sunburstBackButtonAction = (map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle) => {
+	if (currentChoosenData !== undefined 
+			&& currentChoosenData.__dataNode !== undefined
+			&& currentChoosenData.__dataNode.parent !== undefined) {
+		let parentData = currentChoosenData.__dataNode.parent.data
+		updateSunburst(map, sunburst, parentData, defaultL, aguasLayer, sabLayer, layerTitle);
+	}
 }
 
 $(document).ready(() => {
@@ -89,7 +85,8 @@ $(document).ready(() => {
 		.size(DATA_DESERT_ATTR_SIZE)
 		.width(chartContainerSize)
 		.height(chartContainerSize)
-		.color((d, parent) => d.color);
+		.btnBackName('Voltar')
+		.color((d, parent) => d.color);	
 
 	sunburst.onNodeClick((choosenData) => {
 		// Necessary to the animation when user click in the last nivel.
@@ -100,12 +97,15 @@ $(document).ready(() => {
 		}, 0);		
 	});
 
+	sunburst.onClickButtonBack((state) => {
+		sunburstBackButtonAction(map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle);
+	})
+
 	sunburst($('#chart')[0]);
 	changeAdvancedButton(initialImgNameLayer);
 	fillBreadcrumbs(map, sunburst, dataDesertificacao, defaultL, aguasLayer, sabLayer, layerTitle);
 	fillLegend(initialImgNameLayer);
 	fillDescription(dataDesertificacao);
-	addEventSunburstBackButton(map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle)
 });
 
 $('#navbar li').on('click', () => {
@@ -128,7 +128,6 @@ $(window).on('resize', function() {
 			$('#chart').html('');
 			sunburst($('#chart')[0]);
 			resizing = false;
-			addEventSunburstBackButton(map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle)
 		}, RESIZING_TIMEOUT);
 	}
 });

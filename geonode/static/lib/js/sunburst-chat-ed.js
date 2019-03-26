@@ -1,6 +1,3 @@
-var SunburstProps = {};
-SunburstProps.BUTTON_BACK_LEVEL_NAME = 'button-back';
-
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -5226,9 +5223,14 @@ SunburstProps.BUTTON_BACK_LEVEL_NAME = 'button-back';
   var TRANSITION_DURATION = 750;
   var CHAR_PX = 6;
 
+  var BUTTON_BACK_LEVEL_NAME = 'button-back';
+
   var sunburst = Kapsule({
 
     props: {
+      btnBackDiv: { default: BUTTON_BACK_LEVEL_NAME },
+      btnBackName: { default: 'Voltar' },
+      onClickButtonBack: { triggerUpdate: false },
       width: { default: window.innerWidth },
       height: { default: window.innerHeight },
       data: { onChange: function onChange() {
@@ -5324,11 +5326,14 @@ SunburstProps.BUTTON_BACK_LEVEL_NAME = 'button-back';
       state.svg = el.append('svg');
       state.canvas = state.svg.append('g');
       
-
       state.button = el.append('button')
-                    .attr('class', SunburstProps.BUTTON_BACK_LEVEL_NAME)
-                    .attr('id', SunburstProps.BUTTON_BACK_LEVEL_NAME)
-                    .text('Voltar')
+                    .attr('class', state.btnBackDiv)
+                    .attr('id', state.btnBackDiv)                    
+                    .text(state.btnBackName)
+
+      state.button.on('click', function() {
+        state.onClickButtonBack()
+      });
 
       // tooltips
       state.tooltip = select('body').append('div').attr('class', 'sunburst-tooltip');
@@ -5519,9 +5524,9 @@ SunburstProps.BUTTON_BACK_LEVEL_NAME = 'button-back';
             && state.focusOnNode !== null 
             && state.focusOnNode.__dataNode !== null
             && state.focusOnNode.__dataNode.parent === null) {
-        $(`#${SunburstProps.BUTTON_BACK_LEVEL_NAME}`).css('opacity', '0')
+        $(`#${state.btnBackDiv}`).css('opacity', '0')
       } else {
-        $(`#${SunburstProps.BUTTON_BACK_LEVEL_NAME}`).css('opacity', '1')
+        $(`#${state.btnBackDiv}`).css('opacity', '1')
       }
 
       function middleArcLine(d) {
