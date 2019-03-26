@@ -21,6 +21,7 @@ stopPeddingRequests = () => {
 };
 
 updateSunburst = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle) => {
+	currentChoosenData = choosenData;
 	let imd_layer = choosenData.imgName;
 	sunburst.focusOnNode(choosenData);
 	if (currentLayer === imd_layer) {
@@ -42,6 +43,20 @@ goPenultimateLevel = (choosenData) => {
 		const choosenDataParent = choosenData.__dataNode.parent.data
 		sunburst.focusOnNode(choosenDataParent);
 	}
+}
+
+addEventSunburstBackButton = (map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle) => {
+	// TODO get this element by sunburst object
+	// TODO maybe implement this behavior in the sunburst JS(edited)
+	console.log('currentChoosenData', sunburst, sunburst.nameBtnBackLevel);
+	$(`#${SunburstProps.BUTTON_BACK_LEVEL_NAME}`).on('click', function () {
+		if (currentChoosenData !== undefined 
+				&& currentChoosenData.__dataNode !== undefined
+				&& currentChoosenData.__dataNode.parent !== undefined) {
+			let parentData = currentChoosenData.__dataNode.parent.data
+			updateSunburst(map, sunburst, parentData, defaultL, aguasLayer, sabLayer, layerTitle);
+		}
+	});
 }
 
 $(document).ready(() => {
@@ -78,7 +93,6 @@ $(document).ready(() => {
 		.color((d, parent) => d.color);
 
 	sunburst.onNodeClick((choosenData) => {
-		currentChoosenData = choosenData;
 		// Necessary to the animation when user click in the last nivel.
 		goPenultimateLevel(choosenData);
 
@@ -92,6 +106,7 @@ $(document).ready(() => {
 	fillBreadcrumbs(map, sunburst, dataDesertificacao, defaultL, aguasLayer, sabLayer, layerTitle);
 	fillLegend(initialImgNameLayer);
 	fillDescription(dataDesertificacao);
+	addEventSunburstBackButton(map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle)
 });
 
 $('#navbar li').on('click', () => {
@@ -114,6 +129,7 @@ $(window).on('resize', function() {
 			$('#chart').html('');
 			sunburst($('#chart')[0]);
 			resizing = false;
+			addEventSunburstBackButton(map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle)
 		}, RESIZING_TIMEOUT);
 	}
 });

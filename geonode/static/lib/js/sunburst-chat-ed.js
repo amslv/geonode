@@ -1,3 +1,6 @@
+var SunburstProps = {};
+SunburstProps.BUTTON_BACK_LEVEL_NAME = 'button-back';
+
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -5317,9 +5320,15 @@
       });
 
       var el = select(domNode).append('div').attr('class', 'sunburst-viz');
-
+      
       state.svg = el.append('svg');
       state.canvas = state.svg.append('g');
+      
+
+      state.button = el.append('button')
+                    .attr('class', SunburstProps.BUTTON_BACK_LEVEL_NAME)
+                    .attr('id', SunburstProps.BUTTON_BACK_LEVEL_NAME)
+                    .text('Voltar')
 
       // tooltips
       state.tooltip = select('body').append('div').attr('class', 'sunburst-tooltip');
@@ -5506,6 +5515,15 @@
         return nameNormalized;
       });
 
+      if (state !== null
+            && state.focusOnNode !== null 
+            && state.focusOnNode.__dataNode !== null
+            && state.focusOnNode.__dataNode.parent === null) {
+        $(`#${SunburstProps.BUTTON_BACK_LEVEL_NAME}`).css('opacity', '0')
+      } else {
+        $(`#${SunburstProps.BUTTON_BACK_LEVEL_NAME}`).css('opacity', '1')
+      }
+
       function middleArcLine(d) {
         var halfPi = Math.PI / 2;
         var angles = [state.angleScale(d.x0) - halfPi, state.angleScale(d.x1) - halfPi];
@@ -5541,6 +5559,8 @@
         }
         return stack$$1;
       }
+
+      
     }
   });
 
