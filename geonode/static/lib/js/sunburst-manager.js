@@ -48,7 +48,6 @@ goPenultimateLevel = (choosenData) => {
 addEventSunburstBackButton = (map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle) => {
 	// TODO get this element by sunburst object
 	// TODO maybe implement this behavior in the sunburst JS(edited)
-	console.log('currentChoosenData', sunburst, sunburst.nameBtnBackLevel);
 	$(`#${SunburstProps.BUTTON_BACK_LEVEL_NAME}`).on('click', function () {
 		if (currentChoosenData !== undefined 
 				&& currentChoosenData.__dataNode !== undefined
