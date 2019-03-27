@@ -46,11 +46,12 @@ goPenultimateLevel = (choosenData) => {
 }
 
 sunburstBackButtonAction = (map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle) => {
-	if (currentChoosenData !== undefined 
-			&& currentChoosenData.__dataNode !== undefined
-			&& currentChoosenData.__dataNode.parent !== undefined) {
-		let parentData = currentChoosenData.__dataNode.parent.data
-		updateSunburst(map, sunburst, parentData, defaultL, aguasLayer, sabLayer, layerTitle);
+	const focusOnNone = sunburst.focusOnNode()
+	if (focusOnNone !== undefined 
+			&& focusOnNone.__dataNode !== undefined
+			&& focusOnNone.__dataNode.parent !== undefined) {
+		let parentNodeData = focusOnNone.__dataNode.parent.data
+		updateSunburst(map, sunburst, parentNodeData, defaultL, aguasLayer, sabLayer, layerTitle);
 	}
 }
 

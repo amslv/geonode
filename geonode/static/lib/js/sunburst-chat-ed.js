@@ -5328,7 +5328,7 @@
       
       state.button = el.append('button')
                     .attr('class', state.btnBackDiv)
-                    .attr('id', state.btnBackDiv)                    
+                    .attr('id', state.btnBackDiv)
                     .text(state.btnBackName)
 
       state.button.on('click', function() {
@@ -5524,9 +5524,9 @@
             && state.focusOnNode !== null 
             && state.focusOnNode.__dataNode !== null
             && state.focusOnNode.__dataNode.parent === null) {
-        $(`#${state.btnBackDiv}`).css('opacity', '0')
+        $(`#${state.btnBackDiv}`).css('display', 'none')
       } else {
-        $(`#${state.btnBackDiv}`).css('opacity', '1')
+        $(`#${state.btnBackDiv}`).css('display', 'inline')
       }
 
       function middleArcLine(d) {
