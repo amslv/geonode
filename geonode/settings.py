@@ -1205,6 +1205,32 @@ CORS_ORIGIN_WHITELIST = (
 )
 """
 
+CORS_ORIGIN_WHITELIST = (
+    HOSTNAME,
+    'localhost:4200',
+)
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
+
 SERVICE_UPDATE_INTERVAL = 0
 
 SEARCH_FILTERS = {
