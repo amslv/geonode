@@ -168,4 +168,4 @@ def get_aplicacao(request):
       return map_insa_view(request, map_aplication_id)
     except Exception as error:
       logger.error(error)
-      raise GeoNodeException("Not found map id: %s. Configure in the settings.py" %(map_aplication_id))
+      raise GeoNodeException("Not found map id: %s. Configure MAP_APLICACAO_ID in the settings.py" %(map_aplication_id))
