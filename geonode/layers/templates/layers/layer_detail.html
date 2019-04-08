@@ -262,15 +262,16 @@
         </li>
         {% endif %}
         <li class="list-group-item">
-          <a onclick="getUrl('{{ resource.name }}')" class="btn btn-primary btn-block" target="_blank">
+          <a onclick="download_layer_data('{{ resource.name }}')" class="btn btn-primary btn-block" target="_blank">
             Fazer Download da Camada
           </a>
           <script lang="Javascript">
-              function getUrl(name) {
+              function download_layer_data(name) {
                 if (name.indexOf("imd") != -1) {
                   const imd_slug = 'http://transferserver.insa.gov.br/SADES/OUTPUT/' + name.toUpperCase() + '/'+ name + '.tif';
                   window.location = imd_slug;
-                } else {
+                }
+                else {
                   const indicators_slug = 'http://transferserver.insa.gov.br/SADES/INPUT/' + name.toUpperCase() + '/'+ name + '.zip';
                   window.location = indicators_slug;
                 }
