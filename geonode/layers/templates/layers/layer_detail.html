@@ -267,7 +267,7 @@
           </a>
           <script lang="Javascript">
               function getUrl(name) {
-                if (name.has("imd")) {
+                if (name.indexOf("imd")) {
                   const imd_slug = 'http://transferserver.insa.gov.br/SADES/OUTPUT/' + name.toUpperCase() + '/'+ name + '.tif';
                   window.location = imd_slug;
                 }
