@@ -1087,7 +1087,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #912f31;
+  color: #337ab7;
   text-decoration: none;
 }
 a:hover,
@@ -3194,25 +3194,25 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary {
   color: #fff;
   background-color: #912f31;
-  border-color: #265a88;
+  border-color: #612526;
 }
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background-color: #204d74;
-  border-color: #0a1824;
+  background-color: #912f31;
+  border-color: #612526;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #204d74;
-  border-color: #193b58;
+  background-color: #912f31;
+  border-color: #612526;
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #204d74;
-  border-color: #193b58;
+  background-color: #912f31;
+  border-color: #612526;
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -3224,8 +3224,8 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #fff;
-  background-color: #193b58;
-  border-color: #0a1824;
+  background-color: #912f31;
+  border-color: #612526;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3242,7 +3242,7 @@ fieldset[disabled] .btn-primary:focus,
 .btn-primary[disabled].focus,
 fieldset[disabled] .btn-primary.focus {
   background-color: #912f31;
-  border-color: #265a88;
+  border-color: #612526;
 }
 .btn-primary .badge {
   color: #912f31;
@@ -4813,7 +4813,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 12px;
   line-height: 1.42857143;
   text-decoration: none;
-  color: #912f31;
+  color: #337ab7;
   background-color: #fff;
   border: 1px solid #ddd;
   margin-left: -1px;
@@ -4846,8 +4846,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > span:focus {
   z-index: 3;
   color: #fff;
-  background-color: #912f31;
-  border-color: #912f31;
+  background-color: #337ab7;
+  border-color: #337ab7;
   cursor: default;
 }
 .pagination > .disabled > span,
@@ -4964,7 +4964,7 @@ a.label:focus {
   background-color: #5e5e5e;
 }
 .label-primary {
-  background-color: #912f31;
+  background-color: #337ab7;
 }
 .label-primary[href]:hover,
 .label-primary[href]:focus {
@@ -5049,7 +5049,7 @@ a.badge:focus {
   padding-bottom: 2em;
   margin-bottom: 2em;
   color: inherit;
-  background-color: #912f31;
+  background-color: #337ab7;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -6873,7 +6873,7 @@ body {
   padding-top: 60px;
 }
 a {
-  color: #912f31;
+  color: #337ab7;
 }
 h1,
 h2,
