@@ -262,12 +262,15 @@
         </li>
         {% endif %}
         <li class="list-group-item">
-          <a href="#" onclick="getUrl('{{ resource.id }}')" class="btn btn-primary btn-block" target="_blank">
+          <a onclick="getUrl('{{ resource.name }}')" class="btn btn-primary btn-block" target="_blank">
             Fazer Download da Camada
           </a>
           <script lang="Javascript">
-              function getUrl(id) {
-                console.log(id);
+              function getUrl(name) {
+                if (name.has("imd")) {
+                  const imd_slug = 'http://transferserver.insa.gov.br/SADES/OUTPUT/' + name.toUpperCase() + '/'+ name + '.tif';
+                  window.location = imd_slug;
+                }
               }
           </script>
         </li>
