@@ -262,9 +262,14 @@
         </li>
         {% endif %}
         <li class="list-group-item">
-          <a href="https://transferserver.insa.gov.br/INDICADORES_DESERTIFICACAO/" class="btn btn-primary btn-block" target="_blank">
+          <a href="#" onclick="getUrl('{{ resource.id }}')" class="btn btn-primary btn-block" target="_blank">
             Fazer Download da Camada
           </a>
+          <script lang="Javascript">
+              function getUrl(id) {
+                console.log(id);
+              }
+          </script>
         </li>
       {% endif %}
     <div class="modal fade" id="download-layer" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

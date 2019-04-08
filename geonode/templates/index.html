@@ -69,8 +69,7 @@
                       <div class="panel-body">
                         <p><a href="{% url "document_browse" %}"><img src="{% static 'geonode/img/documentos.svg' %}"></a></p>
                         <h2><a href="{% url "document_browse" %}">Documentos</a></h2>
-                        <p>Procedimentos metodológicos e principais referências utilizadas na geração dos dados disponibilizados no SADes.</p>
-                        <br>
+                        <p>Principais fontes e referências bibliográficas utilizadas como base para o desenvolvimento dos produtos disponíveis no Sistema de Avaliação da Desertificação (SADes).</p>
                         {% if user.is_authenticated %}
                         <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
                         {% else %}
