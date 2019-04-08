@@ -267,9 +267,12 @@
           </a>
           <script lang="Javascript">
               function getUrl(name) {
-                if (name.indexOf("imd")) {
+                if (name.indexOf("imd") != -1) {
                   const imd_slug = 'http://transferserver.insa.gov.br/SADES/OUTPUT/' + name.toUpperCase() + '/'+ name + '.tif';
                   window.location = imd_slug;
+                } else {
+                  const indicators_slug = 'http://transferserver.insa.gov.br/SADES/INPUT/' + name.toUpperCase() + '/'+ name + '.zip';
+                  window.location = indicators_slug;
                 }
               }
           </script>
