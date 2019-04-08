@@ -36,6 +36,12 @@ from django.conf.global_settings import DATETIME_INPUT_FORMATS
 from geonode import get_version
 from kombu import Queue, Exchange
 
+# ------------ (INSA CONF START) -------------
+
+# Map id when was created the hierarchy / Aplication
+MAP_APLICACAO_ID=0
+
+# ------------ (INSA CONF END) -------------
 
 # GeoNode Version
 VERSION = get_version()
@@ -1204,6 +1210,35 @@ CORS_ORIGIN_WHITELIST = (
     HOSTNAME
 )
 """
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = (
+    HOSTNAME,
+    'localhost:4200',
+)
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 
 SERVICE_UPDATE_INTERVAL = 0
 

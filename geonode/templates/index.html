@@ -51,15 +51,15 @@
                 <div class="col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-body">
-                        <p><a href="{% url "app" %}"><img src="{% static 'geonode/img/app.svg' %}"></a></p>
-                        <h2><a href="{% url "app" %}">Aplicação</a></h2>
+                        <p><a href="{% url "aplicacao" %}"><img src="{% static 'geonode/img/app.svg' %}"></a></p>
+                        <h2><a href="{% url "aplicacao" %}">Aplicação</a></h2>
                         <p>Detalhes e informações sobre os produtos gerados e disponíveis em uma plataforma WebGIS dinâmica.</p>
                         <br>
                         <br>
                         {% if user.is_authenticated %}
-                        <p><a class="btn btn-default" href="{% url "app" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p><a class="btn btn-default" href="{% url "aplicacao" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
-                        <p><a class="btn btn-default" href="{% url "app" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p><a class="btn btn-default" href="{% url "aplicacao" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>

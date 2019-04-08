@@ -73,6 +73,7 @@ urlpatterns = [
                 url(r'^desertification/$',
                     TemplateView.as_view(template_name='sunburst_chart.html'),
                     name='app'),
+                url(r'^aplicacao/$', views.get_aplicacao , name='aplicacao'),                    
               ]
 
 # WorldMap

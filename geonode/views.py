@@ -17,6 +17,8 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 #########################################################################
+import os
+import logging
 
 from django import forms
 from django.conf import settings
@@ -33,12 +35,14 @@ from django.template.response import TemplateResponse
 from geonode import get_version
 from geonode.base.templatetags.base_tags import facets
 from geonode.groups.models import GroupProfile
+from geonode.maps.views import map_insa_view
+from geonode import GeoNodeException
 
+logger = logging.getLogger(__name__)
 
 class AjaxLoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     username = forms.CharField()
-
 
 def ajax_login(request):
     if request.method != 'POST':
@@ -157,3 +161,11 @@ def moderator_contacted(request, inactive_user=None):
         template="account/admin_approval_sent.html",
         context={"email": user.email}
     )
+
+def get_aplicacao(request): 
+    try:
+      map_aplication_id = str(settings.MAP_APLICACAO_ID)
+      return map_insa_view(request, map_aplication_id)
+    except Exception as error:
+      logger.error(error)
+      raise GeoNodeException("Not found map id: %s. Configure MAP_APLICACAO_ID in the settings.py" %(map_aplication_id))

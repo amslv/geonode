@@ -5223,9 +5223,14 @@
   var TRANSITION_DURATION = 750;
   var CHAR_PX = 6;
 
+  var BUTTON_BACK_LEVEL_NAME = 'button-back';
+
   var sunburst = Kapsule({
 
     props: {
+      btnBackDiv: { default: BUTTON_BACK_LEVEL_NAME },
+      btnBackName: { default: 'Voltar' },
+      onClickButtonBack: { triggerUpdate: false },
       width: { default: window.innerWidth },
       height: { default: window.innerHeight },
       data: { onChange: function onChange() {
@@ -5317,9 +5322,18 @@
       });
 
       var el = select(domNode).append('div').attr('class', 'sunburst-viz');
-
+      
       state.svg = el.append('svg');
       state.canvas = state.svg.append('g');
+      
+      state.button = el.append('button')
+                    .attr('class', state.btnBackDiv)
+                    .attr('id', state.btnBackDiv)
+                    .text(state.btnBackName)
+
+      state.button.on('click', function() {
+        state.onClickButtonBack()
+      });
 
       // tooltips
       state.tooltip = select('body').append('div').attr('class', 'sunburst-tooltip');
@@ -5506,6 +5520,15 @@
         return nameNormalized;
       });
 
+      if (state !== null
+            && state.focusOnNode !== null 
+            && state.focusOnNode.__dataNode !== null
+            && state.focusOnNode.__dataNode.parent === null) {
+        $(`#${state.btnBackDiv}`).css('display', 'none')
+      } else {
+        $(`#${state.btnBackDiv}`).css('display', 'inline')
+      }
+
       function middleArcLine(d) {
         var halfPi = Math.PI / 2;
         var angles = [state.angleScale(d.x0) - halfPi, state.angleScale(d.x1) - halfPi];
@@ -5541,6 +5564,8 @@
         }
         return stack$$1;
       }
+
+      
     }
   });
 

@@ -21,6 +21,7 @@ stopPeddingRequests = () => {
 };
 
 updateSunburst = (map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle) => {
+	currentChoosenData = choosenData;
 	let imd_layer = choosenData.imgName;
 	sunburst.focusOnNode(choosenData);
 	if (currentLayer === imd_layer) {
@@ -41,6 +42,16 @@ goPenultimateLevel = (choosenData) => {
 	if (choosenData.children === undefined) {
 		const choosenDataParent = choosenData.__dataNode.parent.data
 		sunburst.focusOnNode(choosenDataParent);
+	}
+}
+
+sunburstBackButtonAction = (map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle) => {
+	const focusOnNone = sunburst.focusOnNode()
+	if (focusOnNone !== undefined 
+			&& focusOnNone.__dataNode !== undefined
+			&& focusOnNone.__dataNode.parent !== undefined) {
+		let parentNodeData = focusOnNone.__dataNode.parent.data
+		updateSunburst(map, sunburst, parentNodeData, defaultL, aguasLayer, sabLayer, layerTitle);
 	}
 }
 
@@ -75,10 +86,10 @@ $(document).ready(() => {
 		.size(DATA_DESERT_ATTR_SIZE)
 		.width(chartContainerSize)
 		.height(chartContainerSize)
-		.color((d, parent) => d.color);
+		.btnBackName('Voltar')
+		.color((d, parent) => d.color);	
 
 	sunburst.onNodeClick((choosenData) => {
-		currentChoosenData = choosenData;
 		// Necessary to the animation when user click in the last nivel.
 		goPenultimateLevel(choosenData);
 
@@ -86,6 +97,10 @@ $(document).ready(() => {
 			updateSunburst(map, sunburst, choosenData, defaultL, aguasLayer, sabLayer, layerTitle);
 		}, 0);		
 	});
+
+	sunburst.onClickButtonBack((state) => {
+		sunburstBackButtonAction(map, sunburst, defaultL, aguasLayer, sabLayer, layerTitle);
+	})
 
 	sunburst($('#chart')[0]);
 	changeAdvancedButton(initialImgNameLayer);
