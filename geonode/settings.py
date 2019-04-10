@@ -39,7 +39,7 @@ from kombu import Queue, Exchange
 # ------------ (INSA CONF START) -------------
 
 # Map id when was created the hierarchy / Aplication
-MAP_APLICACAO_ID=0
+MAP_APLICACAO_ID=60
 
 # ------------ (INSA CONF END) -------------
 
