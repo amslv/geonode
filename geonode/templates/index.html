@@ -33,7 +33,7 @@
       <section id="showcase">
         <div class="row">
           <div class="container text-center">
-            <div class="row home-facets">
+            <div class="row home-facets" style="display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;">
               <div class="col-md-4">
                   <div class="panel panel-default">
                       <div class="panel-body">
@@ -53,13 +53,13 @@
                       <div class="panel-body">
                         <p><a href="{% url "aplicacao" %}"><img src="{% static 'geonode/img/app.svg' %}"></a></p>
                         <h2><a href="{% url "aplicacao" %}">Aplicação</a></h2>
+                        <br>
                         <p>Detalhes e informações sobre os produtos gerados e disponíveis em uma plataforma WebGIS dinâmica.</p>
                         <br>
-                        <br>
                         {% if user.is_authenticated %}
-                        <p><a class="btn btn-default" href="{% url "aplicacao" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p><a style="margin-top: 2%;" class="btn btn-default" href="{% url "aplicacao" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% else %}
-                        <p><a class="btn btn-default" href="{% url "aplicacao" %}" role="button">Iniciar aplicação &raquo;</a></p>
+                        <p><a style="margin-top: 2%;" class="btn btn-default" href="{% url "aplicacao" %}" role="button">Iniciar aplicação &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>
@@ -71,9 +71,9 @@
                         <h2><a href="{% url "document_browse" %}">Documentos</a></h2>
                         <p>Principais fontes e referências bibliográficas utilizadas como base para o desenvolvimento dos produtos disponíveis no Sistema de Avaliação da Desertificação (SADes).</p>
                         {% if user.is_authenticated %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">Explorar documentos &raquo;</a></p>
                         {% else %}
-                        <p class="text-center"><a class="btn btn-default" href="{% url "app" %}" role="button">Explorar documentos &raquo;</a></p>
+                        <p class="text-center"><a class="btn btn-default" href="{% url "document_browse" %}" role="button">Explorar documentos &raquo;</a></p>
                         {% endif %}
                       </div>
                   </div>
