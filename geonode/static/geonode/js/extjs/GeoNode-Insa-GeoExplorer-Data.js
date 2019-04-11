@@ -63,7 +63,7 @@ GeoNodeInsaGeoExplorerData.dataGroupsHierarchy = {
         },
         {
           name: 'resposta',
-          title: 'Resposta',
+          title: 'Respostas',
           childrens: [
             {
               name: 'organizacaoDoPoderPublico',
