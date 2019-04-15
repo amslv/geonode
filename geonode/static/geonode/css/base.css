@@ -145,6 +145,20 @@ input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
+.address {
+  font-family: qanelas;
+  color: #D2D2D2;
+  font-size: 0.85em;
+  padding: 6px;
+  margin-right: 8px;
+  width: 80%;
+  text-align: center;
+  float: right;
+}
+.address a {
+  color: #D2D2D2;
+  cursor: pointer;
+}
 button[disabled],
 html input[disabled] {
   cursor: default;
