@@ -83,3 +83,4 @@ geonode\.tests\.bdd\.e2e\.test_login/
 *.log
 
 geoserver-data/
+geoserver-cache/
