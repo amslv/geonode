@@ -75,6 +75,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - geoserver-data-dir:/geoserver_data/data
       - ./geoserver-data:/geoserver_data
+      - ./geoserver-cache:/geoserver_data/data/gwc
     env_file:
       - ./scripts/docker/env/production/geoserver.env
 
