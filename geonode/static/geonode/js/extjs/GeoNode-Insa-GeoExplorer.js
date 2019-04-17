@@ -439,9 +439,38 @@ GeoNode.plugins.LayerManager = Ext.extend(gxp.plugins.LayerTree, {
      *          }
      *      }
      */
+    constructor: function(config) {
+        console.log('Insa GeoNode-Insa-Explorer.js');
+        gxp.plugins.LayerTree.superclass.constructor.apply(this, arguments);
+        // TODO this "GeoNodeInsaGeoExplorerData" comes from GeoNode-Insa-GeoExplorer-Data.js
+        this.groups = GeoNodeInsaGeoExplorerData.normalizeDataToGeoExplorer(GeoNodeInsaGeoExplorerData.dataGroupsHierarchy)
+        if (!this.treeNodeUI) {
+            this.treeNodeUI = Ext.extend(
+                GeoExt.tree.LayerNodeUI,
+                new GeoExt.tree.TreeNodeUIEventMixin()
+            );
+        }
+    },
+
+    createGroup: function(text, groupCode) {
+        return {
+            text: text,
+            expanded: true,
+            iconCls: "gxp-folder",
+            nodeType: 'gx_layercontainer', 
+            loader: new GeoExt.tree.LayerLoader({
+                store: this.target.mapPanel.layers,
+                filter: function(record) {
+                    return record.get("group") == groupCode;
+                }
+            })
+        };
+    },
+
     /** private: method[createOutputConfig] */
-    createOutputConfig: function() {
+    createOutputConfig: function() {        
         var tree = gxp.plugins.LayerManager.superclass.createOutputConfig.apply(this, arguments);
+
         Ext.applyIf(tree, Ext.apply({
             cls: "gxp-layermanager-tree",
             lines: false,
@@ -456,7 +485,9 @@ GeoNode.plugins.LayerManager = Ext.extend(gxp.plugins.LayerTree, {
 
     /** private: method[configureLayerNode] */
     configureLayerNode: function(loader, attr) {
-        gxp.plugins.LayerManager.superclass.configureLayerNode.apply(this, arguments);
+        attr.uiProvider = this.treeNodeUI;
+        let x = gxp.plugins.LayerManager.superclass.configureLayerNode.apply(this, arguments);
+
         var legendXType;
         // add a WMS legend to each node created
         if (OpenLayers.Layer.WMS && attr.layer instanceof OpenLayers.Layer.WMS) {
@@ -492,7 +523,7 @@ GeoNode.plugins.LayerManager = Ext.extend(gxp.plugins.LayerTree, {
                         access_token: access_token
                     }),
                     layerRecord: layerRecord,
-                    showTitle: false,
+                    showTitle: true,
                     // custom class for css positioning
                     // see tree-legend.html
                     cls: "legend"
@@ -501,6 +532,7 @@ GeoNode.plugins.LayerManager = Ext.extend(gxp.plugins.LayerTree, {
         }
     }
 
+    
 });
 
 Ext.preg(GeoNode.plugins.LayerManager.prototype.ptype, GeoNode.plugins.LayerManager);

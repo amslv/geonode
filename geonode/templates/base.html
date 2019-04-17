@@ -24,6 +24,7 @@
       {% else %}
         <link href="{% static "lib/css/assets.min.css" %}?v={{ VERSION }}" rel="stylesheet"/>
       {% endif %}
+      <link href="{% static "lib/css/new.css" %}?v={{ VERSION }}" rel="stylesheet"/>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
       <link href="{% static "geonode/css/ext-compatibility.css" %}?v={{ VERSION }}" rel="stylesheet" />
@@ -133,7 +134,7 @@
               <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Camadas</a></li>
           </li>
           <li id="nav_maps">
-              <li><a href="{% url "app" %}">Aplicação</a></li>
+              <li><a href="{% url "aplicacao" %}">Aplicação</a></li>
             </li>
           <li id="nav_docs">
             <li><a href="{% url "document_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">Documentos</a></li>
@@ -243,6 +244,12 @@
   <footer>
     <div class="container-fluid">
         <img id="logo-insa" src="{% static 'geonode/img/insa.svg' %}">
+
+        <address class="address">
+          Contato pelo email:<br> 
+          <a href="mailto:portaldadesertificacao@insa.gov.br" target="_top">📧 portaldadesertificacao@insa.gov.br</a><br>
+        </address>
+
         <a href="https://portaldadesertificacao.insa.gov.br/" target="_blank">
           <img id="logo-portal" src="{% static 'geonode/img/portal.svg' %}">
         </a>

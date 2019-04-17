@@ -57,6 +57,9 @@ class GeoExtHookSet(object):
     def map_view_template(self, context=None):
         return 'geoext/maps/map_geoexplorer.js'
 
+    def map_insa_view_template(self, context=None):
+        return 'geoext/maps/map_insa_geoexplorer.js'        
+
     def map_edit_template(self, context=None):
         return 'geoext/maps/map_geoexplorer.js'
 
@@ -118,6 +121,9 @@ class LeafletHookSet(GeoExtHookSet):
     def map_view_template(self, context=None):
         return 'leaflet/maps/map_view.html'
 
+    def map_insa_view_template(self, context=None):
+        return 'leaflet/maps/map_insa_view.html'        
+
     def map_edit_template(self, context=None):
         return 'leaflet/maps/map_edit.html'
 
@@ -165,6 +171,9 @@ class ReactHookSet(GeoExtHookSet):
     def map_view_template(self, context=None):
         return 'geonode-client/map_view.html'
 
+    def map_insa_view_template(self, context=None):
+        return 'geonode-client/map_view.html'        
+
     def map_edit_template(self, context=None):
         return 'geonode-client/edit_map.html'
 
@@ -186,6 +195,9 @@ class MaploomHookSet(GeoExtHookSet):
 
     def map_view_template(self, context=None):
         return 'maploom/maps/maploom.html'
+
+    def map_insa_view_template(self, context=None):
+        return 'maploom/maps/maploom.html'        
 
     def map_edit_template(self, context=None):
         return 'maploom/maps/maploom.html'

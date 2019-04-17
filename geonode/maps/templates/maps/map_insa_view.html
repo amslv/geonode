@@ -14,8 +14,12 @@
         }
     </style>
 
-    {% get_map_view %}
-    {{ block.super }}
+    {% get_map_insa_view %}
     
+    {{ block.super }}
+
 {% endblock %}
-{% block footer %}{% endblock %}
+{% block footer %}
+<script src="../../../static/lib/js/hierarchy-manager.js"></script>
+<script src="../../../static/lib/js/maps-util.js"></script>
+{% endblock %}

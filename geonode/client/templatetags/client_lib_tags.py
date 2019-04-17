@@ -113,6 +113,10 @@ class GeoNodeClientLibraryTag(template.Node):
             t = context.template.engine.get_template(
                 hookset.map_view_template(
                     context=context))
+        elif self.tag_name == 'get_map_insa_view':
+            t = context.template.engine.get_template(
+                hookset.map_insa_view_template(
+                    context=context))                    
         elif self.tag_name == 'get_map_edit':
             t = context.template.engine.get_template(
                 hookset.map_edit_template(
@@ -152,6 +156,7 @@ register.tag('get_layer_download', do_get_client_library_template)
 register.tag('get_map_detail', do_get_client_library_template)
 register.tag('get_map_new', do_get_client_library_template)
 register.tag('get_map_view', do_get_client_library_template)
+register.tag('get_map_insa_view', do_get_client_library_template)
 register.tag('get_map_edit', do_get_client_library_template)
 register.tag('get_map_update', do_get_client_library_template)
 register.tag('get_map_embed', do_get_client_library_template)

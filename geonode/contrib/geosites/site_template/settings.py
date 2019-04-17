@@ -37,7 +37,7 @@ except:
     execfile(os.path.join(GEOSITES_ROOT, 'pre_settings.py'))
 
 SITE_ID = $SITE_ID  # flake8: noqa
-SITE_NAME = 'Portal da Desertificação'
+SITE_NAME = 'Sistema de Avaliação da Desertificação'
 # Should be unique for each site
 SECRET_KEY = "fbk3CC3N6jt1AU9mGIcI"
 
@@ -61,7 +61,7 @@ SITE_DATABASES = {}
 # DATASTORE = ''
 
 # Allow users to register
-# REGISTRATION_OPEN = True
+REGISTRATION_OPEN = False
 
 # Read in GeoSites post_settings
 try:

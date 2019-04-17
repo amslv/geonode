@@ -31,10 +31,12 @@ js_info_dict = {
 
 new_map_view = views.new_map
 existing_map_view = views.map_view
+existing_map_insa_view = views.map_insa_view
 
 if check_ogc_backend(geoserver.BACKEND_PACKAGE):
     new_map_view = views.new_map
     existing_map_view = views.map_view
+    existing_map_insa_view = views.map_insa_view
     map_embed = views.map_embed
     map_edit = views.map_edit
     map_json = views.map_json
@@ -46,6 +48,7 @@ elif check_ogc_backend(qgis_server.BACKEND_PACKAGE):
 
     new_map_view = MapCreateView.as_view()
     existing_map_view = MapDetailView.as_view()
+    existing_map_insa_view = MapDetailView.as_view()
     map_embed = MapEmbedView.as_view()
 
     from geonode.maps.qgis_server_views import map_download_qlr, \
@@ -70,6 +73,7 @@ urlpatterns = [
     url(r'^snapshot/create/?$', views.snapshot_create),
     url(r'^(?P<mapid>[^/]+)$', views.map_detail, name='map_detail'),
     url(r'^(?P<mapid>[^/]+)/view$', existing_map_view, name='map_view'),
+    url(r'^(?P<mapid>[^/]+)/insa-view$', existing_map_insa_view, name='map_insa_view'),
     url(r'^(?P<mapid>[^/]+)/edit$', map_edit, name='map_edit'),
     url(r'^(?P<mapid>[^/]+)/data$', map_json, name='map_json'),
     url(r'^(?P<mapid>[^/]+)/download$', views.map_download, name='map_download'),
