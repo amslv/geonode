@@ -20,7 +20,7 @@
 
 import copy
 
-from slugify import Slugify
+from slugify import slugify, Slugify
 from httplib import HTTPSConnection
 from urlparse import urlsplit
 

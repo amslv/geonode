@@ -27,7 +27,7 @@ django-nose<=1.4.5 # python-django-nose (1.4.5 in our ppa)
 nose<=1.3.7 # python-nose (1.3.7)
 Markdown==2.6.11
 MarkupSafe==1.0
-awesome-slugify<=1.6.5 # python-awesome-slugify (1.6.5)
+git+https://github.com/voronind/awesome-slugify.git#egg=awesome-slugify
 django-floppyforms<=1.7.0 # python-django-floppyforms (1.7.0 in our ppa)
 chardet<=3.0.4 # python-chardet (3.0.4 in our ppa)
 decorator<=4.1.2 # python-decorator (4.1.2 in our ppa)

@@ -21,7 +21,7 @@
 import os
 import logging
 
-from slugify import Slugify
+from slugify import slugify, Slugify
 from datetime import datetime
 
 logger = logging.getLogger(__name__)

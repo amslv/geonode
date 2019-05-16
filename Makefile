@@ -5,6 +5,7 @@ DOCKER_HOST_IP := `docker run --net=host codenvy/che-ip:nightly`
 auto-up:
 	# bring up the services with proper environment variables
 	unset DOCKERHOST; \
+	export DJANGO_SETTINGS_MODULE=geonode.settings; \
 	export DOCKERHOST=$(DOCKER_HOST); \
 	echo Docker daemon is running at the following address $$DOCKERHOST; \
 	unset GEONODE_LB_HOST_IP; \

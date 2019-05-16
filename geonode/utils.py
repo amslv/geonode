@@ -45,7 +45,7 @@ from contextlib import closing
 from zipfile import ZipFile, is_zipfile, ZIP_DEFLATED
 from StringIO import StringIO
 from osgeo import ogr
-from slugify import Slugify
+from slugify import slugify, Slugify
 
 from django.conf import settings
 from django.core.cache import cache
